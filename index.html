@@ -151,6 +151,78 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-FileNotFoundExeption-cant-find-WEB-INF-application-xml" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/05/FileNotFoundExeption-cant-find-WEB-INF-application-xml/">FileNotFoundExeption cant find WEB-INF/application.xml错误</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/05/FileNotFoundExeption-cant-find-WEB-INF-application-xml/" class="archive-article-date">
+  	<time datetime="2017-04-05T07:23:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在idea里面新导入一个eclipse项目，结果要配置的有很多，具体都都是些小问题，主要有以下几项问题</p>
+<h2 id="问题1-能正常部署，但是404错误，output里的web-xml内容为空"><a href="#问题1-能正常部署，但是404错误，output里的web-xml内容为空" class="headerlink" title="问题1.能正常部署，但是404错误，output里的web.xml内容为空"></a>问题1.能正常部署，但是404错误，output里的web.xml内容为空</h2><p>如图所示，画红圈的地方需要注意<br><img src="https://github.com/GodIsMadao/hexo/image/idea_problem1.png" alt="webapp路径" title="webapp路径"></p>
+<h2 id="问题2-start-server后，找不到WEB-INF-application-xml"><a href="#问题2-start-server后，找不到WEB-INF-application-xml" class="headerlink" title="问题2.start server后，找不到WEB-INF/application.xml"></a>问题2.start server后，找不到WEB-INF/application.xml</h2><p>需要在配置文件web.xml里面加入如下语句来指定路径：</p>
+<blockquote>
+<p><context-param><br>    <param-name>contextConfigLocation</param-name><br>    <param-value>classpath:applicationContext.xml</param-value><br></context-param></p>
+</blockquote>
+<p>还有一些要注意的地方<br><img src="https://github.com/GodIsMadao/hexo/image/idea_problem2.png" alt="webapp路径" title="webapp路径"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">idea</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/05/FileNotFoundExeption-cant-find-WEB-INF-application-xml/">more >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-android-studio-build-lag-problem" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -460,6 +532,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">solved</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
