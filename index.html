@@ -171,7 +171,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="问题1-android-studio导入新项目时，一直卡在android-studio-build-gradle-info…这个界面，最后查了一下，感觉应该是gradle下载问题，因为被墙，所以速度缓慢。"><a href="#问题1-android-studio导入新项目时，一直卡在android-studio-build-gradle-info…这个界面，最后查了一下，感觉应该是gradle下载问题，因为被墙，所以速度缓慢。" class="headerlink" title="问题1.android studio导入新项目时，一直卡在android studio build gradle info…这个界面，最后查了一下，感觉应该是gradle下载问题，因为被墙，所以速度缓慢。"></a>问题1.android studio导入新项目时，一直卡在android studio build gradle info…这个界面，最后查了一下，感觉应该是gradle下载问题，因为被墙，所以速度缓慢。</h2><h3 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h3><ol>
+        <h2 id="问题1-android-studio导入新项目时，一直卡在android-studio-build-gradle-info…这个界面"><a href="#问题1-android-studio导入新项目时，一直卡在android-studio-build-gradle-info…这个界面" class="headerlink" title="问题1.android studio导入新项目时，一直卡在android studio build gradle info…这个界面"></a>问题1.android studio导入新项目时，一直卡在android studio build gradle info…这个界面</h2><p>最后查了一下，感觉应该是gradle下载问题，因为被墙，所以速度缓慢。</p>
+<h3 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h3><ol>
 <li>离线下载gradle包<br>查看所需gradle版本：打开C:\Users\用户名.gradle\wrapper\dists\gradle-x.xx-all\xxxxxxxxxxxx，如果里面的gradle-xx-all.zip不完整（如0KB），则说明下载不成功，需要下载离线包放置到该目录下，那么，则需要下载gradle-2.8-all.zip。gradle各个版本离线包下载地址：<a href="http://download.csdn.net/album/detail/2265" target="_blank" rel="external">http://download.csdn.net/album/detail/2265</a><br>导入完成后，运行AS之后会自动解压，如下。重新打开项目就可以了~~</li>
 <li>修改gradle-wrapper.properties方式<br>1、随便找一个你之前能够运行的AS项目<br>2、打开项目的/gradle/wrapper/gradle-wrapper.properties文件<br>3、复制最后一行distributionUrl这一整行的内容，例如：distributionUrl=https\://services.gradle.org/distributions/gradle-2.8-all.zip，替换到你要导入的项目里的gradle-wrapper.properties文件中。<br>4、重启Android Studio，重新导入项目就可以了~~</li>
 </ol>
@@ -245,9 +246,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#一些hexo的具体操作步骤以及命令tips</p>
-<p>##常用命令</p>
-<ul>
+        <h1 id="一些hexo的具体操作步骤以及命令tips"><a href="#一些hexo的具体操作步骤以及命令tips" class="headerlink" title="一些hexo的具体操作步骤以及命令tips"></a>一些hexo的具体操作步骤以及命令tips</h1><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
 <li>hexo server:启动server </li>
 <li>hexo new draft <filename> :新建一个草稿</filename></li>
 <li>hexo n “我的博客” == hexo new “我的博客” #新建文章</li>
@@ -256,10 +255,27 @@
 <li>hexo s == hexo server #启动服务预览</li>
 <li>hexo d == hexo deploy#部署</li>
 </ul>
-<p>##_config.xml<br>这里的配置主要配置下language,author,title等等，还有加入deploy的托管对象<br>hexo支持多种deploy方式：<br>git:</p>
+<h2 id="config-xml"><a href="#config-xml" class="headerlink" title="_config.xml"></a>_config.xml</h2><p>这里的配置主要配置下language,author,title等等，还有加入deploy的托管对象<br>hexo支持多种deploy方式：<br>git:</p>
 <blockquote>
-<p>deploy:<br>    type: git<br>    repo: <a href="https://github.com/GodIsMadao/hexo.git" target="_blank" rel="external">https://github.com/GodIsMadao/hexo.git</a><br>    branch: master<br>rsync:<br>deploy:<br>    type: rsync<br>    host: 你 VPS 的 IP 地址或者域名<br>    user: root<br>    root: 你想将 Hexo 生成的静态文件存放在 VPS 中的目录 例如: /www/hexo/blog/<br>    port: 你 VPS 的 ssh 端口号<br>    delete: true<br>    verbose: true<br>    ignore_errors: false<br>Heroku:<br>deploy:<br>    type: heroku<br>    repo: <repository url=""><br>    message: [message]<br>OpenShift:<br>deploy:<br>    type: openshift<br>    repo: <repository url=""><br>    message: [message]<br>FTPSync:<br>deploy:<br>    type: ftpsync<br>    host: <host><br>    user: <user><br>    pass: <password><br>    remote: [remote]<br>    port: [port]<br>    ignore: [ignore]<br>    connections: [connections]<br>    verbose: [true|false]<br>本来想用rsync的方式，直接连接vps的，但是port设置为自定义的貌似不可以（默认是22），他始终提示我port还是22，就是修改不了，最后干脆用git了。</password></user></host></repository></repository></p>
+<p>deploy:<br>    type: git<br>    repo: <a href="https://github.com/GodIsMadao/hexo.git" target="_blank" rel="external">https://github.com/GodIsMadao/hexo.git</a><br>    branch: master</p>
 </blockquote>
+<p>rsync:</p>
+<blockquote>
+<p>deploy:<br>    type: rsync<br>    host: 你 VPS 的 IP 地址或者域名<br>    user: root<br>    root: 你想将 Hexo 生成的静态文件存放在 VPS 中的目录 例如: /www/hexo/blog/<br>    port: 你 VPS 的 ssh 端口号<br>    delete: true<br>    verbose: true<br>    ignore_errors: false</p>
+</blockquote>
+<p>Heroku:</p>
+<blockquote>
+<p>deploy:<br>    type: heroku<br>    repo: <repository url=""><br>    message: [message]</repository></p>
+</blockquote>
+<p>OpenShift:</p>
+<blockquote>
+<p>deploy:<br>    type: openshift<br>    repo: <repository url=""><br>    message: [message]</repository></p>
+</blockquote>
+<p>FTPSync:</p>
+<blockquote>
+<p>deploy:<br>    type: ftpsync<br>    host: <host><br>    user: <user><br>    pass: <password><br>    remote: [remote]<br>    port: [port]<br>    ignore: [ignore]<br>    connections: [connections]<br>    verbose: [true|false]</password></user></host></p>
+</blockquote>
+<p>本来想用rsync的方式，直接连接vps的，但是port设置为自定义的貌似不可以（默认是22），他始终提示我port还是22，就是修改不了，最后干脆用git了。</p>
 
       
 
@@ -456,14 +472,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">test</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">first blog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">android studio</a>
               </li>
              
@@ -473,6 +481,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">solved</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">test</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">first blog</a>
               </li>
              
               <li class="article-tag-list-item">
