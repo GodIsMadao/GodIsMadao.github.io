@@ -24,7 +24,7 @@ hexo new draft  :新建一个草稿
 hexo n “我的博客” == hexo new “我的博客” #新建文章
 hexo p == hexo publish #hexo publish 草稿（_drafts -&amp;gt; _posts）
 hexo g == hexo generate#生成">
-<meta property="og:updated_time" content="2017-04-05T06:21:54.000Z">
+<meta property="og:updated_time" content="2017-04-05T06:29:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo tips">
 <meta name="twitter:description" content="一些hexo的具体操作步骤以及命令tips常用命令
@@ -195,12 +195,12 @@ hexo g == hexo generate#生成">
 <li>hexo p == hexo publish #hexo publish 草稿（_drafts -&gt; _posts）</li>
 <li>hexo g == hexo generate#生成</li>
 <li>hexo s == hexo server #启动服务预览</li>
-<li>hexo d == hexo deploy#部署</li>
-</ul>
-<h2 id="config-xml"><a href="#config-xml" class="headerlink" title="_config.xml"></a>_config.xml</h2><p>这里的配置主要配置下language,author,title等等，还有加入deploy的托管对象<br>hexo支持多种deploy方式：<br>git:</p>
-<blockquote>
-<p>deploy:<br>    type: git<br>    repo: <a href="https://github.com/GodIsMadao/hexo.git" target="_blank" rel="external">https://github.com/GodIsMadao/hexo.git</a><br>    branch: master</p>
+<li>hexo d == hexo deploy#部署<a id="more"></a>
+<h2 id="config-xml"><a href="#config-xml" class="headerlink" title="_config.xml"></a>_config.xml</h2>这里的配置主要配置下language,author,title等等，还有加入deploy的托管对象<br>hexo支持多种deploy方式：<br>git:<blockquote>
+<p>deploy:<br>  type: git<br>  repo: <a href="https://github.com/GodIsMadao/hexo.git" target="_blank" rel="external">https://github.com/GodIsMadao/hexo.git</a><br>  branch: master</p>
 </blockquote>
+</li>
+</ul>
 <p>rsync:</p>
 <blockquote>
 <p>deploy:<br>    type: rsync<br>    host: 你 VPS 的 IP 地址或者域名<br>    user: root<br>    root: 你想将 Hexo 生成的静态文件存放在 VPS 中的目录 例如: /www/hexo/blog/<br>    port: 你 VPS 的 ssh 端口号<br>    delete: true<br>    verbose: true<br>    ignore_errors: false</p>
@@ -437,14 +437,6 @@ hexo g == hexo generate#生成">
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">test</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">first blog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">android studio</a>
               </li>
              
@@ -454,6 +446,14 @@ hexo g == hexo generate#生成">
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">solved</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">test</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">first blog</a>
               </li>
              
               <li class="article-tag-list-item">
