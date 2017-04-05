@@ -151,6 +151,156 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-android-studio-build-lag-problem" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/05/android-studio-build-lag-problem/">android studio build gradle info卡住</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/05/android-studio-build-lag-problem/" class="archive-article-date">
+  	<time datetime="2017-04-05T06:12:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题1-android-studio导入新项目时，一直卡在android-studio-build-gradle-info…这个界面，最后查了一下，感觉应该是gradle下载问题，因为被墙，所以速度缓慢。"><a href="#问题1-android-studio导入新项目时，一直卡在android-studio-build-gradle-info…这个界面，最后查了一下，感觉应该是gradle下载问题，因为被墙，所以速度缓慢。" class="headerlink" title="问题1.android studio导入新项目时，一直卡在android studio build gradle info…这个界面，最后查了一下，感觉应该是gradle下载问题，因为被墙，所以速度缓慢。"></a>问题1.android studio导入新项目时，一直卡在android studio build gradle info…这个界面，最后查了一下，感觉应该是gradle下载问题，因为被墙，所以速度缓慢。</h2><h3 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h3><ol>
+<li>离线下载gradle包<br>查看所需gradle版本：打开C:\Users\用户名.gradle\wrapper\dists\gradle-x.xx-all\xxxxxxxxxxxx，如果里面的gradle-xx-all.zip不完整（如0KB），则说明下载不成功，需要下载离线包放置到该目录下，那么，则需要下载gradle-2.8-all.zip。gradle各个版本离线包下载地址：<a href="http://download.csdn.net/album/detail/2265" target="_blank" rel="external">http://download.csdn.net/album/detail/2265</a><br>导入完成后，运行AS之后会自动解压，如下。重新打开项目就可以了~~</li>
+<li>修改gradle-wrapper.properties方式<br>1、随便找一个你之前能够运行的AS项目<br>2、打开项目的/gradle/wrapper/gradle-wrapper.properties文件<br>3、复制最后一行distributionUrl这一整行的内容，例如：distributionUrl=https\://services.gradle.org/distributions/gradle-2.8-all.zip，替换到你要导入的项目里的gradle-wrapper.properties文件中。<br>4、重启Android Studio，重新导入项目就可以了~~</li>
+</ol>
+<h2 id="问题2-Android-Studio-导入项目-出现安装Error-Cause-failed-to-find-target-with-hash-string-‘android-17’-等错误"><a href="#问题2-Android-Studio-导入项目-出现安装Error-Cause-failed-to-find-target-with-hash-string-‘android-17’-等错误" class="headerlink" title="问题2.Android Studio 导入项目 出现安装Error:Cause: failed to find target with hash string ‘android-17’ 等错误"></a>问题2.Android Studio 导入项目 出现安装Error:Cause: failed to find target with hash string ‘android-17’ 等错误</h2><h3 id="解决办法：-1"><a href="#解决办法：-1" class="headerlink" title="解决办法："></a>解决办法：</h3><p>在等了一段时间后，update下android sdk manager的列表之后，终于出现了需要的android api型号列，之后只要傻瓜操作，缺啥下啥就好了，最好有个科学上网工具～～</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">android studio</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">solved</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/05/android-studio-build-lag-problem/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-hexo-tips" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/05/hexo-tips/">hexo tips</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/05/hexo-tips/" class="archive-article-date">
+  	<time datetime="2017-04-05T04:13:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#一些hexo的具体操作步骤以及命令tips</p>
+<p>##常用命令</p>
+<ul>
+<li>hexo server:启动server </li>
+<li>hexo new draft <filename> :新建一个草稿</filename></li>
+<li>hexo n “我的博客” == hexo new “我的博客” #新建文章</li>
+<li>hexo p == hexo publish #hexo publish 草稿（_drafts -&gt; _posts）</li>
+<li>hexo g == hexo generate#生成</li>
+<li>hexo s == hexo server #启动服务预览</li>
+<li>hexo d == hexo deploy#部署</li>
+</ul>
+<p>##_config.xml<br>这里的配置主要配置下language,author,title等等，还有加入deploy的托管对象<br>hexo支持多种deploy方式：<br>git:</p>
+<blockquote>
+<p>deploy:<br>    type: git<br>    repo: <a href="https://github.com/GodIsMadao/hexo.git" target="_blank" rel="external">https://github.com/GodIsMadao/hexo.git</a><br>    branch: master<br>rsync:<br>deploy:<br>    type: rsync<br>    host: 你 VPS 的 IP 地址或者域名<br>    user: root<br>    root: 你想将 Hexo 生成的静态文件存放在 VPS 中的目录 例如: /www/hexo/blog/<br>    port: 你 VPS 的 ssh 端口号<br>    delete: true<br>    verbose: true<br>    ignore_errors: false<br>Heroku:<br>deploy:<br>    type: heroku<br>    repo: <repository url=""><br>    message: [message]<br>OpenShift:<br>deploy:<br>    type: openshift<br>    repo: <repository url=""><br>    message: [message]<br>FTPSync:<br>deploy:<br>    type: ftpsync<br>    host: <host><br>    user: <user><br>    pass: <password><br>    remote: [remote]<br>    port: [port]<br>    ignore: [ignore]<br>    connections: [connections]<br>    verbose: [true|false]<br>本来想用rsync的方式，直接连接vps的，但是port设置为自定义的貌似不可以（默认是22），他始终提示我port还是22，就是修改不了，最后干脆用git了。</password></user></host></repository></repository></p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/05/hexo-tips/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-hello-myblog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -311,6 +461,22 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">first blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">android studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">solved</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>
