@@ -165,6 +165,118 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-mac-tomcat-error13" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/07/mac-tomcat-error13/">mac tomcat error13</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/07/mac-tomcat-error13/" class="archive-article-date">
+  	<time datetime="2017-04-07T08:20:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>今天把自己所需要的公司的项目从thinkpad上全部迁移到自己的mac上来，一顿配置操作之后，运行时，发现报错了
+</code></pre><blockquote>
+<p>tomcat error=13, permission denied</p>
+</blockquote>
+<pre><code>好吧，permission denied，应该是权限不够了，所以
+解决办法:
+</code></pre><blockquote>
+<p>打开terminal，找到tomcat下的catalina.sh,然后chmod a+x catalina.sh即可</p>
+</blockquote>
+<p>你要问我为什么这么做就好了？？？<br>那只能补一下linux chmod命令了：</p>
+<blockquote>
+<h3 id="chmod-change-mode-改变一个或者多个文件的存取模式"><a href="#chmod-change-mode-改变一个或者多个文件的存取模式" class="headerlink" title="chmod:change mode 改变一个或者多个文件的存取模式"></a>chmod:change mode 改变一个或者多个文件的存取模式</h3><p>chmod [options] mode files</p>
+</blockquote>
+<p>只能文件属主或特权用户才能使用该功能来改变文件存取模式。mode可以是数字形式或以who opcode permission形式表示。who是可选的，默认是a(所有用户)。只能选择一个opcode(操作码)。可指定多个mode，以逗号分开。</p>
+<p>options：</p>
+<p>-c，–changes<br>只输出被改变文件的信息</p>
+<p>-f，–silent，–quiet<br>当chmod不能改变文件模式时，不通知文件的用户</p>
+<p>–help<br>输出帮助信息。</p>
+<p>-R，–recursive<br>可递归遍历子目录，把修改应到目录下所有文件和子目录</p>
+<p>–reference=filename<br>参照filename的权限来设置权限</p>
+<p>-v，–verbose<br>无论修改是否成功，输出每个文件的信息</p>
+<p>–version<br>输出版本信息。</p>
+<p>who</p>
+<p>u<br>用户</p>
+<p>g<br>组</p>
+<p>o<br>其它</p>
+<p>a<br>所有用户(默认)</p>
+<p>opcode</p>
+<p>+<br>增加权限</p>
+<p>-<br>删除权限</p>
+<p>=<br>重新分配权限</p>
+<p>permission</p>
+<p>r<br>读</p>
+<p>w<br>写</p>
+<p>x<br>执行</p>
+<p>s<br>设置用户(或组)的ID号</p>
+<p>t<br>设置粘着位(sticky bit)，防止文件或目录被非属主删除</p>
+<p>u<br>用户的当前权限</p>
+<p>g<br>组的当前权限</p>
+<p>o<br>其他用户的当前权限</p>
+<p>作为选择，我们多数用三位八进制数字的形式来表示权限，第一位指定属主的权限，第二位指定组权限，第三位指定其他用户的权限，每位通过4(读)、2(写)、1(执行)三种数值的和来确定权限。如6(4+2)代表有读写权，7(4+2+1)有读、写和执行的权限。</p>
+<p>还可设置第四位，它位于三位权限序列的前面，第四位数字取值是4，2，1，代表意思如下：</p>
+<p>4，执行时设置用户ID，用于授权给基于文件属主的进程，而不是给创建此进程的用户。</p>
+<p>2，执行时设置用户组ID，用于授权给基于文件所在组的进程，而不是基于创建此进程的用户。</p>
+<p>1，设置粘着位。</p>
+<p>实例：</p>
+<p>$ chmod u+x file                　　　   给file的属主增加执行权限<br>$ chmod 751 file                　　　   给file的属主分配读、写、执行(7)的权限，给file的所在组分配读、执行(5)的权限，给其他用户分配执行(1)的权限<br>$ chmod u=rwx,g=rx,o=x file      上例的另一种形式<br>$ chmod =r file                 　　　　为所有用户分配读权限<br>$ chmod 444 file              　　　　 同上例<br>$ chmod a-wx,a+r   file   　　 　   同上例<br>$ chmod -R u+r directory       　   递归地给directory目录下所有文件和子目录的属主分配读的权限<br>$ chmod 4755                          　　设置用ID，给属主分配读、写和执行权限，给组和其他用户分配读、执行的权限。</p>
+<p>好吧，之前接触过</p>
+<blockquote>
+<p>chmod 777 file<br>r表是读 (Read) 、w表示写 (Write) 、x表示执行 (eXecute)<br>读、写、运行三项权限可以用数字表示，就是r=4,w=2,x=1，777就是rwxrwxrwx，意思是该登录用户（可以用命令id查看）、他所在的组和其他人都有最高权限。</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">tomcat</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+        <a class="article-more-a" href="/2017/04/07/mac-tomcat-error13/">more >></a>
+        </p>
+      
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-FileNotFoundExeption-cant-find-WEB-INF-application-xml" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -544,6 +656,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
               </li>
              
               <li class="article-tag-list-item">
