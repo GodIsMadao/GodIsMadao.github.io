@@ -18,12 +18,15 @@ IntelliJ IDE运行Tomcat报错：Error: Exception thrown by the agent : java.net
 <meta property="og:description" content="上次不是到bin文件夹下，把catalina.sh chmod a+x就好了么，这次又出现了一个很奇怪的错误：
 
 IntelliJ IDE运行Tomcat报错：Error: Exception thrown by the agent : java.net.MalformedURLException: Local host name unknown: java.net.UnknownHostExce">
-<meta property="og:updated_time" content="2017-04-10T06:12:42.000Z">
+<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/jconsole.png">
+<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/jconsole_operated.png">
+<meta property="og:updated_time" content="2017-04-10T06:53:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac下用idea跑tomcat的又一个坑">
 <meta name="twitter:description" content="上次不是到bin文件夹下，把catalina.sh chmod a+x就好了么，这次又出现了一个很奇怪的错误：
 
 IntelliJ IDE运行Tomcat报错：Error: Exception thrown by the agent : java.net.MalformedURLException: Local host name unknown: java.net.UnknownHostExce">
+<meta name="twitter:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/jconsole.png">
   
     <link rel="alternative" href="/atom.xml" title="GodIsMadao&#39;s blog" type="application/atom+xml">
   
@@ -195,8 +198,9 @@ IntelliJ IDE运行Tomcat报错：Error: Exception thrown by the agent : java.net
       
         <p>上次不是到bin文件夹下，把catalina.sh chmod a+x就好了么，这次又出现了一个很奇怪的错误：</p>
 <blockquote>
-<p>IntelliJ IDE运行Tomcat报错：<br>Error: Exception thrown by the agent : java.net.MalformedURLException: Local host name unknown: java.net.UnknownHostException: XXXX: XXXX: nodename nor servname provided, or not known<a id="more"></a></p>
+<p>IntelliJ IDE运行Tomcat报错：<br>Error: Exception thrown by the agent : java.net.MalformedURLException: Local host name unknown: java.net.UnknownHostException: XXXX: XXXX: nodename nor servname provided, or not known</p>
 </blockquote>
+<a id="more"></a>
 <p>一开始以为是端口占用问题，换了个jmx端口，也不行，后来一查，是因为没有设置过主机名称的原因。<br>注意要用root权限去输入一下命令，如果不是，请输入sudo -i转成root<br>先查看主机名称是否存在</p>
 <blockquote>
 <p>scutil –get HostName</p>
@@ -205,7 +209,16 @@ IntelliJ IDE运行Tomcat报错：Error: Exception thrown by the agent : java.net
 <blockquote>
 <p>scutil –set HostName “localhost”</p>
 </blockquote>
-<p>然后就ok～～～</p>
+<p>然后就ok～～～<br>本着求知的精神，探讨一下，为什么linux系统或者mac系统下的idea tomcat会出现这样的情况？？？<br>原来，由于Tomcat默认关闭JMX功能，但IntelliJ IDE配置的IDE需要提供JMX功能，所以IntelliJ IDE运行Tomcat报错：Unable to ping server at localhost:1099！<br>那么JMX到底是什么，有什么作用?怎么在tomcat里面打开呢？</p>
+<h3 id="JMX是什么？"><a href="#JMX是什么？" class="headerlink" title="JMX是什么？"></a>JMX是什么？</h3><blockquote>
+<p>JMX(Java Management Extensions)是一个为应用程序植入管理功能的框架。JMX是一套标准的代理和服务，实际上，用户可以在任何Java应用程序中使用这些代理和服务实现管理。这是官方文档上的定义，我看过很多次也无法很好的理解。我个人的理解是JMX让程序有被管理的功能，例如你开发一个WEB网站，它是在24小时不间断运行，那么你肯定会对网站进行监控，如每天的UV、PV是多少；又或者在业务高峰的期间，你想对接口进行限流，就必须去修改接口并发的配置值。</p>
+</blockquote>
+<h3 id="JMX对于tomcat有什么作用"><a href="#JMX对于tomcat有什么作用" class="headerlink" title="JMX对于tomcat有什么作用"></a>JMX对于tomcat有什么作用</h3><p>笼统的说,JMX是管理资源的，可以对服务器进行资源的监视</p>
+<blockquote>
+<p>举例来说，一个公司内部可能有许多应用服务器、若干Web服务器、一台至多台的数据库服务器及文件服务器等等，那么，如果我们想监视数据库服务器的内存使用情况，或者我们想更改应用服务器上JDBC最大连接池的数目，但我们又不想重启数据库和应用服务器，这就是典型意义上的资源管理，即对我们的资源进行监视(Monitoring，查看)和管理(Management，更改)，这种监视和更改不妨碍当前资源的正常运行。对资源进行适当的监测和管理，可以让我们的IT资源尽可能的平稳运行，可以为我们的客户提供真正意思上的24×7服务。在资源耗尽或者在硬件出故障之前，我们就可以通过管理工具监测到，并通过管理工具进行热调整和插拔。</p>
+</blockquote>
+<p>如图所示<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/jconsole.png" alt="jconsole" title="jconsole"><br>是jconsole的可视化界面，由jdk/bin/jconsole.exe打开，我们可以连接我们的项目localhost:1099（jmx端口查看资源分配）<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/jconsole_operated.png" alt="jconsole" title="jconsole"><br>下次如果有时间，可以去弄一下小🌰，去玩一玩这个jmx</p>
+<h3 id="mac如何在tomcat里打开JMX"><a href="#mac如何在tomcat里打开JMX" class="headerlink" title="mac如何在tomcat里打开JMX?"></a>mac如何在tomcat里打开JMX?</h3><p>这篇博文写的很全了，自己去看看吧！<br><a href="http://blog.csdn.net/liang_love_java/article/details/50527441" target="_blank" rel="external">http://blog.csdn.net/liang_love_java/article/details/50527441</a></p>
 
       
 
@@ -438,10 +451,6 @@ IntelliJ IDE运行Tomcat报错：Error: Exception thrown by the agent : java.net
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">-tomcat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">idea</a>
               </li>
              
@@ -450,15 +459,7 @@ IntelliJ IDE运行Tomcat报错：Error: Exception thrown by the agent : java.net
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">solved</a>
+                <a href="javascript:void(0)" class="js-tag color3">-tomcat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -470,7 +471,19 @@ IntelliJ IDE运行Tomcat报错：Error: Exception thrown by the agent : java.net
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">solved</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>
