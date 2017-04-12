@@ -87,31 +87,19 @@
 
 
 
-<meta name="description" content="一些hexo的具体操作步骤以及命令tips常用命令
-hexo server:启动server 
-hexo new draft  :新建一个草稿
-hexo n “我的博客” == hexo new “我的博客” #新建文章
-hexo p == hexo publish #hexo publish 草稿（_drafts -&amp;gt; _posts）
-hexo g == hexo generate#生成">
+<meta name="description" content="一些hexo的具体操作步骤以及命令tips下面介绍一些常用命令吧！！！！
+常用命令">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo tips">
 <meta property="og:url" content="http://saintyun.cn/2017/04/05/hexo-tips/index.html">
 <meta property="og:site_name" content="GodIsMadao's blog">
-<meta property="og:description" content="一些hexo的具体操作步骤以及命令tips常用命令
-hexo server:启动server 
-hexo new draft  :新建一个草稿
-hexo n “我的博客” == hexo new “我的博客” #新建文章
-hexo p == hexo publish #hexo publish 草稿（_drafts -&amp;gt; _posts）
-hexo g == hexo generate#生成">
-<meta property="og:updated_time" content="2017-04-12T05:44:05.000Z">
+<meta property="og:description" content="一些hexo的具体操作步骤以及命令tips下面介绍一些常用命令吧！！！！
+常用命令">
+<meta property="og:updated_time" content="2017-04-12T09:04:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo tips">
-<meta name="twitter:description" content="一些hexo的具体操作步骤以及命令tips常用命令
-hexo server:启动server 
-hexo new draft  :新建一个草稿
-hexo n “我的博客” == hexo new “我的博客” #新建文章
-hexo p == hexo publish #hexo publish 草稿（_drafts -&amp;gt; _posts）
-hexo g == hexo generate#生成">
+<meta name="twitter:description" content="一些hexo的具体操作步骤以及命令tips下面介绍一些常用命令吧！！！！
+常用命令">
 
 
 
@@ -388,7 +376,7 @@ hexo g == hexo generate#生成">
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  270
+                  281
                 </span>
               
 
@@ -423,19 +411,21 @@ hexo g == hexo generate#生成">
       
 
       
-        <h1 id="一些hexo的具体操作步骤以及命令tips"><a href="#一些hexo的具体操作步骤以及命令tips" class="headerlink" title="一些hexo的具体操作步骤以及命令tips"></a>一些hexo的具体操作步骤以及命令tips</h1><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
+        <h1 id="一些hexo的具体操作步骤以及命令tips"><a href="#一些hexo的具体操作步骤以及命令tips" class="headerlink" title="一些hexo的具体操作步骤以及命令tips"></a>一些hexo的具体操作步骤以及命令tips</h1><p>下面介绍一些常用命令吧！！！！</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><a id="more"></a>
+<ul>
 <li>hexo server:启动server </li>
 <li>hexo new draft <filename> :新建一个草稿</filename></li>
 <li>hexo n “我的博客” == hexo new “我的博客” #新建文章</li>
 <li>hexo p == hexo publish #hexo publish 草稿（_drafts -&gt; _posts）</li>
 <li>hexo g == hexo generate#生成</li>
 <li>hexo s == hexo server #启动服务预览</li>
-<li>hexo d == hexo deploy#部署<a id="more"></a>
-<h2 id="config-xml"><a href="#config-xml" class="headerlink" title="_config.xml"></a>_config.xml</h2>这里的配置主要配置下language,author,title等等，还有加入deploy的托管对象<br>hexo支持多种deploy方式：<br>git:<blockquote>
-<p>deploy:<br>  type: git<br>  repo: <a href="https://github.com/GodIsMadao/hexo.git" target="_blank" rel="external">https://github.com/GodIsMadao/hexo.git</a><br>  branch: master</p>
-</blockquote>
-</li>
+<li>hexo d == hexo deploy#部署</li>
 </ul>
+<h2 id="config-xml"><a href="#config-xml" class="headerlink" title="_config.xml"></a>_config.xml</h2><p>这里的配置主要配置下language,author,title等等，还有加入deploy的托管对象<br>hexo支持多种deploy方式：<br>git:</p>
+<blockquote>
+<p>deploy:<br>    type: git<br>    repo: <a href="https://github.com/GodIsMadao/hexo.git" target="_blank" rel="external">https://github.com/GodIsMadao/hexo.git</a><br>    branch: master</p>
+</blockquote>
 <p>rsync:</p>
 <blockquote>
 <p>deploy:<br>    type: rsync<br>    host: 你 VPS 的 IP 地址或者域名<br>    user: root<br>    root: 你想将 Hexo 生成的静态文件存放在 VPS 中的目录 例如: /www/hexo/blog/<br>    port: 你 VPS 的 ssh 端口号<br>    delete: true<br>    verbose: true<br>    ignore_errors: false</p>

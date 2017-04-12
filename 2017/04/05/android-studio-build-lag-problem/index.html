@@ -88,21 +88,18 @@
 
 
 <meta name="description" content="问题1.android studio导入新项目时，一直卡在android studio build gradle info…这个界面最后查了一下，感觉应该是gradle下载问题，因为被墙，所以速度缓慢。
-解决办法：
-离线下载gradle包查看所需gradle版本：打开C:\Users\用户名.gradle\wrapper\dists\gradle-x.xx-all\xxxxxxxxxxxx，如果里">
+解决办法：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android studio build gradle info卡住">
 <meta property="og:url" content="http://saintyun.cn/2017/04/05/android-studio-build-lag-problem/index.html">
 <meta property="og:site_name" content="GodIsMadao's blog">
 <meta property="og:description" content="问题1.android studio导入新项目时，一直卡在android studio build gradle info…这个界面最后查了一下，感觉应该是gradle下载问题，因为被墙，所以速度缓慢。
-解决办法：
-离线下载gradle包查看所需gradle版本：打开C:\Users\用户名.gradle\wrapper\dists\gradle-x.xx-all\xxxxxxxxxxxx，如果里">
-<meta property="og:updated_time" content="2017-04-12T05:41:40.000Z">
+解决办法：">
+<meta property="og:updated_time" content="2017-04-12T09:03:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android studio build gradle info卡住">
 <meta name="twitter:description" content="问题1.android studio导入新项目时，一直卡在android studio build gradle info…这个界面最后查了一下，感觉应该是gradle下载问题，因为被墙，所以速度缓慢。
-解决办法：
-离线下载gradle包查看所需gradle版本：打开C:\Users\用户名.gradle\wrapper\dists\gradle-x.xx-all\xxxxxxxxxxxx，如果里">
+解决办法：">
 
 
 
@@ -415,8 +412,9 @@
 
       
         <h2 id="问题1-android-studio导入新项目时，一直卡在android-studio-build-gradle-info…这个界面"><a href="#问题1-android-studio导入新项目时，一直卡在android-studio-build-gradle-info…这个界面" class="headerlink" title="问题1.android studio导入新项目时，一直卡在android studio build gradle info…这个界面"></a>问题1.android studio导入新项目时，一直卡在android studio build gradle info…这个界面</h2><p>最后查了一下，感觉应该是gradle下载问题，因为被墙，所以速度缓慢。</p>
-<h3 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h3><ol>
-<li>离线下载gradle包<br>查看所需gradle版本：打开C:\Users\用户名.gradle\wrapper\dists\gradle-x.xx-all\xxxxxxxxxxxx，如果里面的gradle-xx-all.zip不完整（如0KB），则说明下载不成功，需要下载离线包放置到该目录下，那么，则需要下载gradle-2.8-all.zip。gradle各个版本离线包下载地址：<a href="http://download.csdn.net/album/detail/2265" target="_blank" rel="external">http://download.csdn.net/album/detail/2265</a><br>导入完成后，运行AS之后会自动解压，如下。重新打开项目就可以了~~<a id="more"></a></li>
+<h3 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h3><a id="more"></a>
+<ol>
+<li>离线下载gradle包<br>查看所需gradle版本：打开C:\Users\用户名.gradle\wrapper\dists\gradle-x.xx-all\xxxxxxxxxxxx，如果里面的gradle-xx-all.zip不完整（如0KB），则说明下载不成功，需要下载离线包放置到该目录下，那么，则需要下载gradle-2.8-all.zip。gradle各个版本离线包下载地址：<a href="http://download.csdn.net/album/detail/2265" target="_blank" rel="external">http://download.csdn.net/album/detail/2265</a><br>导入完成后，运行AS之后会自动解压，如下。重新打开项目就可以了~~</li>
 <li>修改gradle-wrapper.properties方式<br>1、随便找一个你之前能够运行的AS项目<br>2、打开项目的/gradle/wrapper/gradle-wrapper.properties文件<br>3、复制最后一行distributionUrl这一整行的内容，例如：distributionUrl=https\://services.gradle.org/distributions/gradle-2.8-all.zip，替换到你要导入的项目里的gradle-wrapper.properties文件中。<br>4、重启Android Studio，重新导入项目就可以了~~</li>
 </ol>
 <h2 id="问题2-Android-Studio-导入项目-出现安装Error-Cause-failed-to-find-target-with-hash-string-‘android-17’-等错误"><a href="#问题2-Android-Studio-导入项目-出现安装Error-Cause-failed-to-find-target-with-hash-string-‘android-17’-等错误" class="headerlink" title="问题2.Android Studio 导入项目 出现安装Error:Cause: failed to find target with hash string ‘android-17’ 等错误"></a>问题2.Android Studio 导入项目 出现安装Error:Cause: failed to find target with hash string ‘android-17’ 等错误</h2><h3 id="解决办法：-1"><a href="#解决办法：-1" class="headerlink" title="解决办法："></a>解决办法：</h3><p>在等了一段时间后，update下android sdk manager的列表之后，终于出现了需要的android api型号列，之后只要傻瓜操作，缺啥下啥就好了，最好有个科学上网工具～～</p>
