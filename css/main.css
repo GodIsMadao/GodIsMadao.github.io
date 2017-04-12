@@ -1606,15 +1606,18 @@ pre .javascript .function {
 .site-author-image {
   display: block;
   margin: 0 auto;
+  border-radius: 100px;
   padding: 2px;
   max-width: 96px;
-  height: auto;
+  height: 100px;
+  width: 100px;
   border: 2px solid #333;
 }
 .site-author-name {
   margin: 5px 0 0;
   text-align: center;
   color: #f5f5f5;
+  font-size: 30px;
   font-weight: normal;
 }
 .site-description {
@@ -1691,7 +1694,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff6a6e;
+  background: #ff9441;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2537,4 +2540,14 @@ embed {
 }
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
+}
+body {
+  z-index: 9;
+}
+.post {
+  margin-bottom: 100px;
+  padding: 25px;
+  background: #fff;
+  -webkit-box-shadow: 0 0 14px #cacbcb;
+  -moz-box-shadow: 0 0 14px #cacbcc;
 }
