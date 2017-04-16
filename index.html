@@ -376,50 +376,14 @@
 
       
         
-          
-            <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>由于想查看访客来源，于是想从vps上下载nginx的log文件做处理分析，所以需要用到ftp服务器进行上传下载，当然，如果是windows的话，有自带的mstsc远程连接（如果远程是windows 的话），也有一些好用的工具，如winscp，securecrt等等，很方便。在mac上，他也有自带的远程连接服务器的工具（⌘+K）。<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/ftp_image.png" alt=""></p>
-<h3 id="vps搭建ftp-server"><a href="#vps搭建ftp-server" class="headerlink" title="vps搭建ftp server"></a>vps搭建ftp server</h3><p>接下来去vps上搭建ftp服务器。首先，我们得在服务器上下载vsftp</p>
-<blockquote>
-<p>sudo apt-get install vsftpd</p>
-</blockquote>
-<p>判断vsftp有没有安装成功</p>
-<blockquote>
-<p>sudo service vsftpd restart<br>vsftpd start/running, process 30757</p>
-</blockquote>
-<p>安装成功，接下来创建该ftp服务器的访问用户</p>
-<blockquote>
-<p>sudo adduser uftp</p>
-</blockquote>
-<p>修改vsftpd.conf,一般是在/etc/vsftpd.conf，具体路径因人而异，可以whereis vsftpd.conf看一下</p>
-<blockquote>
-<p>主要加上以下几点<br>userlist_deny=NO<br>userlist_enable=YES<br>userlist_file=/etc/allowed_users<br>seccomp_sandbox=NO”</p>
-</blockquote>
-<p>local_enable=YES</p>
-<p>userlist_enable=YES，userlist_deny=NO时，userlist_file是个白名单，里面所列出来的用户是可以访问ftp服务器的。接下来新建/etc/allowed_users这个文件</p>
-<blockquote>
-<p>vi /etc/allowed_users<br>加上uftp这个用户</p>
-</blockquote>
-<p>到此为止，配置ftp server差不多结束了，我们最后验证下</p>
-<blockquote>
-<p>sudo service vsftpd restart<br>stop: Unknown instance</p>
-</blockquote>
-<p>ftp 127.0.0.1<br>ftp: connect refused</p>
-<p>vsftpd /etc/vsftpd.conf<br>500 OOPS: bad bool value in config file for: userlist_enable</p>
-<p>尝试了3种验证方式，都失败了，根据最后一行的显示，应该是配置文件里面userlist_enable这个配置错了，找了半天，发现竟然是后面多了个空格引起的，好吧你赢了！<br>更改之后，在尝试下ftp 127.0.0.1，就ok了</p>
-<blockquote>
-<p>Connected to 127.0.0.1.<br>220 (vsFTPd 3.0.2)</p>
-</blockquote>
-<h3 id="把nginx-日志文件找到，copy到／home-utfp里"><a href="#把nginx-日志文件找到，copy到／home-utfp里" class="headerlink" title="把nginx 日志文件找到，copy到／home/utfp里"></a>把nginx 日志文件找到，copy到／home/utfp里</h3><p>这个ubuntu有点妖，感觉路径都不对的，只好去／etc/nginx/sites-available里面找配置文件了</p>
-<blockquote>
-<p>access_log  /var/log/nginx/blog_access.log;<br>error_log   /var/log/nginx/blog_error.log;</p>
-</blockquote>
-<p>好吧，去把这个blog_access.log拷贝到/home/uftp里面去</p>
-<blockquote>
-<p>cp /var/log/nginx/blog_access.log /home/uftp</p>
-</blockquote>
-<p>在mac上连接查看<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/ftp_success.png" alt=""></p>
-
-          
+          <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>由于想查看访客来源，于是想从vps上下载nginx的log文件做处理分析，所以需要用到ftp服务器进行上传下载，当然，如果是windows的话，有自带的mstsc远程连接（如果远程是windows 的话），也有一些好用的工具，如winscp，securecrt等等，很方便。在mac上，他也有自带的远程连接服务器的工具（⌘+K）。<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/ftp_image.png" alt="">
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/16/ubuntu-setup-ftp-server/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
