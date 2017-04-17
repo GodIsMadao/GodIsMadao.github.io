@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="idea,spring," />
+  <meta name="keywords" content="algorithm," />
 
 
 
@@ -87,22 +87,22 @@
 
 
 
-<meta name="description" content="在idea里面新导入一个eclipse项目，结果要配置的有很多，具体都都是些小问题，主要有以下几项问题
-问题1.能正常部署，但是404错误，output里的web.xml内容为空如图所示，画红圈的地方需要注意">
+<meta name="description" content="题目
+一种双核CPU的两个核能够同时的处理任务，现在有n个已知数据量的任务需要交给CPU处理，假设已知CPU的每个核1秒可以处理1kb，每个核同时只能处理一项任务。n个任务可以按照任意顺序放入CPU进行处理，现在需要设计一个方案让CPU处理完这批任务所需的时间最少，求这个最小的时间。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FileNotFoundExeption cant find WEB-INF/application.xml错误">
-<meta property="og:url" content="http://saintyun.cn/2017/04/05/FileNotFoundExeption-cant-find-WEB-INF-application-xml/index.html">
+<meta property="og:title" content="双核处理问题">
+<meta property="og:url" content="http://saintyun.cn/2017/04/17/handle-dual-core-problem/index.html">
 <meta property="og:site_name" content="GodIsMadao's blog">
-<meta property="og:description" content="在idea里面新导入一个eclipse项目，结果要配置的有很多，具体都都是些小问题，主要有以下几项问题
-问题1.能正常部署，但是404错误，output里的web.xml内容为空如图所示，画红圈的地方需要注意">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/idea_problem1.png">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/idea_problem2.png">
-<meta property="og:updated_time" content="2017-04-12T05:41:55.000Z">
+<meta property="og:description" content="题目
+一种双核CPU的两个核能够同时的处理任务，现在有n个已知数据量的任务需要交给CPU处理，假设已知CPU的每个核1秒可以处理1kb，每个核同时只能处理一项任务。n个任务可以按照任意顺序放入CPU进行处理，现在需要设计一个方案让CPU处理完这批任务所需的时间最少，求这个最小的时间。">
+<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/russiabox.png">
+<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/cpu_core_problem.png">
+<meta property="og:updated_time" content="2017-04-17T12:33:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FileNotFoundExeption cant find WEB-INF/application.xml错误">
-<meta name="twitter:description" content="在idea里面新导入一个eclipse项目，结果要配置的有很多，具体都都是些小问题，主要有以下几项问题
-问题1.能正常部署，但是404错误，output里的web.xml内容为空如图所示，画红圈的地方需要注意">
-<meta name="twitter:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/idea_problem1.png">
+<meta name="twitter:title" content="双核处理问题">
+<meta name="twitter:description" content="题目
+一种双核CPU的两个核能够同时的处理任务，现在有n个已知数据量的任务需要交给CPU处理，假设已知CPU的每个核1秒可以处理1kb，每个核同时只能处理一项任务。n个任务可以按照任意顺序放入CPU进行处理，现在需要设计一个方案让CPU处理完这批任务所需的时间最少，求这个最小的时间。">
+<meta name="twitter:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/russiabox.png">
 
 
 
@@ -130,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://saintyun.cn/2017/04/05/FileNotFoundExeption-cant-find-WEB-INF-application-xml/"/>
+  <link rel="canonical" href="http://saintyun.cn/2017/04/17/handle-dual-core-problem/"/>
 
 
 
 
 
-  <title> FileNotFoundExeption cant find WEB-INF/application.xml错误 | GodIsMadao's blog </title>
+  <title> 双核处理问题 | GodIsMadao's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -275,7 +275,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://saintyun.cn/2017/04/05/FileNotFoundExeption-cant-find-WEB-INF-application-xml/">
+    <link itemprop="mainEntityOfPage" href="http://saintyun.cn/2017/04/17/handle-dual-core-problem/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Saint Yun">
@@ -296,7 +296,7 @@
             
             
               
-                FileNotFoundExeption cant find WEB-INF/application.xml错误
+                双核处理问题
               
             
           </h1>
@@ -311,8 +311,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-05T15:23:54+08:00">
-                2017-04-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T20:25:36+08:00">
+                2017-04-17
               </time>
             
 
@@ -322,28 +322,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -352,7 +330,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/04/05/FileNotFoundExeption-cant-find-WEB-INF-application-xml/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/04/17/handle-dual-core-problem/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -379,7 +357,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  153
+                  569
                 </span>
               
 
@@ -395,7 +373,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -414,17 +392,65 @@
       
 
       
-        <p>在idea里面新导入一个eclipse项目，结果要配置的有很多，具体都都是些小问题，主要有以下几项问题</p>
-<h2 id="问题1-能正常部署，但是404错误，output里的web-xml内容为空"><a href="#问题1-能正常部署，但是404错误，output里的web-xml内容为空" class="headerlink" title="问题1.能正常部署，但是404错误，output里的web.xml内容为空"></a>问题1.能正常部署，但是404错误，output里的web.xml内容为空</h2><p>如图所示，画红圈的地方需要注意<br><a id="more"></a><br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/idea_problem1.png" alt="webapp路径" title="webapp路径"></p>
-<h2 id="问题2-start-server后，找不到WEB-INF-application-xml"><a href="#问题2-start-server后，找不到WEB-INF-application-xml" class="headerlink" title="问题2.start server后，找不到WEB-INF/application.xml"></a>问题2.start server后，找不到WEB-INF/application.xml</h2><p>需要在配置文件web.xml里面加入如下语句来指定路径：</p>
-<blockquote>
-<p><context-param><br>    <param-name>contextConfigLocation</param-name><br>    <param-value>classpath:applicationContext.xml</param-value><br></context-param></p>
+        <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><blockquote>
+<p>一种双核CPU的两个核能够同时的处理任务，现在有n个已知数据量的任务需要交给CPU处理，假设已知CPU的每个核1秒可以处理1kb，每个核同时只能处理一项任务。n个任务可以按照任意顺序放入CPU进行处理，现在需要设计一个方案让CPU处理完这批任务所需的时间最少，求这个最小的时间。<br><a id="more"></a></p>
 </blockquote>
-<p>还有一些要注意的地方<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/idea_problem2.png" alt="webapp路径" title="webapp路径"></p>
-<h3 id="好吧，这篇文章也算是hexo上传图片的尝试"><a href="#好吧，这篇文章也算是hexo上传图片的尝试" class="headerlink" title="好吧，这篇文章也算是hexo上传图片的尝试~~"></a>好吧，这篇文章也算是hexo上传图片的尝试~~</h3><blockquote>
-<p>![alt text](<a href="https://github.com/yourname/respname/raw/master/image/XXX.png" target="_blank" rel="external">https://github.com/yourname/respname/raw/master/image/XXX.png</a> “title”)</p>
+<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><blockquote>
+<p> 输入包括两行：<br>第一行为整数n(1 ≤ n ≤ 50)<br>第二行为n个整数length<a href="1024 ≤ length[i] ≤ 4194304">i</a>，表示每个任务的长度为length[i]kb，每个数均为1024的倍数。</p>
 </blockquote>
-<p>逃~~</p>
+<h3 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h3><blockquote>
+<p>输出一个整数，表示最少需要处理的时间</p>
+</blockquote>
+<h3 id="输入例子"><a href="#输入例子" class="headerlink" title="输入例子"></a>输入例子</h3><blockquote>
+<p>5<br>3072 3072 7168 3072 1024</p>
+</blockquote>
+<h3 id="输出例子"><a href="#输出例子" class="headerlink" title="输出例子"></a>输出例子</h3><blockquote>
+<p>9216</p>
+</blockquote>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>首先得理解题意，1s单核可以处理1kb，length数组里面的存放的是一个个长度为1024倍数单位为kb的值，求设计方案，让cpu处理这批任务所需时间最短，就是给一个任务分配的顺序以及给cpu core A还是cpu core B。<br>稍微想一想，我想到了这个东东<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/russiabox.png" alt=""></p>
+<ul>
+<li>是不是很像！<br>只不过是两行的俄罗斯方块，尽可能让他的高度最短～～～<br>那么这样就好做了，方案如下<blockquote>
+<p>先将数组倒序排序<br>再按顺序分别填入cpu core A(以下用a代替) 和 cpu core B(以下用b代替),每填一个，就判断一下，a的长度和b的长度谁长，判断之后，下一个任务填入短的那个cpu core，就这么下去，最后再判断一下左右两个cpu core,选长的一个作为最终的结果。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p><strong>TALK IS CHEAP,SHOW ME THE CODE!</strong><br>最近在学python，机子上没有装c环境，偷个懒，便用python写了</p>
+<pre><code># -*- coding: utf-8 -*-
+#n:个数
+#length[]：数组
+n = input(&quot;n:&quot;)
+timesA = 0
+timesB = 0
+length = []
+times = 0;
+for i in range(n):
+    y = input(str(i)+&quot;:&quot;)
+    length.append(y/1024)
+
+#先对length数组内容排序
+length.sort()
+length.reverse()
+
+#比较函数
+def compare(a,b):
+    if a &gt;= b:
+        return a
+    else:
+        return b
+#填入动作
+def send(data):
+    global timesA,timesB
+    if timesA &lt;= timesB:
+        timesA += data
+    else :
+        timesB += data
+
+for item in length:
+    send(item)
+
+times = compare(timesA,timesB)
+print times*1024
+</code></pre><p>最后上个结果图<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/cpu_core_problem.png" alt=""></p>
 
       
     </div>
@@ -454,9 +480,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/idea/" rel="tag"># idea</a>
-          
-            <a href="/tags/spring/" rel="tag"># spring</a>
+            <a href="/tags/algorithm/" rel="tag"># algorithm</a>
           
         </div>
       
@@ -469,8 +493,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/05/android-studio-build-lag-problem/" rel="next" title="android studio build gradle info卡住">
-                <i class="fa fa-chevron-left"></i> android studio build gradle info卡住
+              <a href="/2017/04/16/ubuntu-setup-ftp-server/" rel="next" title="在ubuntu下搭建ftp server">
+                <i class="fa fa-chevron-left"></i> 在ubuntu下搭建ftp server
               </a>
             
           </div>
@@ -478,10 +502,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/07/mac-tomcat-error13/" rel="prev" title="mac tomcat error13">
-                mac tomcat error13 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -632,7 +652,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题1-能正常部署，但是404错误，output里的web-xml内容为空"><span class="nav-number">1.</span> <span class="nav-text">问题1.能正常部署，但是404错误，output里的web.xml内容为空</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题2-start-server后，找不到WEB-INF-application-xml"><span class="nav-number">2.</span> <span class="nav-text">问题2.start server后，找不到WEB-INF/application.xml</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#好吧，这篇文章也算是hexo上传图片的尝试"><span class="nav-number">2.1.</span> <span class="nav-text">好吧，这篇文章也算是hexo上传图片的尝试~~</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入描述"><span class="nav-number">2.</span> <span class="nav-text">输入描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出描述"><span class="nav-number">3.</span> <span class="nav-text">输出描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入例子"><span class="nav-number">4.</span> <span class="nav-text">输入例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出例子"><span class="nav-number">5.</span> <span class="nav-text">输出例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考"><span class="nav-number">6.</span> <span class="nav-text">思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">7.</span> <span class="nav-text">解决方案</span></a></li></ol></div>
             
 
           </div>
