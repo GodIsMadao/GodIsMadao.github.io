@@ -95,14 +95,15 @@
 <meta property="og:site_name" content="GodIsMadao's blog">
 <meta property="og:description" content="题目
 一种双核CPU的两个核能够同时的处理任务，现在有n个已知数据量的任务需要交给CPU处理，假设已知CPU的每个核1秒可以处理1kb，每个核同时只能处理一项任务。n个任务可以按照任意顺序放入CPU进行处理，现在需要设计一个方案让CPU处理完这批任务所需的时间最少，求这个最小的时间。">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/russiabox.png">
+<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/russiabox.jpg">
+<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/showtime.jpg">
 <meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/cpu_core_problem.png">
-<meta property="og:updated_time" content="2017-04-17T12:35:48.000Z">
+<meta property="og:updated_time" content="2017-04-17T12:45:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="双核处理问题">
 <meta name="twitter:description" content="题目
 一种双核CPU的两个核能够同时的处理任务，现在有n个已知数据量的任务需要交给CPU处理，假设已知CPU的每个核1秒可以处理1kb，每个核同时只能处理一项任务。n个任务可以按照任意顺序放入CPU进行处理，现在需要设计一个方案让CPU处理完这批任务所需的时间最少，求这个最小的时间。">
-<meta name="twitter:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/russiabox.png">
+<meta name="twitter:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/russiabox.jpg">
 
 
 
@@ -408,14 +409,14 @@
 <h3 id="输出例子"><a href="#输出例子" class="headerlink" title="输出例子"></a>输出例子</h3><blockquote>
 <p>9216</p>
 </blockquote>
-<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>首先得理解题意，1s单核可以处理1kb，length数组里面的存放的是一个个长度为1024倍数单位为kb的值，求设计方案，让cpu处理这批任务所需时间最短，就是给一个任务分配的顺序以及给cpu core A还是cpu core B。<br>稍微想一想，我想到了这个东东<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/russiabox.png" alt=""></p>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>首先得理解题意，1s单核可以处理1kb，length数组里面的存放的是一个个长度为1024倍数单位为kb的值，求设计方案，让cpu处理这批任务所需时间最短，就是给一个任务分配的顺序以及给cpu core A还是cpu core B。<br>稍微想一想，我想到了这个东东<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/russiabox.jpg" alt=""></p>
 <ul>
 <li>是不是很像！<br>只不过是两行的俄罗斯方块，尽可能让他的高度最短～～～<br>那么这样就好做了，方案如下<blockquote>
 <p>先将数组倒序排序<br>再按顺序分别填入cpu core A(以下用a代替) 和 cpu core B(以下用b代替),每填一个，就判断一下，a的长度和b的长度谁长，判断之后，下一个任务填入短的那个cpu core，就这么下去，最后再判断一下左右两个cpu core,选长的一个作为最终的结果。</p>
 </blockquote>
 </li>
 </ul>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p><strong>TALK IS CHEAP,SHOW ME THE CODE!</strong><br>最近在学python，机子上没有装c环境，偷个懒，便用python写了</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p><img src="https://github.com/GodIsMadao/hexo/raw/master/image/showtime.jpg" alt=""><br><strong>TALK IS CHEAP,SHOW ME THE CODE!</strong><br>最近在学python，机子上没有装c环境，偷个懒，便用python写了</p>
 <pre><code># -*- coding: utf-8 -*-
 #n:个数
 #length[]：数组
