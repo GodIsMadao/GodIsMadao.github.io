@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ftp,linux," />
+  <meta name="keywords" content="android,mqtt," />
 
 
 
@@ -87,19 +87,22 @@
 
 
 
-<meta name="description" content="引言由于想查看访客来源，于是想从vps上下载nginx的log文件做处理分析，所以需要用到ftp服务器进行上传下载，当然，如果是windows的话，有自带的mstsc远程连接（如果远程是windows 的话），也有一些好用的工具，如winscp，securecrt等等，很方便。在mac上，他也有自带的远程连接服务器的工具（⌘+K）。">
+<meta name="description" content="引言昨天不是解决了个模拟器的问题么，今天在检查代码的时候，发现原来的代码里用到了sqlite，以前都是用sharepreference或者application来存储的，application的生命周期在程序启动时开始，在程序彻底销毁时销毁，sharepreference的生命周期开始于程序安装，启动，在程序卸载时销毁，类似于缓存一样的东西。那么好了，刚好来学习下这个sqlite吧。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在ubuntu下搭建ftp server">
-<meta property="og:url" content="http://saintyun.cn/2017/04/16/ubuntu-setup-ftp-server/index.html">
+<meta property="og:title" content="Android端sqlite以及mqtt client的使用">
+<meta property="og:url" content="http://saintyun.cn/2017/04/20/android-sqlite-and-mqttclient/index.html">
 <meta property="og:site_name" content="GodIsMadao's blog">
-<meta property="og:description" content="引言由于想查看访客来源，于是想从vps上下载nginx的log文件做处理分析，所以需要用到ftp服务器进行上传下载，当然，如果是windows的话，有自带的mstsc远程连接（如果远程是windows 的话），也有一些好用的工具，如winscp，securecrt等等，很方便。在mac上，他也有自带的远程连接服务器的工具（⌘+K）。">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/ftp_image.png">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/ftp_success.png">
-<meta property="og:updated_time" content="2017-04-17T12:51:46.000Z">
+<meta property="og:description" content="引言昨天不是解决了个模拟器的问题么，今天在检查代码的时候，发现原来的代码里用到了sqlite，以前都是用sharepreference或者application来存储的，application的生命周期在程序启动时开始，在程序彻底销毁时销毁，sharepreference的生命周期开始于程序安装，启动，在程序卸载时销毁，类似于缓存一样的东西。那么好了，刚好来学习下这个sqlite吧。">
+<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/sqlite.png">
+<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/sqlite_console.png">
+<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/sqlite_sql.png">
+<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/apollo.png">
+<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/apollo_web.png">
+<meta property="og:updated_time" content="2017-04-20T14:00:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="在ubuntu下搭建ftp server">
-<meta name="twitter:description" content="引言由于想查看访客来源，于是想从vps上下载nginx的log文件做处理分析，所以需要用到ftp服务器进行上传下载，当然，如果是windows的话，有自带的mstsc远程连接（如果远程是windows 的话），也有一些好用的工具，如winscp，securecrt等等，很方便。在mac上，他也有自带的远程连接服务器的工具（⌘+K）。">
-<meta name="twitter:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/ftp_image.png">
+<meta name="twitter:title" content="Android端sqlite以及mqtt client的使用">
+<meta name="twitter:description" content="引言昨天不是解决了个模拟器的问题么，今天在检查代码的时候，发现原来的代码里用到了sqlite，以前都是用sharepreference或者application来存储的，application的生命周期在程序启动时开始，在程序彻底销毁时销毁，sharepreference的生命周期开始于程序安装，启动，在程序卸载时销毁，类似于缓存一样的东西。那么好了，刚好来学习下这个sqlite吧。">
+<meta name="twitter:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/sqlite.png">
 
 
 
@@ -127,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://saintyun.cn/2017/04/16/ubuntu-setup-ftp-server/"/>
+  <link rel="canonical" href="http://saintyun.cn/2017/04/20/android-sqlite-and-mqttclient/"/>
 
 
 
 
 
-  <title> 在ubuntu下搭建ftp server | GodIsMadao's blog </title>
+  <title> Android端sqlite以及mqtt client的使用 | GodIsMadao's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -272,7 +275,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://saintyun.cn/2017/04/16/ubuntu-setup-ftp-server/">
+    <link itemprop="mainEntityOfPage" href="http://saintyun.cn/2017/04/20/android-sqlite-and-mqttclient/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Saint Yun">
@@ -293,7 +296,7 @@
             
             
               
-                在ubuntu下搭建ftp server
+                Android端sqlite以及mqtt client的使用
               
             
           </h1>
@@ -308,8 +311,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-16T12:00:28+08:00">
-                2017-04-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-20T22:00:08+08:00">
+                2017-04-20
               </time>
             
 
@@ -331,8 +334,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
                   </a>
                 </span>
 
@@ -349,7 +352,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/04/16/ubuntu-setup-ftp-server/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/04/20/android-sqlite-and-mqttclient/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -376,7 +379,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  500
+                  875
                 </span>
               
 
@@ -392,7 +395,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -411,47 +414,22 @@
       
 
       
-        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>由于想查看访客来源，于是想从vps上下载nginx的log文件做处理分析，所以需要用到ftp服务器进行上传下载，当然，如果是windows的话，有自带的mstsc远程连接（如果远程是windows 的话），也有一些好用的工具，如winscp，securecrt等等，很方便。在mac上，他也有自带的远程连接服务器的工具（⌘+K）。<a id="more"></a><br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/ftp_image.png" alt=""></p>
-<h3 id="vps搭建ftp-server"><a href="#vps搭建ftp-server" class="headerlink" title="vps搭建ftp server"></a>vps搭建ftp server</h3><p>接下来去vps上搭建ftp服务器。首先，我们得在服务器上下载vsftp</p>
+        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>昨天不是解决了个模拟器的问题么，今天在检查代码的时候，发现原来的代码里用到了sqlite，以前都是用sharepreference或者application来存储的，application的生命周期在程序启动时开始，在程序彻底销毁时销毁，sharepreference的生命周期开始于程序安装，启动，在程序卸载时销毁，类似于缓存一样的东西。那么好了，刚好来学习下这个sqlite吧。<br><a id="more"></a></p>
+<h3 id="sqlite是什么？"><a href="#sqlite是什么？" class="headerlink" title="sqlite是什么？"></a>sqlite是什么？</h3><p>sqlite是一种轻量级的数据库，我的mac里自动装有sqlite，你可以使用命令行</p>
 <blockquote>
-<p>sudo apt-get install vsftpd</p>
+<p>sqlite3</p>
 </blockquote>
-<p>判断vsftp有没有安装成功</p>
+<p>如果出现下图的结果，则表示电脑里已经装有sqlite。他常用的命令和其他的数据库大同小异，只是语法稍微有些不同<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/sqlite.png" alt=""></p>
 <blockquote>
-<p>sudo service vsftpd restart<br>vsftpd start/running, process 30757</p>
+<p>.open <filename> ：打开数据库文件(.db)<br>.databases:显示当前目录下的数据库<br>.tables:查看数据库下的表<br>.schema:查看表的视图</filename></p>
 </blockquote>
-<p>安装成功，接下来创建该ftp服务器的访问用户</p>
+<p>我把模拟器上的/data/data/&lt;程序名称&gt;/databases/msg.db拷贝到了本地目录下，进行一顿操作，结果如图<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/sqlite_console.png" alt=""><br>有个SQLScout的android studio插件，据说很好用，但是很可惜，要收费，还有一个工具，也是可以可视化，暂时还没尝试过，先上链接：<br><em><a href="http://blog.csdn.net/logicteamleader/article/details/50975607" target="_blank" rel="external">http://blog.csdn.net/logicteamleader/article/details/50975607</a></em><br>算了，反正我要在真机上测试，也没有root过，不能访问/data/下面的文件，所以就没再进行下去了，就当了解了解了。</p>
+<h3 id="sqlite在android上如何操作？"><a href="#sqlite在android上如何操作？" class="headerlink" title="sqlite在android上如何操作？"></a>sqlite在android上如何操作？</h3><p>操作也是和其他数据库差不多的，也是写sql。Android提供了一个SQLiteOpenHelper类可以继承，可以单独弄个数据库操作类，可以重载他的oncreate方法进行创建table操作，也可自定义写一些方法，根据自己的需求。<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/sqlite_sql.png" alt=""><br>需要注意的是，主要有两种执行方式，一种是db.execSQL(sql),这种主要针对于insert,update,delete操作；还有一种是db.rawQuery(sql,select[])，后面一项是筛选的条件，如果写在了sql里面的话，就写个null好了。还有一个是cursor的用法<br>    cursor = db.rawQuery(sql, null);<br>    if(cursor!=null&amp;&amp;cursor.moveToFirst()) {<br>        Log.e(“++++ID+++”, id + “count:” + cursor.getColumnCount());<br>        id = cursor.getInt(0);<br>    }</p>
+<h3 id="MQTT协议"><a href="#MQTT协议" class="headerlink" title="MQTT协议"></a>MQTT协议</h3><p>这个直接引用书籍了</p>
 <blockquote>
-<p>sudo adduser uftp</p>
+<p>MQTT(Message Queuing Telemetry Transport,消息队列遥测传输)，是IBM公司开发的一个轻量级的消息传输协议，跟XMPP协议类似，也是基于发布订阅模式实现的即时消息通信，不同的是MQTT协议针对低带宽网络、低计算能力设备等做了特殊的优化，他的设计思想是开源，可靠和简单。</p>
+<h3 id="客户端与服务端的选取"><a href="#客户端与服务端的选取" class="headerlink" title="客户端与服务端的选取"></a>客户端与服务端的选取</h3><p>客户端选用了MQTT-client,服务端选择了apollo,客户端就不介绍了，主要介绍下apache apollo的安装与部署<br>下载地址：<a href="http://activemq.apache.org/apollo/download.html" target="_blank" rel="external">http://activemq.apache.org/apollo/download.html</a><br>选择linux版本的，下载，然后<em>tar -zxvf apache-apollo-1.7.1-unix-distro.tar.gz</em>进行解压<br>然后，选择一个目录，一般是/var/lib，输入<em>${APOLLO_HOME}/bin/apollo create mybroker</em><br>这里的<em>${APOLLO_HOME}</em>需要在系统的/.bash_profile里面配置<br>之后，可以<em>vi mybroker/etc/apollo.xml</em>，进行查看设置，如图<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/apollo.png" alt=""><br>如图所示，他的web端口是61680和61681，然后tcp端口是61613，用户名admin,密码password等等<br>之后我们将其run起来，<em>“/Users/saintyun/mybroker/bin/apollo-broker” run</em><br>然后打开<em>localhost:61680</em>，登陆后，显示如图，有apollo连接数，连接机器ip以及topic主题，以及message<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/apollo_web.png" alt=""><br>好吧，可以愉快的测试了～～～</p>
 </blockquote>
-<p>修改vsftpd.conf,一般是在/etc/vsftpd.conf，具体路径因人而异，可以whereis vsftpd.conf看一下</p>
-<blockquote>
-<p>主要加上以下几点<br>userlist_deny=NO<br>userlist_enable=YES<br>userlist_file=/etc/allowed_users<br>seccomp_sandbox=NO”</p>
-</blockquote>
-<p>local_enable=YES</p>
-<p>userlist_enable=YES，userlist_deny=NO时，userlist_file是个白名单，里面所列出来的用户是可以访问ftp服务器的。接下来新建/etc/allowed_users这个文件</p>
-<blockquote>
-<p>vi /etc/allowed_users<br>加上uftp这个用户</p>
-</blockquote>
-<p>到此为止，配置ftp server差不多结束了，我们最后验证下</p>
-<blockquote>
-<p>sudo service vsftpd restart<br>stop: Unknown instance</p>
-</blockquote>
-<p>ftp 127.0.0.1<br>ftp: connect refused</p>
-<p>vsftpd /etc/vsftpd.conf<br>500 OOPS: bad bool value in config file for: userlist_enable</p>
-<p>尝试了3种验证方式，都失败了，根据最后一行的显示，应该是配置文件里面userlist_enable这个配置错了，找了半天，发现竟然是后面多了个空格引起的，好吧你赢了！<br>更改之后，在尝试下ftp 127.0.0.1，就ok了</p>
-<blockquote>
-<p>Connected to 127.0.0.1.<br>220 (vsFTPd 3.0.2)</p>
-</blockquote>
-<h3 id="把nginx-日志文件找到，copy到／home-utfp里"><a href="#把nginx-日志文件找到，copy到／home-utfp里" class="headerlink" title="把nginx 日志文件找到，copy到／home/utfp里"></a>把nginx 日志文件找到，copy到／home/utfp里</h3><p>这个ubuntu有点妖，感觉路径都不对的，只好去／etc/nginx/sites-available里面找配置文件了</p>
-<blockquote>
-<p>access_log  /var/log/nginx/blog_access.log;<br>error_log   /var/log/nginx/blog_error.log;</p>
-</blockquote>
-<p>好吧，去把这个blog_access.log拷贝到/home/uftp里面去</p>
-<blockquote>
-<p>cp /var/log/nginx/blog_access.log /home/uftp</p>
-</blockquote>
-<p>在mac上连接查看<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/ftp_success.png" alt=""></p>
 
       
     </div>
@@ -481,9 +459,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ftp/" rel="tag"># ftp</a>
+            <a href="/tags/android/" rel="tag"># android</a>
           
-            <a href="/tags/linux/" rel="tag"># linux</a>
+            <a href="/tags/mqtt/" rel="tag"># mqtt</a>
           
         </div>
       
@@ -496,8 +474,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/10/Mac-idea-tomcat/" rel="next" title="Mac下用idea跑tomcat的又一个坑">
-                <i class="fa fa-chevron-left"></i> Mac下用idea跑tomcat的又一个坑
+              <a href="/2017/04/19/android-virtual-device-problem/" rel="next" title="在android studio上运行android模拟器碰到的问题">
+                <i class="fa fa-chevron-left"></i> 在android studio上运行android模拟器碰到的问题
               </a>
             
           </div>
@@ -505,10 +483,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/17/handle-dual-core-problem/" rel="prev" title="双核处理问题">
-                双核处理问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -659,7 +633,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vps搭建ftp-server"><span class="nav-number">2.</span> <span class="nav-text">vps搭建ftp server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把nginx-日志文件找到，copy到／home-utfp里"><span class="nav-number">3.</span> <span class="nav-text">把nginx 日志文件找到，copy到／home/utfp里</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sqlite是什么？"><span class="nav-number">2.</span> <span class="nav-text">sqlite是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sqlite在android上如何操作？"><span class="nav-number">3.</span> <span class="nav-text">sqlite在android上如何操作？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MQTT协议"><span class="nav-number">4.</span> <span class="nav-text">MQTT协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端与服务端的选取"><span class="nav-number">5.</span> <span class="nav-text">客户端与服务端的选取</span></a></li></ol></div>
             
 
           </div>
