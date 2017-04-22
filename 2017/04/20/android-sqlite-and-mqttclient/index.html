@@ -98,7 +98,7 @@
 <meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/sqlite_sql.png">
 <meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/apollo.png">
 <meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/apollo_web.png">
-<meta property="og:updated_time" content="2017-04-20T14:00:08.000Z">
+<meta property="og:updated_time" content="2017-04-22T03:20:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android端sqlite以及mqtt client的使用">
 <meta name="twitter:description" content="引言昨天不是解决了个模拟器的问题么，今天在检查代码的时候，发现原来的代码里用到了sqlite，以前都是用sharepreference或者application来存储的，application的生命周期在程序启动时开始，在程序彻底销毁时销毁，sharepreference的生命周期开始于程序安装，启动，在程序卸载时销毁，类似于缓存一样的东西。那么好了，刚好来学习下这个sqlite吧。">
@@ -428,8 +428,8 @@
 <h3 id="MQTT协议"><a href="#MQTT协议" class="headerlink" title="MQTT协议"></a>MQTT协议</h3><p>这个直接引用书籍了</p>
 <blockquote>
 <p>MQTT(Message Queuing Telemetry Transport,消息队列遥测传输)，是IBM公司开发的一个轻量级的消息传输协议，跟XMPP协议类似，也是基于发布订阅模式实现的即时消息通信，不同的是MQTT协议针对低带宽网络、低计算能力设备等做了特殊的优化，他的设计思想是开源，可靠和简单。</p>
-<h3 id="客户端与服务端的选取"><a href="#客户端与服务端的选取" class="headerlink" title="客户端与服务端的选取"></a>客户端与服务端的选取</h3><p>客户端选用了MQTT-client,服务端选择了apollo,客户端就不介绍了，主要介绍下apache apollo的安装与部署<br>下载地址：<a href="http://activemq.apache.org/apollo/download.html" target="_blank" rel="external">http://activemq.apache.org/apollo/download.html</a><br>选择linux版本的，下载，然后<em>tar -zxvf apache-apollo-1.7.1-unix-distro.tar.gz</em>进行解压<br>然后，选择一个目录，一般是/var/lib，输入<em>${APOLLO_HOME}/bin/apollo create mybroker</em><br>这里的<em>${APOLLO_HOME}</em>需要在系统的/.bash_profile里面配置<br>之后，可以<em>vi mybroker/etc/apollo.xml</em>，进行查看设置，如图<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/apollo.png" alt=""><br>如图所示，他的web端口是61680和61681，然后tcp端口是61613，用户名admin,密码password等等<br>之后我们将其run起来，<em>“/Users/saintyun/mybroker/bin/apollo-broker” run</em><br>然后打开<em>localhost:61680</em>，登陆后，显示如图，有apollo连接数，连接机器ip以及topic主题，以及message<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/apollo_web.png" alt=""><br>好吧，可以愉快的测试了～～～</p>
 </blockquote>
+<h3 id="客户端与服务端的选取"><a href="#客户端与服务端的选取" class="headerlink" title="客户端与服务端的选取"></a>客户端与服务端的选取</h3><p>客户端选用了MQTT-client,服务端选择了apollo,客户端就不介绍了，主要介绍下apache apollo的安装与部署<br>下载地址：<a href="http://activemq.apache.org/apollo/download.html" target="_blank" rel="external">http://activemq.apache.org/apollo/download.html</a><br>选择linux版本的，下载，然后<em>tar -zxvf apache-apollo-1.7.1-unix-distro.tar.gz</em>进行解压<br>然后，选择一个目录，一般是/var/lib，输入<em>${APOLLO_HOME}/bin/apollo create mybroker</em><br>这里的<em>${APOLLO_HOME}</em>需要在系统的/.bash_profile里面配置<br>之后，可以<em>vi mybroker/etc/apollo.xml</em>，进行查看设置，如图<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/apollo.png" alt=""><br>如图所示，他的web端口是61680和61681，然后tcp端口是61613，用户名admin,密码password等等<br>之后我们将其run起来，<em>“/Users/saintyun/mybroker/bin/apollo-broker” run</em><br>然后打开<em>localhost:61680</em>，登陆后，显示如图，有apollo连接数，连接机器ip以及topic主题，以及message<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/apollo_web.png" alt=""><br>好吧，可以愉快的测试了～～～</p>
 
       
     </div>
