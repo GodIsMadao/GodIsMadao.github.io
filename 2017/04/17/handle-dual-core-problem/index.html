@@ -98,7 +98,7 @@
 <meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/russiabox.jpg">
 <meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/showtime.jpg">
 <meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/cpu_core_problem.png">
-<meta property="og:updated_time" content="2017-04-17T12:52:01.000Z">
+<meta property="og:updated_time" content="2017-05-11T01:11:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="双核处理问题">
 <meta name="twitter:description" content="题目
@@ -390,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  569
+                  566
                 </span>
               
 
@@ -445,43 +445,8 @@
 <blockquote>
 <p>先将数组倒序排序<br>再按顺序分别填入cpu core A(以下用a代替) 和 cpu core B(以下用b代替),每填一个，就判断一下，a的长度和b的长度谁长，判断之后，下一个任务填入短的那个cpu core，就这么下去，最后再判断一下左右两个cpu core,选长的一个作为最终的结果。</p>
 </blockquote>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p><img src="https://github.com/GodIsMadao/hexo/raw/master/image/showtime.jpg" alt=""><br><strong>TALK IS CHEAP,SHOW ME THE CODE!</strong><br>最近在学python，机子上没有装c环境，偷个懒，便用python写了</p>
-<pre><code># -*- coding: utf-8 -*-
-#n:个数
-#length[]：数组
-n = input(&quot;n:&quot;)
-timesA = 0
-timesB = 0
-length = []
-times = 0;
-for i in range(n):
-    y = input(str(i)+&quot;:&quot;)
-    length.append(y/1024)
-
-#先对length数组内容排序
-length.sort()
-length.reverse()
-
-#比较函数
-def compare(a,b):
-    if a &gt;= b:
-        return a
-    else:
-        return b
-#填入动作
-def send(data):
-    global timesA,timesB
-    if timesA &lt;= timesB:
-        timesA += data
-    else :
-        timesB += data
-
-for item in length:
-    send(item)
-
-times = compare(timesA,timesB)
-print times*1024
-</code></pre><p>最后上个结果图<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/cpu_core_problem.png" alt=""></p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p><img src="https://github.com/GodIsMadao/hexo/raw/master/image/showtime.jpg" alt=""><br><strong>TALK IS CHEAP,SHOW ME THE CODE!</strong><br>最近在学python，机子上没有装c环境，偷个懒，便用python写了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="comment">#n:个数</span></div><div class="line"><span class="comment">#length[]：数组</span></div><div class="line">n = input(<span class="string">"n:"</span>)</div><div class="line"><span class="built_in">times</span>A = 0</div><div class="line"><span class="built_in">times</span>B = 0</div><div class="line">length = []</div><div class="line"><span class="built_in">times</span> = 0;</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n):</div><div class="line">    y = input(str(i)+<span class="string">":"</span>)</div><div class="line">    length.append(y/1024)</div><div class="line"></div><div class="line"><span class="comment">#先对length数组内容排序</span></div><div class="line">length.sort()</div><div class="line">length.reverse()</div><div class="line"></div><div class="line"><span class="comment">#比较函数</span></div><div class="line">def compare(a,b):</div><div class="line">    <span class="keyword">if</span> a &gt;= b:</div><div class="line">        <span class="built_in">return</span> a</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="built_in">return</span> b</div><div class="line"><span class="comment">#填入动作</span></div><div class="line">def send(data):</div><div class="line">    global <span class="built_in">times</span>A,<span class="built_in">times</span>B</div><div class="line">    <span class="keyword">if</span> <span class="built_in">times</span>A &lt;= <span class="built_in">times</span>B:</div><div class="line">        <span class="built_in">times</span>A += data</div><div class="line">    <span class="keyword">else</span> :</div><div class="line">        <span class="built_in">times</span>B += data</div><div class="line"></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> length:</div><div class="line">    send(item)</div><div class="line"></div><div class="line"><span class="built_in">times</span> = compare(<span class="built_in">times</span>A,<span class="built_in">times</span>B)</div><div class="line"><span class="built_in">print</span> <span class="built_in">times</span>*1024</div></pre></td></tr></table></figure></p>
+<p>最后上个结果图<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/cpu_core_problem.png" alt=""></p>
 
       
     </div>
