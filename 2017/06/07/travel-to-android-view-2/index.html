@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="android,android view踩坑记," />
 
 
 
@@ -87,19 +87,16 @@
 
 
 
-<meta name="description" content="一些hexo的具体操作步骤以及命令tips下面介绍一些常用命令吧！！！！
-常用命令">
+<meta name="description" content="引言今天先鼓捣一个圆形自定义图片控件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo tips">
-<meta property="og:url" content="http://saintyun.cn/2017/04/05/hexo-tips/index.html">
+<meta property="og:title" content="travel to android view-2">
+<meta property="og:url" content="http://saintyun.cn/2017/06/07/travel-to-android-view-2/index.html">
 <meta property="og:site_name" content="GodIsMadao's blog">
-<meta property="og:description" content="一些hexo的具体操作步骤以及命令tips下面介绍一些常用命令吧！！！！
-常用命令">
-<meta property="og:updated_time" content="2017-04-12T09:04:08.000Z">
+<meta property="og:description" content="引言今天先鼓捣一个圆形自定义图片控件">
+<meta property="og:updated_time" content="2017-06-07T14:10:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo tips">
-<meta name="twitter:description" content="一些hexo的具体操作步骤以及命令tips下面介绍一些常用命令吧！！！！
-常用命令">
+<meta name="twitter:title" content="travel to android view-2">
+<meta name="twitter:description" content="引言今天先鼓捣一个圆形自定义图片控件">
 
 
 
@@ -127,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://saintyun.cn/2017/04/05/hexo-tips/"/>
+  <link rel="canonical" href="http://saintyun.cn/2017/06/07/travel-to-android-view-2/"/>
 
 
 
 
 
-  <title> hexo tips | GodIsMadao's blog </title>
+  <title> travel to android view-2 | GodIsMadao's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -282,7 +279,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://saintyun.cn/2017/04/05/hexo-tips/">
+    <link itemprop="mainEntityOfPage" href="http://saintyun.cn/2017/06/07/travel-to-android-view-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Saint Yun">
@@ -303,7 +300,7 @@
             
             
               
-                hexo tips
+                travel to android view-2
               
             
           </h1>
@@ -318,8 +315,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-05T12:13:17+08:00">
-                2017-04-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-07T22:09:08+08:00">
+                2017-06-07
               </time>
             
 
@@ -341,8 +338,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
                   </a>
                 </span>
 
@@ -359,7 +356,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/04/05/hexo-tips/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/06/07/travel-to-android-view-2/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -386,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  281
+                  18
                 </span>
               
 
@@ -421,38 +418,7 @@
       
 
       
-        <h1 id="一些hexo的具体操作步骤以及命令tips"><a href="#一些hexo的具体操作步骤以及命令tips" class="headerlink" title="一些hexo的具体操作步骤以及命令tips"></a>一些hexo的具体操作步骤以及命令tips</h1><p>下面介绍一些常用命令吧！！！！</p>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><a id="more"></a>
-<ul>
-<li>hexo server:启动server </li>
-<li>hexo new draft <filename> :新建一个草稿</filename></li>
-<li>hexo n “我的博客” == hexo new “我的博客” #新建文章</li>
-<li>hexo p == hexo publish #hexo publish 草稿（_drafts -&gt; _posts）</li>
-<li>hexo g == hexo generate#生成</li>
-<li>hexo s == hexo server #启动服务预览</li>
-<li>hexo d == hexo deploy#部署</li>
-</ul>
-<h2 id="config-xml"><a href="#config-xml" class="headerlink" title="_config.xml"></a>_config.xml</h2><p>这里的配置主要配置下language,author,title等等，还有加入deploy的托管对象<br>hexo支持多种deploy方式：<br>git:</p>
-<blockquote>
-<p>deploy:<br>    type: git<br>    repo: <a href="https://github.com/GodIsMadao/hexo.git" target="_blank" rel="external">https://github.com/GodIsMadao/hexo.git</a><br>    branch: master</p>
-</blockquote>
-<p>rsync:</p>
-<blockquote>
-<p>deploy:<br>    type: rsync<br>    host: 你 VPS 的 IP 地址或者域名<br>    user: root<br>    root: 你想将 Hexo 生成的静态文件存放在 VPS 中的目录 例如: /www/hexo/blog/<br>    port: 你 VPS 的 ssh 端口号<br>    delete: true<br>    verbose: true<br>    ignore_errors: false</p>
-</blockquote>
-<p>Heroku:</p>
-<blockquote>
-<p>deploy:<br>    type: heroku<br>    repo: <repository url=""><br>    message: [message]</repository></p>
-</blockquote>
-<p>OpenShift:</p>
-<blockquote>
-<p>deploy:<br>    type: openshift<br>    repo: <repository url=""><br>    message: [message]</repository></p>
-</blockquote>
-<p>FTPSync:</p>
-<blockquote>
-<p>deploy:<br>    type: ftpsync<br>    host: <host><br>    user: <user><br>    pass: <password><br>    remote: [remote]<br>    port: [port]<br>    ignore: [ignore]<br>    connections: [connections]<br>    verbose: [true|false]</password></user></host></p>
-</blockquote>
-<p>本来想用rsync的方式，直接连接vps的，但是port设置为自定义的貌似不可以（默认是22），他始终提示我port还是22，就是修改不了，最后干脆用git了。</p>
+        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>今天先鼓捣一个圆形自定义图片控件</p>
 
       
     </div>
@@ -482,7 +448,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/android/" rel="tag"># android</a>
+          
+            <a href="/tags/android-view踩坑记/" rel="tag"># android view踩坑记</a>
           
         </div>
       
@@ -495,8 +463,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/23/hello-myblog/" rel="next" title="hello myblog">
-                <i class="fa fa-chevron-left"></i> hello myblog
+              <a href="/2017/06/07/travel-to-android-view-1/" rel="next" title="android view踩坑记-1">
+                <i class="fa fa-chevron-left"></i> android view踩坑记-1
               </a>
             
           </div>
@@ -504,10 +472,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/05/android-studio-build-lag-problem/" rel="prev" title="android studio build gradle info卡住">
-                android studio build gradle info卡住 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -658,7 +622,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一些hexo的具体操作步骤以及命令tips"><span class="nav-number">1.</span> <span class="nav-text">一些hexo的具体操作步骤以及命令tips</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令"><span class="nav-number">1.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#config-xml"><span class="nav-number">1.2.</span> <span class="nav-text">_config.xml</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li></ol></div>
             
 
           </div>
