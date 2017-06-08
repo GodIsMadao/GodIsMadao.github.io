@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="algorithm," />
+  <meta name="keywords" content="android,android view踩坑记," />
 
 
 
@@ -87,23 +87,23 @@
 
 
 
-<meta name="description" content="题目
-一种双核CPU的两个核能够同时的处理任务，现在有n个已知数据量的任务需要交给CPU处理，假设已知CPU的每个核1秒可以处理1kb，每个核同时只能处理一项任务。n个任务可以按照任意顺序放入CPU进行处理，现在需要设计一个方案让CPU处理完这批任务所需的时间最少，求这个最小的时间。">
+<meta name="description" content="引言Xfermode是android.graphics下面的类，是一些常用绘图传递模式的基类，当这种转换模式被指派给某个画笔的时候，画笔会按照这种转换模式进行绘图，下面是官网api文档里面的原话。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="双核处理问题">
-<meta property="og:url" content="http://saintyun.cn/2017/04/17/handle-dual-core-problem/index.html">
+<meta property="og:title" content="Xfermode简单用法和PorterDuffXfermode的一些叠加模式">
+<meta property="og:url" content="http://saintyun.cn/2017/06/08/travel-to-android-view-3/index.html">
 <meta property="og:site_name" content="GodIsMadao's blog">
-<meta property="og:description" content="题目
-一种双核CPU的两个核能够同时的处理任务，现在有n个已知数据量的任务需要交给CPU处理，假设已知CPU的每个核1秒可以处理1kb，每个核同时只能处理一项任务。n个任务可以按照任意顺序放入CPU进行处理，现在需要设计一个方案让CPU处理完这批任务所需的时间最少，求这个最小的时间。">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/russiabox.jpg">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/showtime.jpg">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/cpu_core_problem.png">
-<meta property="og:updated_time" content="2017-05-11T01:11:53.000Z">
+<meta property="og:description" content="引言Xfermode是android.graphics下面的类，是一些常用绘图传递模式的基类，当这种转换模式被指派给某个画笔的时候，画笔会按照这种转换模式进行绘图，下面是官网api文档里面的原话。">
+<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/Xfermode.png">
+<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/Porter-Duff.png">
+<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/alpha_compositing_mode.png">
+<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/blending_modes.png">
+<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/dst_atop.png">
+<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/src_in.png">
+<meta property="og:updated_time" content="2017-06-08T06:05:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="双核处理问题">
-<meta name="twitter:description" content="题目
-一种双核CPU的两个核能够同时的处理任务，现在有n个已知数据量的任务需要交给CPU处理，假设已知CPU的每个核1秒可以处理1kb，每个核同时只能处理一项任务。n个任务可以按照任意顺序放入CPU进行处理，现在需要设计一个方案让CPU处理完这批任务所需的时间最少，求这个最小的时间。">
-<meta name="twitter:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/russiabox.jpg">
+<meta name="twitter:title" content="Xfermode简单用法和PorterDuffXfermode的一些叠加模式">
+<meta name="twitter:description" content="引言Xfermode是android.graphics下面的类，是一些常用绘图传递模式的基类，当这种转换模式被指派给某个画笔的时候，画笔会按照这种转换模式进行绘图，下面是官网api文档里面的原话。">
+<meta name="twitter:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/Xfermode.png">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://saintyun.cn/2017/04/17/handle-dual-core-problem/"/>
+  <link rel="canonical" href="http://saintyun.cn/2017/06/08/travel-to-android-view-3/"/>
 
 
 
 
 
-  <title> 双核处理问题 | GodIsMadao's blog </title>
+  <title> Xfermode简单用法和PorterDuffXfermode的一些叠加模式 | GodIsMadao's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -286,7 +286,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://saintyun.cn/2017/04/17/handle-dual-core-problem/">
+    <link itemprop="mainEntityOfPage" href="http://saintyun.cn/2017/06/08/travel-to-android-view-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Saint Yun">
@@ -307,7 +307,7 @@
             
             
               
-                双核处理问题
+                Xfermode简单用法和PorterDuffXfermode的一些叠加模式
               
             
           </h1>
@@ -322,8 +322,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T20:25:36+08:00">
-                2017-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-08T14:05:54+08:00">
+                2017-06-08
               </time>
             
 
@@ -345,8 +345,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">algorithm</span>
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
                   </a>
                 </span>
 
@@ -363,7 +363,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/04/17/handle-dual-core-problem/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/06/08/travel-to-android-view-3/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -390,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  566
+                  429
                 </span>
               
 
@@ -425,28 +425,15 @@
       
 
       
-        <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><blockquote>
-<p>一种双核CPU的两个核能够同时的处理任务，现在有n个已知数据量的任务需要交给CPU处理，假设已知CPU的每个核1秒可以处理1kb，每个核同时只能处理一项任务。n个任务可以按照任意顺序放入CPU进行处理，现在需要设计一个方案让CPU处理完这批任务所需的时间最少，求这个最小的时间。</p>
-</blockquote>
-<a id="more"></a>
-<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><blockquote>
-<p> 输入包括两行：<br>第一行为整数n(1 ≤ n ≤ 50)<br>第二行为n个整数length<a href="1024 ≤ length[i] ≤ 4194304">i</a>，表示每个任务的长度为length[i]kb，每个数均为1024的倍数。</p>
-</blockquote>
-<h3 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h3><blockquote>
-<p>输出一个整数，表示最少需要处理的时间</p>
-</blockquote>
-<h3 id="输入例子"><a href="#输入例子" class="headerlink" title="输入例子"></a>输入例子</h3><blockquote>
-<p>5<br>3072 3072 7168 3072 1024</p>
-</blockquote>
-<h3 id="输出例子"><a href="#输出例子" class="headerlink" title="输出例子"></a>输出例子</h3><blockquote>
-<p>9216</p>
-</blockquote>
-<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>首先得理解题意，1s单核可以处理1kb，length数组里面的存放的是一个个长度为1024倍数单位为kb的值，求设计方案，让cpu处理这批任务所需时间最短，就是给一个任务分配的顺序以及给cpu core A还是cpu core B。<br>稍微想一想，我想到了这个东东<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/russiabox.jpg" alt=""><br><em>是不是很像！</em><br>只不过是两行的俄罗斯方块，尽可能让他的高度最短～～～<br>那么这样就好做了，方案如下</p>
+        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>Xfermode是android.graphics下面的类，是一些常用绘图传递模式的基类，当这种转换模式被指派给某个画笔的时候，画笔会按照这种转换模式进行绘图，下面是官网api文档里面的原话。<br><a id="more"></a></p>
 <blockquote>
-<p>先将数组倒序排序<br>再按顺序分别填入cpu core A(以下用a代替) 和 cpu core B(以下用b代替),每填一个，就判断一下，a的长度和b的长度谁长，判断之后，下一个任务填入短的那个cpu core，就这么下去，最后再判断一下左右两个cpu core,选长的一个作为最终的结果。</p>
+<p>Xfermode is the base class for objects that are called to implement custom “transfer-modes” in the drawing pipeline. The static function Create(Modes) can be called to return an instance of any of the predefined subclasses as specified in the Modes enum. When an Xfermode is assigned to an Paint, then objects drawn with that paint have the xfermode applied.</p>
 </blockquote>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p><img src="https://github.com/GodIsMadao/hexo/raw/master/image/showtime.jpg" alt=""><br><strong>TALK IS CHEAP,SHOW ME THE CODE!</strong><br>最近在学python，机子上没有装c环境，偷个懒，便用python写了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="comment">#n:个数</span></div><div class="line"><span class="comment">#length[]：数组</span></div><div class="line">n = input(<span class="string">"n:"</span>)</div><div class="line"><span class="built_in">times</span>A = 0</div><div class="line"><span class="built_in">times</span>B = 0</div><div class="line">length = []</div><div class="line"><span class="built_in">times</span> = 0;</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n):</div><div class="line">    y = input(str(i)+<span class="string">":"</span>)</div><div class="line">    length.append(y/1024)</div><div class="line"></div><div class="line"><span class="comment">#先对length数组内容排序</span></div><div class="line">length.sort()</div><div class="line">length.reverse()</div><div class="line"></div><div class="line"><span class="comment">#比较函数</span></div><div class="line">def compare(a,b):</div><div class="line">    <span class="keyword">if</span> a &gt;= b:</div><div class="line">        <span class="built_in">return</span> a</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="built_in">return</span> b</div><div class="line"><span class="comment">#填入动作</span></div><div class="line">def send(data):</div><div class="line">    global <span class="built_in">times</span>A,<span class="built_in">times</span>B</div><div class="line">    <span class="keyword">if</span> <span class="built_in">times</span>A &lt;= <span class="built_in">times</span>B:</div><div class="line">        <span class="built_in">times</span>A += data</div><div class="line">    <span class="keyword">else</span> :</div><div class="line">        <span class="built_in">times</span>B += data</div><div class="line"></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> length:</div><div class="line">    send(item)</div><div class="line"></div><div class="line"><span class="built_in">times</span> = compare(<span class="built_in">times</span>A,<span class="built_in">times</span>B)</div><div class="line"><span class="built_in">print</span> <span class="built_in">times</span>*1024</div></pre></td></tr></table></figure></p>
-<p>最后上个结果图<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/cpu_core_problem.png" alt=""></p>
+<p><img src="https://github.com/GodIsMadao/hexo/raw/master/image/Xfermode.png" alt=""></p>
+<h3 id="常用的直接子类"><a href="#常用的直接子类" class="headerlink" title="常用的直接子类"></a>常用的直接子类</h3><p>最常用的还是PorterDuffXfermode,他有一个构造函数，传入的参数是PorterDuff.Mode,是一个枚举类型，有12种Alpha透明度合成模式和5种混合合成模式。<br>PorterDuff名称的由来：<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/Porter-Duff.png" alt=""></p>
+<h3 id="用法与预览"><a href="#用法与预览" class="headerlink" title="用法与预览"></a>用法与预览</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Paint paint = new Paint();</div><div class="line">//先画目标图像destinationImage</div><div class="line">canvas.drawBitmap(destinationImage, 0, 0, paint);</div><div class="line">PorterDuff.Mode mode = // choose a mode</div><div class="line">paint.setXfermode(new PorterDuffXfermode(mode));</div><div class="line">//再画源图像 <span class="built_in">source</span>Image</div><div class="line">//谁是<span class="built_in">source</span>Image和destinationImage与后面的dst和src模式有关，自行判断</div><div class="line">canvas.drawBitmap(<span class="built_in">source</span>Image, 0, 0, paint);</div></pre></td></tr></table></figure>
+<p>透明度合成模式的12种如下图：<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/alpha_compositing_mode.png" alt=""><br>混合合成模式如下图：<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/blending_modes.png" alt=""></p>
+<h3 id="简单来实践下"><a href="#简单来实践下" class="headerlink" title="简单来实践下"></a>简单来实践下</h3><p>以之前来弄的哪个圆形图片为例，我们需要一个bitmap类型的源图片，然后再画一个bitmap类型的圆，我们要的效果是用圆在原图片上做个切割，但是原图片在上面，所以可以选择SRC_IN和SRC_ATOP,一种是只显示sourceImage被切割之后的部分，不显示destinationImage；另一个是两样都显示,如果切割的图片大小制定不科学的话，就会有多出来的部分。<br>我们先看下DST_OVER的效果：<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/dst_atop.png" alt=""><br>再看看SRC_IN的也就是我们想要的效果：<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/src_in.png" alt=""></p>
 
       
     </div>
@@ -476,7 +463,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/algorithm/" rel="tag"># algorithm</a>
+            <a href="/tags/android/" rel="tag"># android</a>
+          
+            <a href="/tags/android-view踩坑记/" rel="tag"># android view踩坑记</a>
           
         </div>
       
@@ -489,8 +478,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/16/ubuntu-setup-ftp-server/" rel="next" title="在ubuntu下搭建ftp server">
-                <i class="fa fa-chevron-left"></i> 在ubuntu下搭建ftp server
+              <a href="/2017/06/07/travel-to-android-view-2/" rel="next" title="android view踩坑记-2">
+                <i class="fa fa-chevron-left"></i> android view踩坑记-2
               </a>
             
           </div>
@@ -498,10 +487,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/19/android-virtual-device-problem/" rel="prev" title="在android studio上运行android模拟器碰到的问题">
-                在android studio上运行android模拟器碰到的问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -652,7 +637,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入描述"><span class="nav-number">2.</span> <span class="nav-text">输入描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出描述"><span class="nav-number">3.</span> <span class="nav-text">输出描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入例子"><span class="nav-number">4.</span> <span class="nav-text">输入例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出例子"><span class="nav-number">5.</span> <span class="nav-text">输出例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考"><span class="nav-number">6.</span> <span class="nav-text">思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">7.</span> <span class="nav-text">解决方案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的直接子类"><span class="nav-number">2.</span> <span class="nav-text">常用的直接子类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用法与预览"><span class="nav-number">3.</span> <span class="nav-text">用法与预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单来实践下"><span class="nav-number">4.</span> <span class="nav-text">简单来实践下</span></a></li></ol></div>
             
 
           </div>
