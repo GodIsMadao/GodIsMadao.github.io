@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="android,android view踩坑记," />
+  <meta name="keywords" content="java,jdbc," />
 
 
 
@@ -87,23 +87,16 @@
 
 
 
-<meta name="description" content="引言Xfermode是android.graphics下面的类，是一些常用绘图传递模式的基类，当这种转换模式被指派给某个画笔的时候，画笔会按照这种转换模式进行绘图，下面是官网api文档里面的原话。">
+<meta name="description" content="引言这几天有个项目，要提供一个微信商城的接口，接口方法很简单，就4个方法，接口用socket与client端通信，数据库操作类用jdbc来对posgresql数据库进行操作。想想接触jdbc操作数据库还是大学上javaweb课的时候，现在温习下方法。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Xfermode简单用法和PorterDuffXfermode的一些叠加模式">
-<meta property="og:url" content="http://saintyun.cn/2017/06/08/travel-to-android-view-3/index.html">
+<meta property="og:title" content="jdbc-connection-excute-sql">
+<meta property="og:url" content="http://saintyun.cn/2017/06/14/jdbc-connection-excute-sql/index.html">
 <meta property="og:site_name" content="GodIsMadao's blog">
-<meta property="og:description" content="引言Xfermode是android.graphics下面的类，是一些常用绘图传递模式的基类，当这种转换模式被指派给某个画笔的时候，画笔会按照这种转换模式进行绘图，下面是官网api文档里面的原话。">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/Xfermode.png">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/Porter-Duff.png">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/alpha_compositing_mode.png">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/blending_modes.png">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/dst_atop.png">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/src_in.png">
-<meta property="og:updated_time" content="2017-06-08T06:12:56.000Z">
+<meta property="og:description" content="引言这几天有个项目，要提供一个微信商城的接口，接口方法很简单，就4个方法，接口用socket与client端通信，数据库操作类用jdbc来对posgresql数据库进行操作。想想接触jdbc操作数据库还是大学上javaweb课的时候，现在温习下方法。">
+<meta property="og:updated_time" content="2017-06-14T13:40:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Xfermode简单用法和PorterDuffXfermode的一些叠加模式">
-<meta name="twitter:description" content="引言Xfermode是android.graphics下面的类，是一些常用绘图传递模式的基类，当这种转换模式被指派给某个画笔的时候，画笔会按照这种转换模式进行绘图，下面是官网api文档里面的原话。">
-<meta name="twitter:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/Xfermode.png">
+<meta name="twitter:title" content="jdbc-connection-excute-sql">
+<meta name="twitter:description" content="引言这几天有个项目，要提供一个微信商城的接口，接口方法很简单，就4个方法，接口用socket与client端通信，数据库操作类用jdbc来对posgresql数据库进行操作。想想接触jdbc操作数据库还是大学上javaweb课的时候，现在温习下方法。">
 
 
 
@@ -131,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://saintyun.cn/2017/06/08/travel-to-android-view-3/"/>
+  <link rel="canonical" href="http://saintyun.cn/2017/06/14/jdbc-connection-excute-sql/"/>
 
 
 
 
 
-  <title> Xfermode简单用法和PorterDuffXfermode的一些叠加模式 | GodIsMadao's blog </title>
+  <title> jdbc-connection-excute-sql | GodIsMadao's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -286,7 +279,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://saintyun.cn/2017/06/08/travel-to-android-view-3/">
+    <link itemprop="mainEntityOfPage" href="http://saintyun.cn/2017/06/14/jdbc-connection-excute-sql/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Saint Yun">
@@ -307,7 +300,7 @@
             
             
               
-                Xfermode简单用法和PorterDuffXfermode的一些叠加模式
+                jdbc-connection-excute-sql
               
             
           </h1>
@@ -322,8 +315,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-08T14:05:54+08:00">
-                2017-06-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-14T21:40:47+08:00">
+                2017-06-14
               </time>
             
 
@@ -345,8 +338,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -363,7 +356,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/06/08/travel-to-android-view-3/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/06/14/jdbc-connection-excute-sql/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -390,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  444
+                  275
                 </span>
               
 
@@ -406,7 +399,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  2
+                  1
                 </span>
               
             </div>
@@ -425,16 +418,12 @@
       
 
       
-        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>Xfermode是android.graphics下面的类，是一些常用绘图传递模式的基类，当这种转换模式被指派给某个画笔的时候，画笔会按照这种转换模式进行绘图，下面是官网api文档里面的原话。<br><a id="more"></a></p>
-<blockquote>
-<p>Xfermode is the base class for objects that are called to implement custom “transfer-modes” in the drawing pipeline. The static function Create(Modes) can be called to return an instance of any of the predefined subclasses as specified in the Modes enum. When an Xfermode is assigned to an Paint, then objects drawn with that paint have the xfermode applied.</p>
-</blockquote>
-<p><img src="https://github.com/GodIsMadao/hexo/raw/master/image/Xfermode.png" alt=""></p>
-<h3 id="常用的直接子类"><a href="#常用的直接子类" class="headerlink" title="常用的直接子类"></a>常用的直接子类</h3><p>最常用的还是PorterDuffXfermode,他有一个构造函数，传入的参数是PorterDuff.Mode,是一个枚举类型，有12种Alpha透明度合成模式和5种混合合成模式。<br>PorterDuff名称的由来：<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/Porter-Duff.png" alt=""></p>
-<h3 id="用法与预览"><a href="#用法与预览" class="headerlink" title="用法与预览"></a>用法与预览</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Paint paint = new Paint();</div><div class="line">//先画目标图像destinationImage</div><div class="line">canvas.drawBitmap(destinationImage, 0, 0, paint);</div><div class="line">PorterDuff.Mode mode = // choose a mode</div><div class="line">paint.setXfermode(new PorterDuffXfermode(mode));</div><div class="line">//再画源图像 <span class="built_in">source</span>Image</div><div class="line">//谁是<span class="built_in">source</span>Image和destinationImage与后面的dst和src模式有关，自行判断</div><div class="line">canvas.drawBitmap(<span class="built_in">source</span>Image, 0, 0, paint);</div></pre></td></tr></table></figure>
-<p>透明度合成模式的12种如下图：<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/alpha_compositing_mode.png" alt=""><br>混合合成模式如下图：<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/blending_modes.png" alt=""></p>
-<h3 id="简单来实践下"><a href="#简单来实践下" class="headerlink" title="简单来实践下"></a>简单来实践下</h3><p>以之前来弄的哪个圆形图片为例，我们需要一个bitmap类型的源图片，然后再画一个bitmap类型的圆，我们要的效果是用圆在原图片上做个切割，但是原图片在上面，所以可以选择SRC_IN和SRC_ATOP,一种是只显示sourceImage被切割之后的部分，不显示destinationImage；另一个是两样都显示,如果切割的图片大小制定不科学的话，就会有多出来的部分。<br>我们先看下DST_OVER的效果：<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/dst_atop.png" alt=""><br>再看看SRC_IN的也就是我们想要的效果：<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/src_in.png" alt=""><br>PS:画src和dst的画笔必须要是同一对象</p>
-
+        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>这几天有个项目，要提供一个微信商城的接口，接口方法很简单，就4个方法，接口用socket与client端通信，数据库操作类用jdbc来对posgresql数据库进行操作。想想接触jdbc操作数据库还是大学上javaweb课的时候，现在温习下方法。<br><a id="more"></a></p>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>连接数据库首先得用到Connection,connnection就得通过url,username,password这些配置来获取<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Class.forName(driver); //classLoader,加载对应驱动</div><div class="line">conn = (Connection) DriverManager.getConnection(url, username, password);</div></pre></td></tr></table></figure></p>
+<p>然后写sql语句，如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String sql = <span class="string">"select * from test"</span></div></pre></td></tr></table></figure></p>
+<p>之类的<br>之创建CallableStatement对象，该对象继承自PreparedStatement，传入对象用setxxx（）方法，传出对象先用registerOutParameter（）注册类型，再用getxxx（）方法取出数据。<br>当然，如果是select方法的话，取出来的不只一个结果，它的结果集可以用ResultSet类型来获取<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//输出参数</div><div class="line">ResultSet rs = pstmt.executeQuery();</div></pre></td></tr></table></figure></p>
+<p>用rs.next()进行判断是否有值。</p>
+<h3 id="大概流程"><a href="#大概流程" class="headerlink" title="大概流程"></a>大概流程</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">Connection conn = getConn();</div><div class="line">String sql = ...</div><div class="line">CallableStatement pstmt;</div><div class="line">...</div><div class="line">conn.setAutoCommit(<span class="literal">false</span>);//设置不自动提交</div><div class="line">pstmt = (CallableStatement) conn.prepareCall(sql);</div><div class="line">pstmt.setString(...);</div><div class="line">...</div><div class="line">pstmt.close();</div><div class="line">conn.commit();</div><div class="line">conn.close();</div><div class="line">...</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -463,9 +452,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/android/" rel="tag"># android</a>
+            <a href="/tags/java/" rel="tag"># java</a>
           
-            <a href="/tags/android-view踩坑记/" rel="tag"># android view踩坑记</a>
+            <a href="/tags/jdbc/" rel="tag"># jdbc</a>
           
         </div>
       
@@ -478,8 +467,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/07/travel-to-android-view-2/" rel="next" title="android view踩坑记-2">
-                <i class="fa fa-chevron-left"></i> android view踩坑记-2
+              <a href="/2017/06/08/travel-to-android-view-3/" rel="next" title="Xfermode简单用法和PorterDuffXfermode的一些叠加模式">
+                <i class="fa fa-chevron-left"></i> Xfermode简单用法和PorterDuffXfermode的一些叠加模式
               </a>
             
           </div>
@@ -487,10 +476,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/14/jdbc-connection-excute-sql/" rel="prev" title="jdbc-connection-excute-sql">
-                jdbc-connection-excute-sql <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -641,7 +626,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的直接子类"><span class="nav-number">2.</span> <span class="nav-text">常用的直接子类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用法与预览"><span class="nav-number">3.</span> <span class="nav-text">用法与预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单来实践下"><span class="nav-number">4.</span> <span class="nav-text">简单来实践下</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">2.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大概流程"><span class="nav-number">3.</span> <span class="nav-text">大概流程</span></a></li></ol></div>
             
 
           </div>
