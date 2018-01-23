@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="引言几天有个项目，要提供一个微信商城的接口，接口方法很简单，就4个方法，接口用socket与client端通信，数据库操作类用jdbc来对posgresql数据库进行操作。想想接触jdbc操作数据库还是大学上javaweb课的时候，现在温习下方法。">
+<meta name="description" content="引言这几天有个项目，要提供一个微信商城的接口，接口方法很简单，就4个方法，接口用socket与client端通信，数据库操作类用jdbc来对posgresql数据库进行操作。想想接触jdbc操作数据库还是大学上javaweb课的时候，现在温习下方法。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用jdbc进行数据简单操作">
 <meta property="og:url" content="http://saintyun.cn/2017/06/14/jdbc-connection-excute-sql/index.html">
 <meta property="og:site_name" content="GodIsMadao's blog">
-<meta property="og:description" content="引言几天有个项目，要提供一个微信商城的接口，接口方法很简单，就4个方法，接口用socket与client端通信，数据库操作类用jdbc来对posgresql数据库进行操作。想想接触jdbc操作数据库还是大学上javaweb课的时候，现在温习下方法。">
-<meta property="og:updated_time" content="2018-01-23T08:06:54.171Z">
+<meta property="og:description" content="引言这几天有个项目，要提供一个微信商城的接口，接口方法很简单，就4个方法，接口用socket与client端通信，数据库操作类用jdbc来对posgresql数据库进行操作。想想接触jdbc操作数据库还是大学上javaweb课的时候，现在温习下方法。">
+<meta property="og:updated_time" content="2018-01-23T08:07:31.521Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用jdbc进行数据简单操作">
-<meta name="twitter:description" content="引言几天有个项目，要提供一个微信商城的接口，接口方法很简单，就4个方法，接口用socket与client端通信，数据库操作类用jdbc来对posgresql数据库进行操作。想想接触jdbc操作数据库还是大学上javaweb课的时候，现在温习下方法。">
+<meta name="twitter:description" content="引言这几天有个项目，要提供一个微信商城的接口，接口方法很简单，就4个方法，接口用socket与client端通信，数据库操作类用jdbc来对posgresql数据库进行操作。想想接触jdbc操作数据库还是大学上javaweb课的时候，现在温习下方法。">
 
 
 
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  274
+                  275
                 </span>
               
 
@@ -418,7 +418,7 @@
       
 
       
-        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>几天有个项目，要提供一个微信商城的接口，接口方法很简单，就4个方法，接口用socket与client端通信，数据库操作类用jdbc来对posgresql数据库进行操作。想想接触jdbc操作数据库还是大学上javaweb课的时候，现在温习下方法。<br><a id="more"></a></p>
+        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>这几天有个项目，要提供一个微信商城的接口，接口方法很简单，就4个方法，接口用socket与client端通信，数据库操作类用jdbc来对posgresql数据库进行操作。想想接触jdbc操作数据库还是大学上javaweb课的时候，现在温习下方法。<br><a id="more"></a></p>
 <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>连接数据库首先得用到Connection,connnection就得通过url,username,password这些配置来获取<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Class.forName(driver); //classLoader,加载对应驱动</div><div class="line">conn = (Connection) DriverManager.getConnection(url, username, password);</div></pre></td></tr></table></figure></p>
 <p>然后写sql语句，如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String sql = <span class="string">"select * from test"</span></div></pre></td></tr></table></figure></p>
 <p>之类的<br>之创建CallableStatement对象，该对象继承自PreparedStatement，传入对象用setxxx（）方法，传出对象先用registerOutParameter（）注册类型，再用getxxx（）方法取出数据。<br>当然，如果是select方法的话，取出来的不只一个结果，它的结果集可以用ResultSet类型来获取<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//输出参数</div><div class="line">ResultSet rs = pstmt.executeQuery();</div></pre></td></tr></table></figure></p>
