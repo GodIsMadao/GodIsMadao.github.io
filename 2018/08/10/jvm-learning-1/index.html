@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="idea,spring," />
+  <meta name="keywords" content="JVM," />
 
 
 
@@ -87,22 +87,34 @@
 
 
 
-<meta name="description" content="在idea里面新导入一个eclipse项目，结果要配置的有很多，具体都都是些小问题，主要有以下几项问题
-问题1.能正常部署，但是404错误，output里的web.xml内容为空如图所示，画红圈的地方需要注意">
+<meta name="description" content="java内存划分共享方法区
+堆
+线程隔离程序计数器：
+每个线程都有独立的程序计数器，用于取指，分支，跳转，循环，恢复线程等操作
+PC=PC+1（指令字节长）
+如果线程执行的是一个java方法，则这个计数器记录的是虚拟机字节码指令；如果线程执行的是一个native方法，则这个计数器值为空，此内存区域是唯一一个在java虚拟机规范中没有规定任何OOMError的区域
+native方法：即不是由Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FileNotFoundExeption cant find WEB-INF/application.xml错误">
-<meta property="og:url" content="http://saintyun.cn/2017/04/05/FileNotFoundExeption-cant-find-WEB-INF-application-xml/index.html">
+<meta property="og:title" content="JVM--内存分布">
+<meta property="og:url" content="http://saintyun.cn/2018/08/10/jvm-learning-1/index.html">
 <meta property="og:site_name" content="GodIsMadao's blog">
-<meta property="og:description" content="在idea里面新导入一个eclipse项目，结果要配置的有很多，具体都都是些小问题，主要有以下几项问题
-问题1.能正常部署，但是404错误，output里的web.xml内容为空如图所示，画红圈的地方需要注意">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/idea_problem1.png">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/idea_problem2.png">
-<meta property="og:updated_time" content="2017-04-12T05:41:55.000Z">
+<meta property="og:description" content="java内存划分共享方法区
+堆
+线程隔离程序计数器：
+每个线程都有独立的程序计数器，用于取指，分支，跳转，循环，恢复线程等操作
+PC=PC+1（指令字节长）
+如果线程执行的是一个java方法，则这个计数器记录的是虚拟机字节码指令；如果线程执行的是一个native方法，则这个计数器值为空，此内存区域是唯一一个在java虚拟机规范中没有规定任何OOMError的区域
+native方法：即不是由Java">
+<meta property="og:updated_time" content="2018-08-10T02:11:26.071Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FileNotFoundExeption cant find WEB-INF/application.xml错误">
-<meta name="twitter:description" content="在idea里面新导入一个eclipse项目，结果要配置的有很多，具体都都是些小问题，主要有以下几项问题
-问题1.能正常部署，但是404错误，output里的web.xml内容为空如图所示，画红圈的地方需要注意">
-<meta name="twitter:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/idea_problem1.png">
+<meta name="twitter:title" content="JVM--内存分布">
+<meta name="twitter:description" content="java内存划分共享方法区
+堆
+线程隔离程序计数器：
+每个线程都有独立的程序计数器，用于取指，分支，跳转，循环，恢复线程等操作
+PC=PC+1（指令字节长）
+如果线程执行的是一个java方法，则这个计数器记录的是虚拟机字节码指令；如果线程执行的是一个native方法，则这个计数器值为空，此内存区域是唯一一个在java虚拟机规范中没有规定任何OOMError的区域
+native方法：即不是由Java">
 
 
 
@@ -130,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://saintyun.cn/2017/04/05/FileNotFoundExeption-cant-find-WEB-INF-application-xml/"/>
+  <link rel="canonical" href="http://saintyun.cn/2018/08/10/jvm-learning-1/"/>
 
 
 
 
 
-  <title> FileNotFoundExeption cant find WEB-INF/application.xml错误 | GodIsMadao's blog </title>
+  <title> JVM--内存分布 | GodIsMadao's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -285,7 +297,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://saintyun.cn/2017/04/05/FileNotFoundExeption-cant-find-WEB-INF-application-xml/">
+    <link itemprop="mainEntityOfPage" href="http://saintyun.cn/2018/08/10/jvm-learning-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Saint Yun">
@@ -306,7 +318,7 @@
             
             
               
-                FileNotFoundExeption cant find WEB-INF/application.xml错误
+                JVM--内存分布
               
             
           </h1>
@@ -321,8 +333,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-05T15:23:54+08:00">
-                2017-04-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-10T10:11:26+08:00">
+                2018-08-10
               </time>
             
 
@@ -344,8 +356,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
                   </a>
                 </span>
 
@@ -362,7 +374,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/04/05/FileNotFoundExeption-cant-find-WEB-INF-application-xml/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2018/08/10/jvm-learning-1/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -389,7 +401,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  153
+                  1,248
                 </span>
               
 
@@ -405,7 +417,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -424,17 +436,33 @@
       
 
       
-        <p>在idea里面新导入一个eclipse项目，结果要配置的有很多，具体都都是些小问题，主要有以下几项问题</p>
-<h2 id="问题1-能正常部署，但是404错误，output里的web-xml内容为空"><a href="#问题1-能正常部署，但是404错误，output里的web-xml内容为空" class="headerlink" title="问题1.能正常部署，但是404错误，output里的web.xml内容为空"></a>问题1.能正常部署，但是404错误，output里的web.xml内容为空</h2><p>如图所示，画红圈的地方需要注意<br><a id="more"></a><br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/idea_problem1.png" alt="webapp路径" title="webapp路径"></p>
-<h2 id="问题2-start-server后，找不到WEB-INF-application-xml"><a href="#问题2-start-server后，找不到WEB-INF-application-xml" class="headerlink" title="问题2.start server后，找不到WEB-INF/application.xml"></a>问题2.start server后，找不到WEB-INF/application.xml</h2><p>需要在配置文件web.xml里面加入如下语句来指定路径：</p>
+        <h3 id="java内存划分"><a href="#java内存划分" class="headerlink" title="java内存划分"></a>java内存划分</h3><h4 id="共享"><a href="#共享" class="headerlink" title="共享"></a>共享</h4><p>方法区</p>
+<p>堆</p>
+<h4 id="线程隔离"><a href="#线程隔离" class="headerlink" title="线程隔离"></a>线程隔离</h4><p>程序计数器：</p>
+<p>每个线程都有独立的程序计数器，用于取指，分支，跳转，循环，恢复线程等操作</p>
+<p>PC=PC+1（指令字节长）</p>
+<p>如果线程执行的是一个java方法，则这个计数器记录的是虚拟机字节码指令；如果线程执行的是一个native方法，则这个计数器值为空，此内存区域是唯一一个在java虚拟机规范中没有规定任何OOMError的区域</p>
+<p>native方法：即不是由Java实现，而是由其他语言实现的方法</p>
 <blockquote>
-<p><context-param><br>    <param-name>contextConfigLocation</param-name><br>    <param-value>classpath:applicationContext.xml</param-value><br></context-param></p>
+<p>Java不是完美的，Java的不足除了体现在运行速度上要比传统的C++慢许多之外，Java无法直接访问到操作系统底层（如系统硬件等)，为此Java使用native方法来扩展Java程序的功能。 　<br>可以将native方法比作Java程序同C程序的接口，其实现步骤：<br>1、在Java中声明native()方法，然后编译。 　　<br>2、用javah产生一个.h文件。 　　<br>3、写一个.cpp文件实现native导出方法，其中需要包含第二步产生的.h文件（注意其中又包含了JDK带的jni.h文件）。 　　<br>4、将第三步的.cpp文件编译成动态链接库文件。 　<br>5、在Java中用System.loadLibrary()方法加载第四步产生的动态链接库文件，这个native()方法就可以在Java中被访问了。  　　<br>JAVA的native方法适用的情况： 　　<br>1、为了使用底层的主机平台的某个特性，而这个特性不能通过JAVA API访问。<br>2、为了访问一个老的系统或者使用一个已有的库，而这个系统或这个库不是用JAVA编写的。 　<br>3、为了加快程序的性能，而将一段时间敏感的代码作为本地方法实现。</p>
 </blockquote>
-<p>还有一些要注意的地方<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/idea_problem2.png" alt="webapp路径" title="webapp路径"></p>
-<h3 id="好吧，这篇文章也算是hexo上传图片的尝试"><a href="#好吧，这篇文章也算是hexo上传图片的尝试" class="headerlink" title="好吧，这篇文章也算是hexo上传图片的尝试~~"></a>好吧，这篇文章也算是hexo上传图片的尝试~~</h3><blockquote>
-<p>![alt text](<a href="https://github.com/yourname/respname/raw/master/image/XXX.png" target="_blank" rel="external">https://github.com/yourname/respname/raw/master/image/XXX.png</a> “title”)</p>
+<h5 id="虚拟机栈"><a href="#虚拟机栈" class="headerlink" title="虚拟机栈"></a>虚拟机栈</h5><p>生命周期与java线程相同，存放<font color="#D2691E"> 局部变量</font>表，<font color="#D2691E">操作数</font>栈，动态链接，方法出口等信息<br>局部变量表所需内存空间在编译时确定，而不会在运行时修改，所以，此区域会有两种异常</p>
+<ol>
+<li>StackOverFlowError<br>线程请求栈的深度超过虚拟机所允许的深度</li>
+<li>OutOfMemoryError<br>栈动态扩展到无法申请到足够的内存  </li>
+</ol>
+<p><strong>扩展：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java -Xmx3550m -Xms3550m -Xmn2g -Xss128k</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>-Xmx3550m：设置JVM最大可用内存为3550M。<br>-Xms3550m：设置JVM促使内存为3550m。此值可以设置与-Xmx相同，以避免每次垃圾回收完成后JVM重新分配内存。<br>-Xmn2g：设置年轻代大小为2G。整个JVM内存大小=年轻代大小 + 年老代大小 + 持久代大小。持久代一般固定大小为64m，所以增大年轻代后，将会减小年老代大小。此值对系统性能影响较大，Sun官方推荐配置为整个堆的3/8。<br>-Xss128k：设置每个线程的堆栈大小。JDK5.0以后每个线程堆栈大小为1M，以前每个线程堆栈大小为256K。更具应用的线程所需内存大小进行调整。在相同物理内存下，减小这个值能生成更多的线程。但是操作系统对一个进程内的线程数还是有限制的，不能无限生成，经验值在3000~5000左右。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java -Xmx3550m -Xms3550m -Xss128k -XX:NewRatio=4 -XX:SurvivorRatio=4 -XX:MaxPermSize=16m -XX:MaxTenuringThreshold=0</div></pre></td></tr></table></figure></p>
+<p>-XX:NewRatio=4:设置年轻代（包括Eden和两个Survivor区）与年老代的比值（除去持久代）。设置为4，则年轻代与年老代所占比值为1：4，年轻代占整个堆栈的1/5<br>-XX:SurvivorRatio=4：设置年轻代中Eden区与Survivor区的大小比值。设置为4，则两个Survivor区与一个Eden区的比值为2:4，一个Survivor区占整个年轻代的1/6<br>-XX:MaxPermSize=16m:设置持久代大小为16m。<br>-XX:MaxTenuringThreshold=0：设置垃圾最大年龄。如果设置为0的话，则年轻代对象不经过Survivor区，直接进入年老代。对于年老代比较多的应用，可以提高效率。如果将此值设置为一个较大值，则年轻代对象会在Survivor区进行多次复制，这样可以增加对象再年轻代的存活时间，增加在年轻代即被回收的概论。</p>
 </blockquote>
-<p>逃~~</p>
+<h5 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h5><p>服务于native方法</p>
+<h5 id="Java堆"><a href="#Java堆" class="headerlink" title="Java堆"></a>Java堆</h5><p>java虚拟机中最大的一块内存部分，用于存放对象实例</p>
+<h5 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h5><p>存放虚拟机加载的类信息，常量，静态变量，即时编译器编译后的代码等<br><strong>运行时常量池</strong>：存放编译器生成的各种字面量与符号引用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javap -v Person</div></pre></td></tr></table></figure></p>
+<p><a href="https://blog.csdn.net/luanlouis/article/details/40301985" target="_blank" rel="external">这里讲的java常量池很详细</a><br>符号引用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String s = &quot;aaa&quot;;</div><div class="line">System.println.out(&quot;sout:&quot;+s);</div></pre></td></tr></table></figure></p>
+<p>直接引用:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">System.println.out(&quot;sout:&quot;+&quot;aaa&quot;);</div></pre></td></tr></table></figure></p>
+<p>运行时也可以将新的常量放到常量池</p>
+<h5 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a>直接内存</h5><p>堆外内存，NIO支持直接分配对外内存</p>
 
       
     </div>
@@ -464,9 +492,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/idea/" rel="tag"># idea</a>
-          
-            <a href="/tags/spring/" rel="tag"># spring</a>
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
           
         </div>
       
@@ -479,8 +505,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/05/android-studio-build-lag-problem/" rel="next" title="android studio build gradle info卡住">
-                <i class="fa fa-chevron-left"></i> android studio build gradle info卡住
+              <a href="/2018/08/09/algorithm-maxsubarray/" rel="next" title="算法导论--最大子数组">
+                <i class="fa fa-chevron-left"></i> 算法导论--最大子数组
               </a>
             
           </div>
@@ -488,10 +514,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/07/mac-tomcat-error13/" rel="prev" title="在Mac下的tomcat出现error13错误">
-                在Mac下的tomcat出现error13错误 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -642,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题1-能正常部署，但是404错误，output里的web-xml内容为空"><span class="nav-number">1.</span> <span class="nav-text">问题1.能正常部署，但是404错误，output里的web.xml内容为空</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题2-start-server后，找不到WEB-INF-application-xml"><span class="nav-number">2.</span> <span class="nav-text">问题2.start server后，找不到WEB-INF/application.xml</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#好吧，这篇文章也算是hexo上传图片的尝试"><span class="nav-number">2.1.</span> <span class="nav-text">好吧，这篇文章也算是hexo上传图片的尝试~~</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#java内存划分"><span class="nav-number">1.</span> <span class="nav-text">java内存划分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#共享"><span class="nav-number">1.1.</span> <span class="nav-text">共享</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程隔离"><span class="nav-number">1.2.</span> <span class="nav-text">线程隔离</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#虚拟机栈"><span class="nav-number">1.2.1.</span> <span class="nav-text">虚拟机栈</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#本地方法栈"><span class="nav-number">1.2.2.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Java堆"><span class="nav-number">1.2.3.</span> <span class="nav-text">Java堆</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方法区"><span class="nav-number">1.2.4.</span> <span class="nav-text">方法区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#直接内存"><span class="nav-number">1.2.5.</span> <span class="nav-text">直接内存</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
