@@ -89,27 +89,21 @@
 
 <meta name="description" content="问题介绍最大子数组问题：
 
-给定一个整数数组nums，找到具有最大总和并返回其总和的连续子数组（包含至少一个数字）。例：123输入： [ -2,1，-3,4，-1,2,1，-5,4]，输出： 6说明： [4，-1,2,1]的最大和= 6。
-
-思考思路1:暴力解法：两层遍历，外层遍历定位每个数字，内层遍历依次从本数字往后，计算sum，并与max_sum进行比较，如果sum &amp;gt; max_sum，">
+给定一个整数数组nums，找到具有最大总和并返回其总和的连续子数组（包含至少一个数字）。例：123输入： [ -2,1，-3,4，-1,2,1，-5,4]，输出： 6说明： [4，-1,2,1]的最大和= 6。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法导论--最大子数组">
 <meta property="og:url" content="http://saintyun.cn/2018/08/09/algorithm-maxsubarray/index.html">
 <meta property="og:site_name" content="GodIsMadao's blog">
 <meta property="og:description" content="问题介绍最大子数组问题：
 
-给定一个整数数组nums，找到具有最大总和并返回其总和的连续子数组（包含至少一个数字）。例：123输入： [ -2,1，-3,4，-1,2,1，-5,4]，输出： 6说明： [4，-1,2,1]的最大和= 6。
-
-思考思路1:暴力解法：两层遍历，外层遍历定位每个数字，内层遍历依次从本数字往后，计算sum，并与max_sum进行比较，如果sum &amp;gt; max_sum，">
+给定一个整数数组nums，找到具有最大总和并返回其总和的连续子数组（包含至少一个数字）。例：123输入： [ -2,1，-3,4，-1,2,1，-5,4]，输出： 6说明： [4，-1,2,1]的最大和= 6。">
 <meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/max_subarray.png">
-<meta property="og:updated_time" content="2018-08-09T02:44:54.571Z">
+<meta property="og:updated_time" content="2018-08-15T14:26:52.161Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法导论--最大子数组">
 <meta name="twitter:description" content="问题介绍最大子数组问题：
 
-给定一个整数数组nums，找到具有最大总和并返回其总和的连续子数组（包含至少一个数字）。例：123输入： [ -2,1，-3,4，-1,2,1，-5,4]，输出： 6说明： [4，-1,2,1]的最大和= 6。
-
-思考思路1:暴力解法：两层遍历，外层遍历定位每个数字，内层遍历依次从本数字往后，计算sum，并与max_sum进行比较，如果sum &amp;gt; max_sum，">
+给定一个整数数组nums，找到具有最大总和并返回其总和的连续子数组（包含至少一个数字）。例：123输入： [ -2,1，-3,4，-1,2,1，-5,4]，输出： 6说明： [4，-1,2,1]的最大和= 6。">
 <meta name="twitter:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/max_subarray.png">
 
 
@@ -436,6 +430,7 @@
 <blockquote>
 <p>给定一个整数数组nums，找到具有最大总和并返回其总和的连续子数组（包含至少一个数字）。<br>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">输入： [ -2,1，-3,4，-1,2,1，-5,4]，</div><div class="line">输出： 6</div><div class="line">说明： [4，-1,2,1]的最大和= 6。</div></pre></td></tr></table></figure></p>
 </blockquote>
+<a id="more"></a>
 <h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><h5 id="思路1-暴力解法："><a href="#思路1-暴力解法：" class="headerlink" title="思路1:暴力解法："></a>思路1:暴力解法：</h5><p>两层遍历，外层遍历定位每个数字，内层遍历依次从本数字往后，计算sum，并与max_sum进行比较，如果sum &gt; max_sum，则替换，并记下下标值。</p>
 <h5 id="思路2-分治法"><a href="#思路2-分治法" class="headerlink" title="思路2:分治法:"></a>思路2:分治法:</h5><p>把原数组分解成左右两部分，一直递归下去，所以存在3种答案情况：</p>
 <ol>

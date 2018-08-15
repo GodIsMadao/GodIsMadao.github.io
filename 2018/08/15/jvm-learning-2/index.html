@@ -88,33 +88,18 @@
 
 
 <meta name="description" content="jvm垃圾回收堆分为新生代、老年代，方法区在jdk1.7以及之前也被成为永久代(PermGen space)
- 任何对象一生只会调用一次finalize()方法，在此方法内，如果又被引用，则可以存活
-如何判断对象是否已经死去，可以回收？1.计数法（最古老）
-计数法针对循环引用没用
-2.GcRoots方法 可达性分析算法
-通过判断每个引用到GcRoots根节点的可达性来判断是否回收该引用
-垃圾收集算">
+ 任何对象一生只会调用一次finalize()方法，在此方法内，如果又被引用，则可以存活">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM--垃圾回收机制">
 <meta property="og:url" content="http://saintyun.cn/2018/08/15/jvm-learning-2/index.html">
 <meta property="og:site_name" content="GodIsMadao's blog">
 <meta property="og:description" content="jvm垃圾回收堆分为新生代、老年代，方法区在jdk1.7以及之前也被成为永久代(PermGen space)
- 任何对象一生只会调用一次finalize()方法，在此方法内，如果又被引用，则可以存活
-如何判断对象是否已经死去，可以回收？1.计数法（最古老）
-计数法针对循环引用没用
-2.GcRoots方法 可达性分析算法
-通过判断每个引用到GcRoots根节点的可达性来判断是否回收该引用
-垃圾收集算">
-<meta property="og:updated_time" content="2018-08-15T13:51:44.782Z">
+ 任何对象一生只会调用一次finalize()方法，在此方法内，如果又被引用，则可以存活">
+<meta property="og:updated_time" content="2018-08-15T14:28:52.951Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM--垃圾回收机制">
 <meta name="twitter:description" content="jvm垃圾回收堆分为新生代、老年代，方法区在jdk1.7以及之前也被成为永久代(PermGen space)
- 任何对象一生只会调用一次finalize()方法，在此方法内，如果又被引用，则可以存活
-如何判断对象是否已经死去，可以回收？1.计数法（最古老）
-计数法针对循环引用没用
-2.GcRoots方法 可达性分析算法
-通过判断每个引用到GcRoots根节点的可达性来判断是否回收该引用
-垃圾收集算">
+ 任何对象一生只会调用一次finalize()方法，在此方法内，如果又被引用，则可以存活">
 
 
 
@@ -438,6 +423,7 @@
       
         <h3 id="jvm垃圾回收"><a href="#jvm垃圾回收" class="headerlink" title="jvm垃圾回收"></a>jvm垃圾回收</h3><p>堆分为新生代、老年代，方法区在jdk1.7以及之前也被成为永久代(PermGen space)</p>
 <p> 任何对象一生只会调用一次finalize()方法，在此方法内，如果又被引用，则可以存活</p>
+<a id="more"></a>
 <h5 id="如何判断对象是否已经死去，可以回收？"><a href="#如何判断对象是否已经死去，可以回收？" class="headerlink" title="如何判断对象是否已经死去，可以回收？"></a>如何判断对象是否已经死去，可以回收？</h5><p>1.计数法（最古老）</p>
 <p>计数法针对循环引用没用</p>
 <p>2.GcRoots方法 可达性分析算法</p>
