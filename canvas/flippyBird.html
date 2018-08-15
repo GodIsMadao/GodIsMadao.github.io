@@ -1,0 +1,160 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,body > div,button,canvas{
+            float:left;
+        }
+        #info{
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <canvas onclick="myMouseDown()" width="1000" height="800" style="border:1px solid black" id="canvas"></canvas>
+    <div style="width: 300px;height: 300px;border:1px solid rebeccapurple">
+        <div>
+            SCORE:<span id="score"></span>
+        </div>
+        <div id="info"></div>
+    </div>
+    <button onclick="clearInterval(inter)">停止运动</button>
+    <button onclick="inter = setInterval(fn,100)">继续运动</button>
+</body>
+<script>
+    //仍然有很多问题
+    /*
+    * 如多个door 绘制以及往左移动问题，多个door如何碰撞检测
+    * door[0] - door[length-1],door[0]出界外之后，将door数组向左移动
+    * 碰撞只需要检查 ball.x 在 door[]下
+    * */
+
+    // 鸟的横纵坐标
+    //横向速度 也是横梁左移的横向速度
+    //小球 只负责纵向移动
+    //重力加速度
+    var ball = { x:100 , y:400 , r:40 , g:3 , vy:0, color:"orange"}
+    var canvas = document.getElementById("canvas")
+    context = canvas.getContext('2d')
+    //nextdoor:200px后 如果在画布范围内，则画出
+    var door_color = "lightblue"
+    var door = { width:100,x:500,y:150,gap:200,nextdoor:500,v:10,incurrent:false}
+    var door_arrays = [];
+    var score = 0;
+
+    //图片的大小 碰撞边缘 先当成点
+//    var radius = 10;
+
+    function render(cxt){
+
+        cxt.clearRect(0, 0, cxt.canvas.width, cxt.canvas.height)
+
+        cxt.fillStyle = ball.color
+        cxt.beginPath()
+        cxt.arc(ball.x,ball.y,ball.r,0,2*Math.PI)
+        cxt.closePath()
+        cxt.fill()
+
+        renderDoors(cxt)
+    }
+
+
+    function renderDoors(cxt){
+        cxt.fillStyle = door_color
+        cxt.beginPath()
+        cxt.fillRect(door.x,0,door.width,door.y)
+        cxt.fillRect(door.x,door.y+door.gap,door.width,canvas.height)
+        cxt.closePath()
+        cxt.fill()
+    }
+
+    function  myMouseDown() {
+        touchFun()
+    }
+
+
+    //点击函数
+    function touchFun(){
+        ball.y -= ball.vy
+        //差不多0.5s -》5g
+        ball.vy -= 5*ball.g
+//        ball.y =  ball.y - (0.5* ball.g*2 +  ball.vy);
+        //点击一次则算1s钟的弹起
+//        ball.vy = ball.vy - ball.g;
+    }
+
+    function isCrush(x1,x2,y1,y2){
+        return Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))<=ball.r;
+    }
+
+    function checkConflict(){
+        if(ball.y == canvas.height-ball.r){
+            document.getElementById("info").innerHTML = "GG WP!"
+            clearInterval(inter)
+            return;
+        }
+        if(Math.abs(door.x-ball.x)<=ball.r && (ball.y <= door.y || ball.y >= door.y+door.gap))
+        {
+            document.getElementById("info").innerHTML = "GG WP!"
+            clearInterval(inter)
+            return;
+        }
+        if(Math.abs(ball.y-door.y)<=ball.r && ball.x >= door.x && ball.x <= door.x+door.width){
+            document.getElementById("info").innerHTML = "GG WP!"
+            clearInterval(inter)
+            return;
+        }
+        if(Math.abs(ball.y-door.y-door.gap)<=ball.r && ball.x >= door.x && ball.x <= door.x+door.width){
+            document.getElementById("info").innerHTML = "GG WP!"
+            clearInterval(inter)
+            return;
+        }
+
+        if(isCrush(ball.x,door.x,ball.y,door.y)||isCrush(ball.x,door.x+door.width,ball.y,door.y)||isCrush(ball.x,door.x,ball.y,door.y+door.gap)||isCrush(ball.x,door.x+door.width,ball.y,door.y+door.gap)){
+            document.getElementById("info").innerHTML = "GG WP!"
+            clearInterval(inter)
+            return;
+        }
+    }
+
+    function isSuccess() {
+        if(ball.x>=door.x+door.width){
+           return true
+        }
+        return false
+    }
+
+    function createDoor(){
+        var height = Math.floor(Math.random()*200)+200;
+        door = { width:100,x:canvas.width,y:height,gap:200,nextdoor:500,v:10}
+    }
+
+
+    function update(){
+        checkConflict()
+        if (isSuccess()){
+            score ++;
+            document.getElementById("score").innerHTML = score
+            createDoor()
+        }
+        ball.y += ball.vy
+        ball.vy += ball.g
+//        ball.y = ball.y + (0.5*ball.g+ ball.vy);
+        //自由落体
+//        ball.vy = ball.vy + ball.g;
+
+        //door 横向移动
+        door.x = door.x - door.v;
+
+    }
+    
+    var fn = function dropDown() {
+        render(context)
+        update()
+    }
+
+    render(context)
+    var inter = setInterval(fn,100);
+</script>
+</html>
