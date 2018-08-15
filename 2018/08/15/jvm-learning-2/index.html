@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="android,android view踩坑记," />
+  <meta name="keywords" content="JVM," />
 
 
 
@@ -87,23 +87,34 @@
 
 
 
-<meta name="description" content="引言Xfermode是android.graphics下面的类，是一些常用绘图传递模式的基类，当这种转换模式被指派给某个画笔的时候，画笔会按照这种转换模式进行绘图，下面是官网api文档里面的原话。">
+<meta name="description" content="jvm垃圾回收堆分为新生代、老年代，方法区在jdk1.7以及之前也被成为永久代(PermGen space)
+ 任何对象一生只会调用一次finalize()方法，在此方法内，如果又被引用，则可以存活
+如何判断对象是否已经死去，可以回收？1.计数法（最古老）
+计数法针对循环引用没用
+2.GcRoots方法 可达性分析算法
+通过判断每个引用到GcRoots根节点的可达性来判断是否回收该引用
+垃圾收集算">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Xfermode简单用法和PorterDuffXfermode的一些叠加模式">
-<meta property="og:url" content="http://saintyun.cn/2017/06/08/travel-to-android-view-3/index.html">
+<meta property="og:title" content="JVM--垃圾回收机制">
+<meta property="og:url" content="http://saintyun.cn/2018/08/15/jvm-learning-2/index.html">
 <meta property="og:site_name" content="GodIsMadao's blog">
-<meta property="og:description" content="引言Xfermode是android.graphics下面的类，是一些常用绘图传递模式的基类，当这种转换模式被指派给某个画笔的时候，画笔会按照这种转换模式进行绘图，下面是官网api文档里面的原话。">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/Xfermode.png">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/Porter-Duff.png">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/alpha_compositing_mode.png">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/blending_modes.png">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/dst_atop.png">
-<meta property="og:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/src_in.png">
-<meta property="og:updated_time" content="2017-06-08T06:12:56.000Z">
+<meta property="og:description" content="jvm垃圾回收堆分为新生代、老年代，方法区在jdk1.7以及之前也被成为永久代(PermGen space)
+ 任何对象一生只会调用一次finalize()方法，在此方法内，如果又被引用，则可以存活
+如何判断对象是否已经死去，可以回收？1.计数法（最古老）
+计数法针对循环引用没用
+2.GcRoots方法 可达性分析算法
+通过判断每个引用到GcRoots根节点的可达性来判断是否回收该引用
+垃圾收集算">
+<meta property="og:updated_time" content="2018-08-15T13:51:44.782Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Xfermode简单用法和PorterDuffXfermode的一些叠加模式">
-<meta name="twitter:description" content="引言Xfermode是android.graphics下面的类，是一些常用绘图传递模式的基类，当这种转换模式被指派给某个画笔的时候，画笔会按照这种转换模式进行绘图，下面是官网api文档里面的原话。">
-<meta name="twitter:image" content="https://github.com/GodIsMadao/hexo/raw/master/image/Xfermode.png">
+<meta name="twitter:title" content="JVM--垃圾回收机制">
+<meta name="twitter:description" content="jvm垃圾回收堆分为新生代、老年代，方法区在jdk1.7以及之前也被成为永久代(PermGen space)
+ 任何对象一生只会调用一次finalize()方法，在此方法内，如果又被引用，则可以存活
+如何判断对象是否已经死去，可以回收？1.计数法（最古老）
+计数法针对循环引用没用
+2.GcRoots方法 可达性分析算法
+通过判断每个引用到GcRoots根节点的可达性来判断是否回收该引用
+垃圾收集算">
 
 
 
@@ -131,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://saintyun.cn/2017/06/08/travel-to-android-view-3/"/>
+  <link rel="canonical" href="http://saintyun.cn/2018/08/15/jvm-learning-2/"/>
 
 
 
 
 
-  <title> Xfermode简单用法和PorterDuffXfermode的一些叠加模式 | GodIsMadao's blog </title>
+  <title> JVM--垃圾回收机制 | GodIsMadao's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -286,7 +297,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://saintyun.cn/2017/06/08/travel-to-android-view-3/">
+    <link itemprop="mainEntityOfPage" href="http://saintyun.cn/2018/08/15/jvm-learning-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Saint Yun">
@@ -307,7 +318,7 @@
             
             
               
-                Xfermode简单用法和PorterDuffXfermode的一些叠加模式
+                JVM--垃圾回收机制
               
             
           </h1>
@@ -322,8 +333,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-08T14:05:54+08:00">
-                2017-06-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-15T21:50:13+08:00">
+                2018-08-15
               </time>
             
 
@@ -345,8 +356,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
                   </a>
                 </span>
 
@@ -363,7 +374,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/06/08/travel-to-android-view-3/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2018/08/15/jvm-learning-2/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -390,7 +401,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  444
+                  866
                 </span>
               
 
@@ -406,7 +417,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -425,15 +436,41 @@
       
 
       
-        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>Xfermode是android.graphics下面的类，是一些常用绘图传递模式的基类，当这种转换模式被指派给某个画笔的时候，画笔会按照这种转换模式进行绘图，下面是官网api文档里面的原话。<br><a id="more"></a></p>
-<blockquote>
-<p>Xfermode is the base class for objects that are called to implement custom “transfer-modes” in the drawing pipeline. The static function Create(Modes) can be called to return an instance of any of the predefined subclasses as specified in the Modes enum. When an Xfermode is assigned to an Paint, then objects drawn with that paint have the xfermode applied.</p>
+        <h3 id="jvm垃圾回收"><a href="#jvm垃圾回收" class="headerlink" title="jvm垃圾回收"></a>jvm垃圾回收</h3><p>堆分为新生代、老年代，方法区在jdk1.7以及之前也被成为永久代(PermGen space)</p>
+<p> 任何对象一生只会调用一次finalize()方法，在此方法内，如果又被引用，则可以存活</p>
+<h5 id="如何判断对象是否已经死去，可以回收？"><a href="#如何判断对象是否已经死去，可以回收？" class="headerlink" title="如何判断对象是否已经死去，可以回收？"></a>如何判断对象是否已经死去，可以回收？</h5><p>1.计数法（最古老）</p>
+<p>计数法针对循环引用没用</p>
+<p>2.GcRoots方法 可达性分析算法</p>
+<p>通过判断每个引用到GcRoots根节点的可达性来判断是否回收该引用</p>
+<h5 id="垃圾收集算法有哪些呢？"><a href="#垃圾收集算法有哪些呢？" class="headerlink" title="垃圾收集算法有哪些呢？"></a>垃圾收集算法有哪些呢？</h5><h6 id="1-标记-清除算法"><a href="#1-标记-清除算法" class="headerlink" title="1.标记-清除算法"></a>1.标记-清除算法</h6><p>应用于老年代</p>
+<p>会产生内存碎片</p>
+<h6 id="2-复制算法"><a href="#2-复制算法" class="headerlink" title="2.复制算法"></a>2.复制算法</h6><p>应用于新生代，小，gc操作频繁，快</p>
+<p>新生代又分为 eden区与survivor区（一般有2个）默认比例为8:1，eden区大</p>
+<p>将要回收的内存从eden区与其中一个survivor赋值到另外一个survivor区中，如果不够大，则可能需要老年代进行分配担保，如果老年代也装不下，则报内存溢出错误</p>
+<h6 id="3-标记-整理算法"><a href="#3-标记-整理算法" class="headerlink" title="3.标记-整理算法"></a>3.标记-整理算法</h6><p>应用于老年代</p>
+<p>与标记-清除算法不同的是，将内存块标记，回收后，会有一个存活内存的整理过程，则从一端移动到另一端</p>
+<h5 id="垃圾回收器有哪些？"><a href="#垃圾回收器有哪些？" class="headerlink" title="垃圾回收器有哪些？"></a>垃圾回收器有哪些？</h5><h6 id="1-Serial收集器（最古老）"><a href="#1-Serial收集器（最古老）" class="headerlink" title="1.Serial收集器（最古老）"></a>1.Serial收集器（最古老）</h6><p>单线程（回收线程与用户现场不并行）</p>
+<p>stop the world</p>
+<h6 id="2-ParNew收集器"><a href="#2-ParNew收集器" class="headerlink" title="2.ParNew收集器"></a>2.ParNew收集器</h6><p>serial的多线程实现方式</p>
+<p>新生代</p>
+<h6 id="3-Parallel-Scavenge收集器"><a href="#3-Parallel-Scavenge收集器" class="headerlink" title="3.Parallel Scavenge收集器"></a>3.Parallel Scavenge收集器</h6><p>新生代</p>
+<p>针对提高吞吐量设计，提高cpu资源利用率</p>
+<p>标记-整理算法</p>
+<h6 id="4-Parallel-Old收集器"><a href="#4-Parallel-Old收集器" class="headerlink" title="4.Parallel Old收集器"></a>4.Parallel Old收集器</h6><p>Parallel Scavenge收集器的老年代版本</p>
+<p>标记-整理算法</p>
+<h6 id="5-CMS收集器concurrent-mark-sweep"><a href="#5-CMS收集器concurrent-mark-sweep" class="headerlink" title="5.CMS收集器concurrent mark sweep"></a>5.CMS收集器concurrent mark sweep</h6><p>基于标记-清除算法</p>
+<p>第一次标记-》并发标记（与用户线程并发）-》重新标记-》并行清除（与用户线程并发）</p>
+<h6 id="6-G1收集器（garbage-first）"><a href="#6-G1收集器（garbage-first）" class="headerlink" title="6.G1收集器（garbage first）"></a>6.G1收集器（garbage first）</h6><blockquote>
+<p>G1收集器是一款面向服务端应用的垃圾收集器。HotSpot团队赋予它的使命是在未来替换掉JDK1.5中发布的CMS收集器。与其他GC收集器相比，G1具备如下特点：</p>
+<ol>
+<li>并行与并发：G1能更充分的利用CPU，多核环境下的硬件优势来缩短stop the world的停顿时间。</li>
+<li>分代收集：和其他收集器一样，分代的概念在G1中依然存在，不过G1不需要其他的垃圾回收器的配合就可以独自管理整个GC堆。</li>
+<li>空间整合：G1收集器有利于程序长时间运行，分配大对象时不会无法得到连续的空间而提前触发一次GC。</li>
+<li>可预测的非停顿：这是G1相对于CMS的另一大优势，降低停顿时间是G1和CMS共同的关注点，能让使用者明确指定在一个长度为M毫秒的时间片段内，消耗在垃圾收集上的时间不得超过N毫秒。</li>
+</ol>
+<p>在使用G1收集器时，Java堆的内存布局和其他收集器有很大的差别，它将这个Java堆分为多个大小相等的独立区域，虽然还保留新生代和老年代的概念，但是新生代和老年代不再是物理隔离的了，它们都是一部分Region（不需要连续）的集合。</p>
+<p>虽然G1看起来有很多优点，实际上CMS还是主流。</p>
 </blockquote>
-<p><img src="https://github.com/GodIsMadao/hexo/raw/master/image/Xfermode.png" alt=""></p>
-<h3 id="常用的直接子类"><a href="#常用的直接子类" class="headerlink" title="常用的直接子类"></a>常用的直接子类</h3><p>最常用的还是PorterDuffXfermode,他有一个构造函数，传入的参数是PorterDuff.Mode,是一个枚举类型，有12种Alpha透明度合成模式和5种混合合成模式。<br>PorterDuff名称的由来：<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/Porter-Duff.png" alt=""></p>
-<h3 id="用法与预览"><a href="#用法与预览" class="headerlink" title="用法与预览"></a>用法与预览</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Paint paint = new Paint();</div><div class="line">//先画目标图像destinationImage</div><div class="line">canvas.drawBitmap(destinationImage, 0, 0, paint);</div><div class="line">PorterDuff.Mode mode = // choose a mode</div><div class="line">paint.setXfermode(new PorterDuffXfermode(mode));</div><div class="line">//再画源图像 <span class="built_in">source</span>Image</div><div class="line">//谁是<span class="built_in">source</span>Image和destinationImage与后面的dst和src模式有关，自行判断</div><div class="line">canvas.drawBitmap(<span class="built_in">source</span>Image, 0, 0, paint);</div></pre></td></tr></table></figure>
-<p>透明度合成模式的12种如下图：<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/alpha_compositing_mode.png" alt=""><br>混合合成模式如下图：<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/blending_modes.png" alt=""></p>
-<h3 id="简单来实践下"><a href="#简单来实践下" class="headerlink" title="简单来实践下"></a>简单来实践下</h3><p>以之前来弄的哪个圆形图片为例，我们需要一个bitmap类型的源图片，然后再画一个bitmap类型的圆，我们要的效果是用圆在原图片上做个切割，但是原图片在上面，所以可以选择SRC_IN和SRC_ATOP,一种是只显示sourceImage被切割之后的部分，不显示destinationImage；另一个是两样都显示,如果切割的图片大小制定不科学的话，就会有多出来的部分。<br>我们先看下DST_OVER的效果：<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/dst_atop.png" alt=""><br>再看看SRC_IN的也就是我们想要的效果：<br><img src="https://github.com/GodIsMadao/hexo/raw/master/image/src_in.png" alt=""><br>PS:画src和dst的画笔必须要是同一对象</p>
 
       
     </div>
@@ -463,9 +500,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/android/" rel="tag"># android</a>
-          
-            <a href="/tags/android-view踩坑记/" rel="tag"># android view踩坑记</a>
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
           
         </div>
       
@@ -478,8 +513,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/07/travel-to-android-view-2/" rel="next" title="android view踩坑记-2">
-                <i class="fa fa-chevron-left"></i> android view踩坑记-2
+              <a href="/2018/08/10/jvm-learning-1/" rel="next" title="JVM--内存分布">
+                <i class="fa fa-chevron-left"></i> JVM--内存分布
               </a>
             
           </div>
@@ -487,10 +522,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/14/jdbc-connection-excute-sql/" rel="prev" title="使用jdbc进行数据简单操作">
-                使用jdbc进行数据简单操作 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -641,7 +672,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的直接子类"><span class="nav-number">2.</span> <span class="nav-text">常用的直接子类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用法与预览"><span class="nav-number">3.</span> <span class="nav-text">用法与预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单来实践下"><span class="nav-number">4.</span> <span class="nav-text">简单来实践下</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#jvm垃圾回收"><span class="nav-number">1.</span> <span class="nav-text">jvm垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#如何判断对象是否已经死去，可以回收？"><span class="nav-number">1.0.1.</span> <span class="nav-text">如何判断对象是否已经死去，可以回收？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#垃圾收集算法有哪些呢？"><span class="nav-number">1.0.2.</span> <span class="nav-text">垃圾收集算法有哪些呢？</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-标记-清除算法"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">1.标记-清除算法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-复制算法"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">2.复制算法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-标记-整理算法"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">3.标记-整理算法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#垃圾回收器有哪些？"><span class="nav-number">1.0.3.</span> <span class="nav-text">垃圾回收器有哪些？</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-Serial收集器（最古老）"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">1.Serial收集器（最古老）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-ParNew收集器"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">2.ParNew收集器</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-Parallel-Scavenge收集器"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">3.Parallel Scavenge收集器</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-Parallel-Old收集器"><span class="nav-number">1.0.3.4.</span> <span class="nav-text">4.Parallel Old收集器</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-CMS收集器concurrent-mark-sweep"><span class="nav-number">1.0.3.5.</span> <span class="nav-text">5.CMS收集器concurrent mark sweep</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-G1收集器（garbage-first）"><span class="nav-number">1.0.3.6.</span> <span class="nav-text">6.G1收集器（garbage first）</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
