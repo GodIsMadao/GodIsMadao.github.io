@@ -90,46 +90,52 @@
 <meta name="description" content="Title
 
 
-    body {
-        background: #eeeeee;
-        margin: 0;
-        padding: 0;
-    }
-    #canvas {
-        background: #ffffff;
-        border: 1px solid #ccc;
-        box-sizing:">
+
+    当前浏览器暂不支持canvas，请更换浏览器之后再试一试
+
+
+
+    
+     window.onload = function(){
+         var canvas = document.getElementById(&quot;canvas&quot;)
+
+         canvas.height = 768
+         canvas.wid">
 <meta property="og:type" content="website">
 <meta property="og:title" content="GodIsMadao's blog">
-<meta property="og:url" content="http://saintyun.cn/canvas/snake.html">
+<meta property="og:url" content="http://saintyun.cn/canvas/arc.html">
 <meta property="og:site_name" content="GodIsMadao's blog">
 <meta property="og:description" content="Title
 
 
-    body {
-        background: #eeeeee;
-        margin: 0;
-        padding: 0;
-    }
-    #canvas {
-        background: #ffffff;
-        border: 1px solid #ccc;
-        box-sizing:">
-<meta property="og:updated_time" content="2018-08-15T01:05:07.377Z">
+
+    当前浏览器暂不支持canvas，请更换浏览器之后再试一试
+
+
+
+    
+     window.onload = function(){
+         var canvas = document.getElementById(&quot;canvas&quot;)
+
+         canvas.height = 768
+         canvas.wid">
+<meta property="og:updated_time" content="2018-02-12T13:51:18.688Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GodIsMadao's blog">
 <meta name="twitter:description" content="Title
 
 
-    body {
-        background: #eeeeee;
-        margin: 0;
-        padding: 0;
-    }
-    #canvas {
-        background: #ffffff;
-        border: 1px solid #ccc;
-        box-sizing:">
+
+    当前浏览器暂不支持canvas，请更换浏览器之后再试一试
+
+
+
+    
+     window.onload = function(){
+         var canvas = document.getElementById(&quot;canvas&quot;)
+
+         canvas.height = 768
+         canvas.wid">
 
 
 
@@ -157,7 +163,7 @@
 
 
 
-  <link rel="canonical" href="http://saintyun.cn/canvas/snake.html"/>
+  <link rel="canonical" href="http://saintyun.cn/canvas/arc.html"/>
 
 
 
@@ -325,214 +331,36 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<style>
-    body {
-        background: #eeeeee;
-        margin: 0;
-        padding: 0;
-    }
-    #canvas {
-        background: #ffffff;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-        cursor: pointer;
-    }
-</style>
 <body>
-<canvas id="canvas" width="800" height="800"></canvas>
-<button onclick="clearInterval(inter)">时间静止</button>
-<button onclick="updateStatus(1)">UP</button>
-<button onclick="updateStatus(2)">DOWN</button>
-<button onclick="updateStatus(3)">LEFT</button>
-<button onclick="updateStatus(4)">RIGHT</button>
+<canvas id="canvas" style="border:1px solid #aaa;display:block;margin:50px auto;">
+    当前浏览器暂不支持canvas，请更换浏览器之后再试一试
+</canvas>
 </body>
 <script>
-//    keyCode 37 = Left
-//    keyCode 38 = Up
-//    keyCode 39 = Right
-//    keyCode count_y = Down
-    var canvas = document.getElementById('canvas');
-    context = canvas.getContext('2d');
-    count_x = context.canvas.width/20;
-    count_y = context.canvas.height/20;
-    //stepx:x方向宽度 stepy:y方向宽度
-    //随机数 保证不在 数组x,y范围内
-    //count_x*count_y的网格
-    initx = Math.floor(Math.random()*count_x+1);
-    inity = Math.floor(Math.random()*count_y+1);
+    <!--绘制圆弧-->
+     window.onload = function(){
+         var canvas = document.getElementById("canvas")
 
-    var array_x = [5,5,6,7,8,9,9];
-    var array_y = [4,5,5,5,5,5,6];
-    //默认往右方向
-    var direction = 4
-    var totaly=1;var totalx = 1;
-
-    document.onkeydown=function(event){
-        var e = event || window.event || arguments.callee.caller.arguments[0];
-        if(e && e.keyCode==38){ // 按 up
-            //要做的事情
-            direction = 1
-        }
-        if(e && e.keyCode==40){ // 按 down
-            //要做的事情
-            direction = 2
-        }
-        if(e && e.keyCode==37){ // 按 left
-            //要做的事情
-            direction = 3
-        }
-        if(e && e.keyCode==39){ // 按 right
-            //要做的事情
-            direction = 4
-        }
-    };
-
-    function drawGrid(color, stepx, stepy) {
-        totaly=totalx=1;
-        context.save()
-        context.fillStyle = 'white';
-//        console.log(context);
-        context.fillRect(0, 0, context.canvas.width, context.canvas.height);
-//        context.lineWidth = 0.5;
-        context.strokeStyle = 'white';
-//        context.strokeStyle = color;
-        for (var i = stepx; i < context.canvas.width; i += stepx) {
-            context.beginPath();
-            context.moveTo(i, 0);
-            context.lineTo(i, context.canvas.height);
-            context.closePath();
-            context.stroke();
-            totalx ++;
-        }
-        for (var j = stepy; j < context.canvas.height; j += stepy) {
-            context.beginPath();
-            context.moveTo(0, j);
-            context.lineTo(context.canvas.width, j);
-            context.closePath();
-            context.stroke();
-            totaly ++;
-        }
-        context.restore();
-//        console.log(totalx+";"+totaly)
-    }
-
-    //initx,inity 出生地横纵坐标
+         canvas.height = 768
+         canvas.width = 1024
+         var context = canvas.getContext("2d")
 
 
-    function initSnake(color,stepx,stepy){
-        for(var i=0;i<array_x.length;i++){
-            context.fillStyle = color;
-            context.fillRect(array_x[i]*stepx,array_y[i]*stepy,stepx,stepy);
-        }
-    }
+         context.lineWidth = 5
+         context.strokeStyle = "#005588"
+         for(var i=0; i < 10;i++) {
+             context.beginPath()
+             context.arc(50 + i*100, 60, 40, 0, 2*Math.PI*(i+1)/10)
+             context.closePath()
+             context.stroke()
+         }
 
-    function updateStatus(status){
-        direction = status;
-    }
-
-    function move(color,stepx,stepy,direction){
-//        initSnake('white',20,20);
-        //把最后一个涂成白色即可
-        context.fillStyle = 'white';
-        context.fillRect(array_x[0]*stepx,array_y[0]*stepy,stepx,stepy);
-        //数组的移动 与覆盖
-//        initx ++;
-        //  索引即坐标?
-        //第一个移动，后面沿着前一个的轨迹移动
-//        console.log("==array_x=="+array_x)
-//        console.log("==array_y=="+array_y)
-        for(var i=0;i<array_x.length-1;i++){
-            array_x[i] = array_x[i+1];
-            array_y[i] = array_y[i+1];
-        }
-        switch (direction){
-            case 1:
-                array_y[array_x.length-1]--;
-                break;
-            case 2:
-                array_y[array_x.length-1]++;
-                break;
-            case 3:
-                array_x[array_x.length-1]--;
-                break;
-            case 4:
-                array_x[array_x.length-1]++;
-                break;
-            default:
-                array_x[array_x.length-1]++;
-                break;
-        }
-//        console.log("test+++"+array_x[array_x.length-1])
-        if(array_x[array_x.length-1]<0){
-            array_x[array_x.length-1]=count_x+array_x[array_x.length-1];
-        }
-        if(array_y[array_x.length-1]<0){
-            array_y[array_x.length-1]=count_y+array_y[array_x.length-1];
-        }
-        if(array_x[array_x.length-1]>count_x){
-            array_x[array_x.length-1]=count_x-array_x[array_x.length-1];
-        }
-        if(array_y[array_x.length-1]>count_y){
-            array_y[array_x.length-1]=count_y-array_y[array_x.length-1];
-        }
-        //碰撞检测
-        //1.数组array_x[0] in array[1-n] && array_y[0] in array_y[1-n]
-//        console.log(array_x[array_x.length-1]+":"+array_y[array_x.length-1]);
-        if(checkDuplicate(array_x[array_x.length-1],array_y[array_y.length-1],array_x,array_y)){
-            clearInterval(inter);
-            alert("game over");
-        }
-        //2.碰到了豆豆，数组头加1/尾部加1 不用被覆盖
-        if(checkDouDou(initx,inity,array_x,array_y)){
-            array_x.push(initx);
-            array_y.push(inity);
-            context.fillStyle = color;
-            context.fillRect(initx*stepx,inity*stepy,stepx,stepy);
-            initx = Math.floor(Math.random()*count_x+1);
-            inity = Math.floor(Math.random()*count_y+1);
-            initDouDou(8,'lightblue',initx,inity,20,20)
-        }else{
-            initSnake(color,20,20);
-        }
-        console.log("snake length:"+array_x.length)
-    }
-
-    //玩法：时间逐步 加快
-
-    //蛇跑出屏幕外的循环判断
-    //x:-1 -> count_x+-1
-
-    function initDouDou(radius,fillcolor,x,y,stepx,stepy){
-        context.fillStyle = fillcolor;
-        context.strokeStyle = fillcolor;
-        context.beginPath();
-        context.arc(x*stepx+stepx/2, y*stepy+stepy/2, radius, 0, 2*Math.PI, true);
-        context.closePath();
-        context.stroke();
-        context.fill();
-    }
-
-    function checkDouDou(douX,douY,arr_x,arr_y){
-        if(arr_x[arr_x.length-1]==douX&&arr_y[arr_y.length-1]==douY)return true;
-        else return false;
-    }
-
-    function checkDuplicate(value1,value2,arr1,arr2){
-        for(var i = 0; i < arr1.length-1; i++){
-            if(value1 === arr1[i]&&value2 == arr2[i]){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    drawGrid('#ccc', 20, 20);
-    initSnake('orange',20,20);
-    var inter = setInterval("move('orange',20,20,direction)",250);
-
-    console.log("（"+initx+","+inity+"）")
-    //初始化豆豆
-    initDouDou(8,'lightblue',initx,inity,20,20)
+         for(var i=0; i < 10;i++) {
+             context.beginPath()
+             context.arc(50 + i*100, 180, 40, 0, 2*Math.PI*(i+1)/10)
+             context.stroke()
+         }
+     }
 </script>
 </html>
     
