@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="GodIsMadao's blog">
 <meta property="og:description" content="jvm垃圾回收堆分为新生代、老年代，方法区在jdk1.7以及之前也被成为永久代(PermGen space)
  任何对象一生只会调用一次finalize()方法，在此方法内，如果又被引用，则可以存活">
-<meta property="og:updated_time" content="2018-08-15T14:28:52.951Z">
+<meta property="og:updated_time" content="2018-08-15T14:33:04.140Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM--垃圾回收机制">
 <meta name="twitter:description" content="jvm垃圾回收堆分为新生代、老年代，方法区在jdk1.7以及之前也被成为永久代(PermGen space)
@@ -386,7 +386,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  866
+                  856
                 </span>
               
 
@@ -421,32 +421,32 @@
       
 
       
-        <h3 id="jvm垃圾回收"><a href="#jvm垃圾回收" class="headerlink" title="jvm垃圾回收"></a>jvm垃圾回收</h3><p>堆分为新生代、老年代，方法区在jdk1.7以及之前也被成为永久代(PermGen space)</p>
+        <h1 id="jvm垃圾回收"><a href="#jvm垃圾回收" class="headerlink" title="jvm垃圾回收"></a>jvm垃圾回收</h1><p>堆分为新生代、老年代，方法区在jdk1.7以及之前也被成为永久代(PermGen space)</p>
 <p> 任何对象一生只会调用一次finalize()方法，在此方法内，如果又被引用，则可以存活</p>
 <a id="more"></a>
-<h5 id="如何判断对象是否已经死去，可以回收？"><a href="#如何判断对象是否已经死去，可以回收？" class="headerlink" title="如何判断对象是否已经死去，可以回收？"></a>如何判断对象是否已经死去，可以回收？</h5><p>1.计数法（最古老）</p>
+<h2 id="如何判断对象是否已经死去，可以回收？"><a href="#如何判断对象是否已经死去，可以回收？" class="headerlink" title="如何判断对象是否已经死去，可以回收？"></a>如何判断对象是否已经死去，可以回收？</h2><p>1.计数法（最古老）</p>
 <p>计数法针对循环引用没用</p>
 <p>2.GcRoots方法 可达性分析算法</p>
 <p>通过判断每个引用到GcRoots根节点的可达性来判断是否回收该引用</p>
-<h5 id="垃圾收集算法有哪些呢？"><a href="#垃圾收集算法有哪些呢？" class="headerlink" title="垃圾收集算法有哪些呢？"></a>垃圾收集算法有哪些呢？</h5><h6 id="1-标记-清除算法"><a href="#1-标记-清除算法" class="headerlink" title="1.标记-清除算法"></a>1.标记-清除算法</h6><p>应用于老年代</p>
+<h2 id="垃圾收集算法有哪些？"><a href="#垃圾收集算法有哪些？" class="headerlink" title="垃圾收集算法有哪些？"></a>垃圾收集算法有哪些？</h2><h3 id="标记-清除算法"><a href="#标记-清除算法" class="headerlink" title="标记-清除算法"></a>标记-清除算法</h3><p>应用于老年代</p>
 <p>会产生内存碎片</p>
-<h6 id="2-复制算法"><a href="#2-复制算法" class="headerlink" title="2.复制算法"></a>2.复制算法</h6><p>应用于新生代，小，gc操作频繁，快</p>
+<h3 id="复制算法"><a href="#复制算法" class="headerlink" title="复制算法"></a>复制算法</h3><p>应用于新生代，小，gc操作频繁，快</p>
 <p>新生代又分为 eden区与survivor区（一般有2个）默认比例为8:1，eden区大</p>
 <p>将要回收的内存从eden区与其中一个survivor赋值到另外一个survivor区中，如果不够大，则可能需要老年代进行分配担保，如果老年代也装不下，则报内存溢出错误</p>
-<h6 id="3-标记-整理算法"><a href="#3-标记-整理算法" class="headerlink" title="3.标记-整理算法"></a>3.标记-整理算法</h6><p>应用于老年代</p>
+<h3 id="标记-整理算法"><a href="#标记-整理算法" class="headerlink" title="标记-整理算法"></a>标记-整理算法</h3><p>应用于老年代</p>
 <p>与标记-清除算法不同的是，将内存块标记，回收后，会有一个存活内存的整理过程，则从一端移动到另一端</p>
-<h5 id="垃圾回收器有哪些？"><a href="#垃圾回收器有哪些？" class="headerlink" title="垃圾回收器有哪些？"></a>垃圾回收器有哪些？</h5><h6 id="1-Serial收集器（最古老）"><a href="#1-Serial收集器（最古老）" class="headerlink" title="1.Serial收集器（最古老）"></a>1.Serial收集器（最古老）</h6><p>单线程（回收线程与用户现场不并行）</p>
+<h2 id="垃圾回收器有哪些？"><a href="#垃圾回收器有哪些？" class="headerlink" title="垃圾回收器有哪些？"></a>垃圾回收器有哪些？</h2><h3 id="Serial收集器（最古老）"><a href="#Serial收集器（最古老）" class="headerlink" title="Serial收集器（最古老）"></a>Serial收集器（最古老）</h3><p>单线程（回收线程与用户现场不并行）</p>
 <p>stop the world</p>
-<h6 id="2-ParNew收集器"><a href="#2-ParNew收集器" class="headerlink" title="2.ParNew收集器"></a>2.ParNew收集器</h6><p>serial的多线程实现方式</p>
+<h3 id="ParNew收集器"><a href="#ParNew收集器" class="headerlink" title="ParNew收集器"></a>ParNew收集器</h3><p>serial的多线程实现方式</p>
 <p>新生代</p>
-<h6 id="3-Parallel-Scavenge收集器"><a href="#3-Parallel-Scavenge收集器" class="headerlink" title="3.Parallel Scavenge收集器"></a>3.Parallel Scavenge收集器</h6><p>新生代</p>
+<h3 id="Parallel-Scavenge收集器"><a href="#Parallel-Scavenge收集器" class="headerlink" title="Parallel Scavenge收集器"></a>Parallel Scavenge收集器</h3><p>新生代</p>
 <p>针对提高吞吐量设计，提高cpu资源利用率</p>
 <p>标记-整理算法</p>
-<h6 id="4-Parallel-Old收集器"><a href="#4-Parallel-Old收集器" class="headerlink" title="4.Parallel Old收集器"></a>4.Parallel Old收集器</h6><p>Parallel Scavenge收集器的老年代版本</p>
+<h3 id="Parallel-Old收集器"><a href="#Parallel-Old收集器" class="headerlink" title="Parallel Old收集器"></a>Parallel Old收集器</h3><p>Parallel Scavenge收集器的老年代版本</p>
 <p>标记-整理算法</p>
-<h6 id="5-CMS收集器concurrent-mark-sweep"><a href="#5-CMS收集器concurrent-mark-sweep" class="headerlink" title="5.CMS收集器concurrent mark sweep"></a>5.CMS收集器concurrent mark sweep</h6><p>基于标记-清除算法</p>
+<h3 id="CMS收集器concurrent-mark-sweep"><a href="#CMS收集器concurrent-mark-sweep" class="headerlink" title="CMS收集器concurrent mark sweep"></a>CMS收集器concurrent mark sweep</h3><p>基于标记-清除算法</p>
 <p>第一次标记-》并发标记（与用户线程并发）-》重新标记-》并行清除（与用户线程并发）</p>
-<h6 id="6-G1收集器（garbage-first）"><a href="#6-G1收集器（garbage-first）" class="headerlink" title="6.G1收集器（garbage first）"></a>6.G1收集器（garbage first）</h6><blockquote>
+<h3 id="G1收集器（garbage-first）"><a href="#G1收集器（garbage-first）" class="headerlink" title="G1收集器（garbage first）"></a>G1收集器（garbage first）</h3><blockquote>
 <p>G1收集器是一款面向服务端应用的垃圾收集器。HotSpot团队赋予它的使命是在未来替换掉JDK1.5中发布的CMS收集器。与其他GC收集器相比，G1具备如下特点：</p>
 <ol>
 <li>并行与并发：G1能更充分的利用CPU，多核环境下的硬件优势来缩短stop the world的停顿时间。</li>
@@ -658,7 +658,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#jvm垃圾回收"><span class="nav-number">1.</span> <span class="nav-text">jvm垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#如何判断对象是否已经死去，可以回收？"><span class="nav-number">1.0.1.</span> <span class="nav-text">如何判断对象是否已经死去，可以回收？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#垃圾收集算法有哪些呢？"><span class="nav-number">1.0.2.</span> <span class="nav-text">垃圾收集算法有哪些呢？</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-标记-清除算法"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">1.标记-清除算法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-复制算法"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">2.复制算法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-标记-整理算法"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">3.标记-整理算法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#垃圾回收器有哪些？"><span class="nav-number">1.0.3.</span> <span class="nav-text">垃圾回收器有哪些？</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-Serial收集器（最古老）"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">1.Serial收集器（最古老）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-ParNew收集器"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">2.ParNew收集器</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-Parallel-Scavenge收集器"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">3.Parallel Scavenge收集器</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-Parallel-Old收集器"><span class="nav-number">1.0.3.4.</span> <span class="nav-text">4.Parallel Old收集器</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-CMS收集器concurrent-mark-sweep"><span class="nav-number">1.0.3.5.</span> <span class="nav-text">5.CMS收集器concurrent mark sweep</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-G1收集器（garbage-first）"><span class="nav-number">1.0.3.6.</span> <span class="nav-text">6.G1收集器（garbage first）</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#jvm垃圾回收"><span class="nav-number">1.</span> <span class="nav-text">jvm垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何判断对象是否已经死去，可以回收？"><span class="nav-number">1.1.</span> <span class="nav-text">如何判断对象是否已经死去，可以回收？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾收集算法有哪些？"><span class="nav-number">1.2.</span> <span class="nav-text">垃圾收集算法有哪些？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标记-清除算法"><span class="nav-number">1.2.1.</span> <span class="nav-text">标记-清除算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制算法"><span class="nav-number">1.2.2.</span> <span class="nav-text">复制算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标记-整理算法"><span class="nav-number">1.2.3.</span> <span class="nav-text">标记-整理算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾回收器有哪些？"><span class="nav-number">1.3.</span> <span class="nav-text">垃圾回收器有哪些？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Serial收集器（最古老）"><span class="nav-number">1.3.1.</span> <span class="nav-text">Serial收集器（最古老）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ParNew收集器"><span class="nav-number">1.3.2.</span> <span class="nav-text">ParNew收集器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parallel-Scavenge收集器"><span class="nav-number">1.3.3.</span> <span class="nav-text">Parallel Scavenge收集器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parallel-Old收集器"><span class="nav-number">1.3.4.</span> <span class="nav-text">Parallel Old收集器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CMS收集器concurrent-mark-sweep"><span class="nav-number">1.3.5.</span> <span class="nav-text">CMS收集器concurrent mark sweep</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#G1收集器（garbage-first）"><span class="nav-number">1.3.6.</span> <span class="nav-text">G1收集器（garbage first）</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
