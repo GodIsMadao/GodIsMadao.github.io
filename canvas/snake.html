@@ -1,0 +1,844 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Title
+
+
+    body {
+        background: #eeeeee;
+        margin: 0;
+        padding: 0;
+    }
+    #canvas {
+        background: #ffffff;
+        border: 1px solid #ccc;
+        box-sizing:">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GodIsMadao's blog">
+<meta property="og:url" content="http://saintyun.cn/canvas/snake.html">
+<meta property="og:site_name" content="GodIsMadao's blog">
+<meta property="og:description" content="Title
+
+
+    body {
+        background: #eeeeee;
+        margin: 0;
+        padding: 0;
+    }
+    #canvas {
+        background: #ffffff;
+        border: 1px solid #ccc;
+        box-sizing:">
+<meta property="og:updated_time" content="2018-08-15T00:40:49.257Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GodIsMadao's blog">
+<meta name="twitter:description" content="Title
+
+
+    body {
+        background: #eeeeee;
+        margin: 0;
+        padding: 0;
+    }
+    #canvas {
+        background: #ffffff;
+        border: 1px solid #ccc;
+        box-sizing:">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://saintyun.cn/canvas/snake.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+     | GodIsMadao's blog
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GodIsMadao's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Fighting!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            about
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-canvas">
+          <a href="/canvas" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-paint-brush"></i> <br />
+            
+            canvas
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline"></h1>
+
+
+
+</header>
+
+    
+    
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body {
+        background: #eeeeee;
+        margin: 0;
+        padding: 0;
+    }
+    #canvas {
+        background: #ffffff;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+</style>
+<body>
+<canvas id="canvas" width="800" height="800"></canvas>
+<button onclick="clearInterval(inter)">时间静止</button>
+<button onclick="updateStatus(1)">UP</button>
+<button onclick="updateStatus(2)">DOWN</button>
+<button onclick="updateStatus(3)">LEFT</button>
+<button onclick="updateStatus(4)">RIGHT</button>
+</body>
+<script>
+//    keyCode 37 = Left
+//    keyCode 38 = Up
+//    keyCode 39 = Right
+//    keyCode count_y = Down
+    var canvas = document.getElementById('canvas');
+    context = canvas.getContext('2d');
+    count_x = context.canvas.width/20;
+    count_y = context.canvas.height/20;
+    //stepx:x方向宽度 stepy:y方向宽度
+    //随机数 保证不在 数组x,y范围内
+    //count_x*count_y的网格
+    initx = Math.floor(Math.random()*count_x+1);
+    inity = Math.floor(Math.random()*count_y+1);
+
+    var array_x = [5,5,6,7,8,9,9];
+    var array_y = [4,5,5,5,5,5,6];
+    //默认往右方向
+    var direction = 4
+    var totaly=1;var totalx = 1;
+
+    document.onkeydown=function(event){
+        var e = event || window.event || arguments.callee.caller.arguments[0];
+        if(e && e.keyCode==38){ // 按 up
+            //要做的事情
+            direction = 1
+        }
+        if(e && e.keyCode==40){ // 按 down
+            //要做的事情
+            direction = 2
+        }
+        if(e && e.keyCode==37){ // 按 left
+            //要做的事情
+            direction = 3
+        }
+        if(e && e.keyCode==39){ // 按 right
+            //要做的事情
+            direction = 4
+        }
+    };
+
+    function drawGrid(color, stepx, stepy) {
+        totaly=totalx=1;
+        context.save()
+        context.fillStyle = 'white';
+//        console.log(context);
+        context.fillRect(0, 0, context.canvas.width, context.canvas.height);
+//        context.lineWidth = 0.5;
+        context.strokeStyle = 'white';
+//        context.strokeStyle = color;
+        for (var i = stepx; i < context.canvas.width; i += stepx) {
+            context.beginPath();
+            context.moveTo(i, 0);
+            context.lineTo(i, context.canvas.height);
+            context.closePath();
+            context.stroke();
+            totalx ++;
+        }
+        for (var j = stepy; j < context.canvas.height; j += stepy) {
+            context.beginPath();
+            context.moveTo(0, j);
+            context.lineTo(context.canvas.width, j);
+            context.closePath();
+            context.stroke();
+            totaly ++;
+        }
+        context.restore();
+//        console.log(totalx+";"+totaly)
+    }
+
+    //initx,inity 出生地横纵坐标
+
+
+    function initSnake(color,stepx,stepy){
+        for(var i=0;i<array_x.length;i++){
+            context.fillStyle = color;
+            context.fillRect(array_x[i]*stepx,array_y[i]*stepy,stepx,stepy);
+        }
+    }
+
+    function updateStatus(status){
+        direction = status;
+    }
+
+    function move(color,stepx,stepy,direction){
+//        initSnake('white',20,20);
+        //把最后一个涂成白色即可
+        context.fillStyle = 'white';
+        context.fillRect(array_x[0]*stepx,array_y[0]*stepy,stepx,stepy);
+        //数组的移动 与覆盖
+//        initx ++;
+        //  索引即坐标?
+        //第一个移动，后面沿着前一个的轨迹移动
+//        console.log("==array_x=="+array_x)
+//        console.log("==array_y=="+array_y)
+        for(var i=0;i<array_x.length-1;i++){
+            array_x[i] = array_x[i+1];
+            array_y[i] = array_y[i+1];
+        }
+        switch (direction){
+            case 1:
+                array_y[array_x.length-1]--;
+                break;
+            case 2:
+                array_y[array_x.length-1]++;
+                break;
+            case 3:
+                array_x[array_x.length-1]--;
+                break;
+            case 4:
+                array_x[array_x.length-1]++;
+                break;
+            default:
+                array_x[array_x.length-1]++;
+                break;
+        }
+        if(array_x[array_x.length-1]<0)array_x[array_x.length-1]=count_x+array_x[array_x.length-1];
+        if(array_y[array_x.length-1]<0)array_y[array_x.length-1]=count_y+array_y[array_x.length-1];
+        //碰撞检测
+        //1.数组array_x[0] in array[1-n] && array_y[0] in array_y[1-n]
+//        console.log(array_x[array_x.length-1]+":"+array_y[array_x.length-1]);
+        if(checkDuplicate(array_x[array_x.length-1],array_y[array_y.length-1],array_x,array_y)){
+            clearInterval(inter);
+            alert("game over");
+        }
+        //2.碰到了豆豆，数组头加1/尾部加1 不用被覆盖
+        if(checkDouDou(initx,inity,array_x,array_y)){
+            array_x.push(initx);
+            array_y.push(inity);
+            context.fillStyle = color;
+            context.fillRect(initx*stepx,inity*stepy,stepx,stepy);
+            initx = Math.floor(Math.random()*count_x+1);
+            inity = Math.floor(Math.random()*count_y+1);
+            initDouDou(8,'lightblue',initx,inity,20,20)
+        }else{
+            initSnake(color,20,20);
+        }
+    }
+
+    //玩法：时间逐步 加快
+
+    //蛇跑出屏幕外的循环判断
+    //x:-1 -> count_x+-1
+
+    function initDouDou(radius,fillcolor,x,y,stepx,stepy){
+        context.fillStyle = fillcolor;
+        context.strokeStyle = fillcolor;
+        context.beginPath();
+        context.arc(x*stepx+stepx/2, y*stepy+stepy/2, radius, 0, 2*Math.PI, true);
+        context.closePath();
+        context.stroke();
+        context.fill();
+    }
+
+    function checkDouDou(douX,douY,arr_x,arr_y){
+        if(arr_x[arr_x.length-1]==douX&&arr_y[arr_y.length-1]==douY)return true;
+        else return false;
+    }
+
+    function checkDuplicate(value1,value2,arr1,arr2){
+        for(var i = 0; i < arr1.length-1; i++){
+            if(value1 === arr1[i]&&value2 == arr2[i]){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    drawGrid('#ccc', 20, 20);
+    initSnake('orange',20,20);
+    var inter = setInterval("move('orange',20,20,direction)",250);
+
+    console.log("（"+initx+","+inity+"）")
+    //初始化豆豆
+    initDouDou(8,'lightblue',initx,inity,20,20)
+</script>
+</html>
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/Gintama.jpg"
+               alt="Saint Yun" />
+          <p class="site-author-name" itemprop="name">Saint Yun</p>
+           
+              <p class="site-description motion-element" itemprop="description">Talk is Cheap</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/GodIsMadao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/home?id=3055161" target="_blank" title="YunMusic">
+                  
+                    <i class="fa fa-fw fa-music"></i>
+                  
+                  YunMusic
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+    <div id="music163player">
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=29572804&auto=0&height=66"></iframe>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Saint Yun</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "ffe62070bdf44693b4ce628afac84fd6",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+</body>
+</html>

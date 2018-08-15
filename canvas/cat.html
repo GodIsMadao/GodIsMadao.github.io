@@ -1,0 +1,580 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>catch cat game</title>
+    <link type="text/css" rel="stylesheet" href="game.css">
+</head>
+<body>
+<div id="container" style="opacity: 0">
+<div style="float: left;">
+    <canvas id="canvas" width="600px" height="600px" style=";border: 1px solid honeydew;">你的浏览器不支持canvas，请跟换其他浏览器试一试
+    </canvas>
+    <img id="myimage" src="image/stand_cat1.png">
+</div>
+<div style="float: left;margin-left:44px;height: 600px;">
+    <h1 id="tips">快抓住那只喵！</h1>
+    <a class="action-button shadow animate blue" onclick="endop()">play again</a>
+</div>
+</div>
+<script type="text/javascript">
+// 构建图
+// 顶点类
+function Vertex(label){
+    this.label = label;
+    // this.distance = distance;
+}
+// 图类
+function Graph(v){
+    this.vertices = v;
+    this.edges = 0;
+    this.adj = [];
+    this.marked = []    
+// 二维邻接数组初始化
+    for(var i = 0;i<this.vertices;++i){
+        this.adj[i] = [];
+        this.marked[i] = false;
+    }
+    this.edgeTo = [];
+    this.addEdge = addEdge;
+    this.showGraph = showGraph;
+    // 深度优先算法
+    this.listBorder = listBorder;
+    this.dfs = dfs;
+    this.removeVertex = removeVertex;
+    this.init = init;
+    this.bfs = bfs;
+    this.getpath=getpath
+    this.num = num;
+    this.remarker = remarker;
+}
+
+function addEdge(v, w) {
+    this.adj[v].push(w);
+    this.adj[w].push(v);
+    this.edges++;
+}
+
+function removeVertex(v){
+    // 1.删除v的邻接表的邻接表里的v
+    this.adj[v].forEach(function(value){
+        for(var w=0;w<this.adj[value].length;++w){
+            if(this.adj[value][w] == v){
+                this.adj[value].splice(w,1);
+            }
+        }
+    },this)
+    //2.删除v的邻接表
+    this.adj[v].splice(0,this.adj[v].length);
+}
+
+Array.prototype.indexOf = function(el){
+    for (var i=0,n=this.length; i<n; i++){
+        if (this[i] === el){
+            return i;
+        }
+    }
+    return -1;
+}
+
+function showGraph(){
+    for (var i = 0; i < this.vertices; ++i) {
+        str = i + "->";
+        for (var j = 0; j < this.vertices; ++j) {
+            if (this.adj[i][j] != undefined)
+                str += this.adj[i][j] + ' ';
+        }
+        console.log(str)
+    }
+}
+
+function dfs(v){
+// 用于输出的 if 语句在这里不是必须的
+    this.marked[v] = true;
+    if (this.adj[v] != undefined)
+        // console.log("visit vertex:"+v)
+    this.adj[v].forEach(function(value) {
+        if (!this.marked[value]) {
+            this.dfs(value);
+        }
+    }, this);
+}
+
+// m * m =v
+function init(m){
+    var v = m*m;
+    for(var i=0;i<v;i++){
+        // 去重复
+        // 判断奇数行还是偶数行
+        if(i+1<v&&i%m!=m-1){
+            this.addEdge(i,i+1);
+        }
+        if(i-1>=0&&i%m!=0){
+            this.addEdge(i,i-1);            
+        }
+        if(i-m>=0){
+            this.addEdge(i,i-m);
+        }
+        if(i-m+1>=0&&i-m+1>=Math.floor(i/m)*m){
+            this.addEdge(i,i-m+1);
+        }
+        if(i+m<v){
+            this.addEdge(i,i+m);            
+        }
+        
+        if(Math.floor(i/m)%2==0){
+            if(i+m-1<v&&i%m!=0){
+                this.addEdge(i,i+m-1);            
+            }
+        }else if(Math.floor(i/m)%2==1){
+            if(i+m+1<v&&i%m!=m-1){
+                this.addEdge(i,i+m+1);                                          
+            }
+        }
+        
+    }
+    //1.去重复操作  
+    for(var i=0;i<v;i++){
+        this.adj[i] = this.adj[i].unique();
+    } 
+    // 2.初始化时，从邻接数组里random m+1个，放入数组，遍历数组  remove m+1个顶点，变为不可访问
+    this.num = randomNum(m+1);
+    // console.log(this.num)
+    for (var j=0;j<this.num.length;j++){
+        this.removeVertex(this.num[j])
+    }
+}
+
+Array.prototype.contains = function (obj){
+  var i = this.length;
+  while (i--) {
+    if (this[i] === obj) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function randomNum(n){
+    var v = (n-1) *(n-1)-1
+    var m = []
+    while(m.length<n){
+        var number=parseInt(Math.random()*v);  
+        if(!m.contains(number)&&number!=60){
+            m.push(number)
+            arraynum.push(number)
+        }
+    }
+    return m
+}
+
+Array.prototype.unique = function(){
+    var res = []
+    var json = {}
+    for (var i=0;i<this.length;i++){
+        if(!json[this[i]]){
+            res.push(this[i])
+            json[this[i]]=1
+        }
+    }
+    return res
+}
+
+// 列出边界点的数组
+function listBorder(m){
+
+    for(var i =0;i<m;i++){
+        if(this.adj[i * m].length!=0) {
+            borderVertext.push(i * m);
+        }
+        if(this.adj[(i + 1) * m - 1].length!=0){
+            borderVertext.push((i + 1) * m - 1)
+        }
+    }
+    for(var i = 1;i<=m-2;i++){
+        if(this.adj[i].length!=0){
+            borderVertext.push(i)
+        }
+    }
+    for(var i=m*(m-1)+1;i<=m*m-1;i++){
+        if(this.adj[i].length!=0){
+            borderVertext.push(i);
+        }
+    }
+}
+
+
+//再列出到边界点的最短距离算法
+// 使用bfs求解无权无向图的最短路径
+// a为当前点的位置
+// length数组，路径或者得出下一步的最优解数组
+//广度优先
+//把最短路径和长度给我算出来
+function bfs(s){
+    arrlength[s] = 0
+    isInPath.splice(0)
+    var queue = [];//队列
+    this.marked[s] = true;
+    queue.push(s);    //添加到队尾,如果用unshift则会由右往左遍历，显示0 2 1 3 4   
+    while(queue.length > 0){  
+        var v = queue.shift();//从队首移除  
+        isInPath.push(v)
+        if(typeof(v) != 'string'){  
+            // console.log("Visited vertex:" + v);
+        };
+        for(var w of this.adj[v]){  
+            if(!this.marked[w]){  
+                this.edgeTo[w] = v;
+                arrlength[w] = arrlength[v]+1
+                this.marked[w] = true;
+                queue.push(w);  
+            }
+        }
+    }
+}
+
+//复位marker
+function remarker() {
+    for(var i =0;i<this.vertices;i++){
+        this.marked[i] = false;
+    }
+}
+
+function getpath(arr,local){
+//    宽度优先,他相同length 的 path是同级的?
+//    找到第一个属于bordervertex的即可
+    var count;
+    var minlength = arrlength[borderVertext[0]];
+    var minindex = 0;
+    // console.log(arrlength)
+    /*
+    * todo 会有问题
+    * */
+    for(var i=1;i<borderVertext.length;i++){
+        if(minlength>arrlength[borderVertext[i]])
+        {
+            minlength = arrlength[borderVertext[i]];
+            minindex = i;
+        }
+    }
+    console.log(borderVertext)
+    console.log("minidnex:"+minindex+" minnum:"+borderVertext[minindex])
+    console.log("minlength:"+minlength)
+    console.log(arrlength)
+    for(var i=0;i<arr.length;i++){
+        //不能使用第一个,第一个不一定是最优解
+        //需要找到最短长度的那个边缘节点
+        if(arr[i]==borderVertext[minindex]){
+            count = arr[i];
+            break;
+        }
+    }
+    while(this.edgeTo[count]!=local&&this.edgeTo[count]!=undefined){
+        count = this.edgeTo[count]
+    }
+    if(count!=undefined){
+        return count
+    }else{
+        return -1
+    }
+}
+
+// 数据填入 0~120个顶点
+// 1.首先121个点都默认
+//test
+var borderVertext = []
+var arraynum = []
+//已经点击的点
+var num = []
+var dfsarr = []
+//记录每一层的个数
+var floorcount = []
+//最短长度
+var arrlength = []
+//最短路径
+var path = []
+var isInPath = []
+var nextNode
+var finalNodenum
+
+
+
+
+</script>
+<script type="text/javascript">
+    var container = document.getElementById("container")
+    var tips = document.getElementById("tips")
+
+    function startop(){
+        var speed = 0.2;
+        var start = self.setInterval(function(){
+           container.style.opacity = speed.toString();
+            speed+=0.2;
+            console.log(speed)
+            if(speed>=1){
+                window.clearInterval(start)
+            }
+        },200)
+    }
+
+    function endop(){
+        var speed = parseInt(container.style.opacity);
+        var end = setInterval(function(){
+            container.style.opacity = speed.toString();
+            speed-=0.2;
+            console.log(speed)
+            if(speed<=0){
+                window.clearInterval(end)
+                location.reload()
+            }
+        },200)
+    }
+    window.onload  = function(){
+        startop()
+    }
+    var g = new Graph(121);
+    //    定义当前猫的位置的数组
+    var localvertex = 60
+    var prevertex
+
+    g.init(11);
+    g.listBorder(11);
+
+    var canvas = document.getElementById("canvas")
+    var ctx = canvas.getContext('2d')
+    var circle = {
+        x: 64,
+        y: 64,
+        r: 20
+    }
+    var imagelocation = {
+        x: 298,
+        y: 268
+    }
+    var arr = []
+    var myimage = document.getElementById("myimage")
+    myimage.style.position = "absolute";
+
+    myimage.style.left = imagelocation.x + "px";
+    myimage.style.top = imagelocation.y + "px";
+    myimage.src = 'image/stand_cat1.png'
+    for (var i = 0; i < 11; i++) {
+        for (var j = 0; j < 11; j++) {
+            if (i % 2 == 0) {
+                arr.push({
+                    x: circle.x + j * (2 * circle.r + 4),
+                    y: circle.y + i * (2 * circle.r + 4),
+                    r: 20,
+                    vertex: i * 11 + j
+                })
+            } else {
+                arr.push({
+                    x: circle.x + j * (2 * circle.r + 4) + 22,
+                    y: circle.y + i * (2 * circle.r + 4),
+                    r: 20,
+                    vertex: i * 11 + j
+                })
+            }
+        }
+    }
+    canvas.addEventListener('click', function (e) {
+        p = getEventPosition(e);
+        reDraw(p, ctx);
+//
+//      console.log(g.num)
+
+    }, false)
+    //    为了实现循环重绘，所以就要将图形的基本参数事先保存下来
+    //    点击重新绘制
+
+    //得到点击的坐标
+    function getEventPosition(ev) {
+        var x, y;
+        if (ev.layerX || ev.layerX == 0) {
+            x = ev.layerX;
+            y = ev.layerY;
+        } else if (ev.offsetX || ev.offsetX == 0) { // Opera
+            x = ev.offsetX;
+            y = ev.offsetY;
+        }
+        return {x: x, y: y};
+    }
+
+    //重绘
+    function reDraw(p, ctx) {
+        var whichObject = [];
+
+        for (var i = 0; i < arr.length; i++) {
+//            点击的不在当前 localvertex 圆下
+            if (p && (arr[i].x + arr[i].r) >= p.x && p.x >= arr[i].x - arr[i].r
+                && (arr[i].y + arr[i].r) >= p.y && p.y >= arr[i].y - arr[i].r
+                && i != localvertex&& !g.num.contains(i)) {
+                whichObject.push(i);
+                //每次点击一次,image坐标改变一次
+                ctx.fillStyle = '#728401';
+                ctx.beginPath();
+                ctx.arc(arr[i].x, arr[i].y, arr[i].r, 0, Math.PI * 2, true);
+                ctx.fill();
+                g.num.push(i)
+//                还有图片移动的6个方向的情况,第一次点击,反方向情况,之后根据路径来
+                //然后获取图片移动之后的位置!
+
+//                1.记录点击的位置 :i
+
+//              2.将其canvas颜色改变,
+
+//              3.将其图的顶点去除 相关数组
+//
+                g.removeVertex(i)
+                if (borderVertext.indexOf(i) != -1) {
+                    borderVertext.splice(borderVertext.indexOf(i), 1)
+                }
+//              console.log(borderVertext)
+                g.remarker()
+                if(borderVertext.contains(localvertex)){
+                    console.log("猫跑出去咯!")
+                    tips.innerHTML = "额,就差一点,猫跑出去咯!"
+                    myimage.style.display = 'none'
+                }else {
+                    g.bfs(localvertex)
+                    //   nextnode
+                    prevertex = localvertex
+                    localvertex = g.getpath(isInPath, localvertex)
+//                }
+                    if (localvertex != -1) {
+                        console.log("localvertex:" + localvertex + "prevertex:" + prevertex)
+//                解决每点击一次,往已点击数组里加
+//                偶数行奇数行问题
+//               优化!把imagelocation的操作单独列出6个方向操作
+                        if (localvertex == prevertex + 11) {
+                            if (Math.floor(prevertex / 11) % 2 == 0) {
+                                //斜向右下
+                                imagelocation = {
+                                    x: imagelocation.x + 22,
+                                    y: imagelocation.y + 44
+                                }
+                            } else {
+                                imagelocation = {
+                                    x: imagelocation.x - 22,
+                                    y: imagelocation.y + 44
+                                }
+                            }
+                        } else if (localvertex == prevertex + 10) {
+//                    斜向左下
+                            imagelocation = {
+                                x: imagelocation.x - 22,
+                                y: imagelocation.y + 44
+                            }
+                        } else if (localvertex == prevertex + 12) {
+                            //斜向右下
+                            imagelocation = {
+                                x: imagelocation.x + 22,
+                                y: imagelocation.y + 44
+                            }
+                        }
+                        else if (localvertex == prevertex - 12) {
+                            //
+                            imagelocation = {
+                                x: imagelocation.x - 22,
+                                y: imagelocation.y - 44
+                            }
+                        }
+                        else if (localvertex == prevertex + 1) {
+//                    向右
+                            imagelocation = {
+                                x: imagelocation.x + 44,
+                                y: imagelocation.y
+                            }
+                        } else if (localvertex == prevertex - 1) {
+//                    向左
+                            imagelocation = {
+                                x: imagelocation.x - 44,
+                                y: imagelocation.y
+                            }
+                        } else if (localvertex == prevertex - 11) {
+                            if (Math.floor(prevertex / 11) % 2 == 0) {
+//                    斜向右上
+                                imagelocation = {
+                                    x: imagelocation.x + 22,
+                                    y: imagelocation.y - 44
+                                }
+                            } else {
+                                imagelocation = {
+                                    x: imagelocation.x - 22,
+                                    y: imagelocation.y - 44
+                                }
+                            }
+                        } else if (localvertex == prevertex - 10) {
+                            imagelocation = {
+                                x: imagelocation.x + 22,
+                                y: imagelocation.y - 44
+                            }
+                        }
+
+                        myimage.style.left = imagelocation.x + "px"
+                        myimage.style.top = imagelocation.y + "px"
+                    }else{
+                        myimage.src='image/catch_cat.png'
+                        tips.innerHTML = "好耶！你抓住猫啦!"
+                        console.log("你抓住猫啦!")
+                    }
+                }
+                //注意图片所移动的位置 一定是没有点击过的 √
+//                到边界时候的处理
+//                包围起来,没有路走的处理
+                break;
+            }
+        }
+        //   接下来的问题是如何移动图片,或者是如何消除之前的图片
+
+    }
+    //    按照i*j = v
+    for (var i = 0; i < 11; ++i) {
+        for (var j = 0; j < 11; ++j) {
+//            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (g.num.contains(i * 11 + j)) {
+                ctx.fillStyle = '#728401';
+            } else {
+                ctx.fillStyle = '#ccff00';
+            }
+            if (i % 2 == 0) {
+                ctx.beginPath()
+                ctx.arc(circle.x + j * (2 * circle.r + 4), circle.y + i * (2 * circle.r + 4), circle.r, 0, Math.PI * 2, true)
+                ctx.fill()
+                ctx.beginPath()
+                ctx.fillStyle = 'black'
+                ctx.fillText(i * 11 + j, circle.x + j * (2 * circle.r + 4), circle.y + i * (2 * circle.r + 4));
+            } else {
+                ctx.beginPath()
+                ctx.arc(circle.x + j * (2 * circle.r + 4) + 22, circle.y + i * (2 * circle.r + 4), circle.r, 0, Math.PI * 2, true)
+                ctx.fill()
+                ctx.beginPath()
+                ctx.fillStyle = 'black'
+                ctx.fillText(i * 11 + j, circle.x + j * (2 * circle.r + 4) + 22, circle.y + i * (2 * circle.r + 4));
+            }
+        }
+    }
+
+
+
+
+    //如何计算当前点到周边点的距离以及下一个点的位置数组
+    //    g.showGraph();
+    //     bordervertext不正确
+    //    console.log(borderVertext)
+    //    对当前location点进行bfs
+    //    g.bfs(2)
+    //   nextnode
+    //    console.log(g.getpath(isInPath, 2))
+    //    console.log(isInPath)
+    //    console.log(g.edgeTo[60])
+    //    console.log(isInPath)
+    //    for(var i =0;i<borderVertext.length;i++){
+    //        if(isInPath.contains(borderVertext[i])){
+    //            console.log(borderVertext[i])
+    //        }
+    //    }
+</script>
+</body>
+</html>
