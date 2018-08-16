@@ -162,5 +162,5 @@ function render(cxt){
 function renderDigit(x,y,num,cxt){
     cxt.fillStyle = "rgb(0,102,153)"
 
-    console.log(digit)
+    // console.log(digit)
     for(var i=0;i

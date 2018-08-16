@@ -1,208 +1,895 @@
-<html lang="en">
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Title
+
+
+
+ 
+
+
+    
+        当前浏览器暂不支持canvas，请更换浏览器之后再试一试">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GodIsMadao's blog">
+<meta property="og:url" content="http://saintyun.cn/canvas/clockOne.html">
+<meta property="og:site_name" content="GodIsMadao's blog">
+<meta property="og:description" content="Title
+
+
+
+ 
+
+
+    
+        当前浏览器暂不支持canvas，请更换浏览器之后再试一试">
+<meta property="og:updated_time" content="2018-08-16T11:59:13.166Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GodIsMadao's blog">
+<meta name="twitter:description" content="Title
+
+
+
+ 
+
+
+    
+        当前浏览器暂不支持canvas，请更换浏览器之后再试一试">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://saintyun.cn/canvas/clockOne.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+     | GodIsMadao's blog
+  
+</title>
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GodIsMadao's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Fighting!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            about
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-canvas">
+          <a href="/canvas" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-paint-brush"></i> <br />
+            
+            canvas
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-visitors">
+          <a href="/visitor" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-eye"></i> <br />
+            
+            visitors
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-photo"></i> <br />
+            
+            photo
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline"></h1>
+
+
+
+</header>
+
+    
+    
+      <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body style="height:100%;width:100%">
 <script src="digit.js"></script>
-<!-- <script src="mycount.js"></script> -->
+ <script src="mycount.js"></script>
 <!--构建插件-->
-<div id="clock" style="height:200px;width: 300px;;">
-    <canvas id="canvas" style="height:100%;width:100%">
+<div id="clock" style="height:200px;width: 300px;">
+    <canvas id="canvas" style="height:100%;width:100%;margin-left:30%;">
         当前浏览器暂不支持canvas，请更换浏览器之后再试一试
     </canvas>
 </div>
 </body>
-<script>
-    /**
- * Created by Saintyun on 2018/2/12.
- */
-var WINDOW_WIDTH = 1024
-var WINDOW_HEIGHT = 768
-var RADIUS = 8
-var MARGIN_LEFT = 30;
-var MARGIN_TOP = 60;
+<!--<script>-->
+    <!--/**-->
+ <!--* Created by Saintyun on 2018/2/12.-->
+ <!--*/-->
+<!--var WINDOW_WIDTH = 1024-->
+<!--var WINDOW_HEIGHT = 768-->
+<!--var RADIUS = 8-->
+<!--var MARGIN_LEFT = 30;-->
+<!--var MARGIN_TOP = 60;-->
 
-//改成时钟显示
-// const endTime = new Date(2018,1,15,18,47,52)
-var curShowTimeSeconds = 0
+<!--//改成时钟显示-->
+<!--// const endTime = new Date(2018,1,15,18,47,52)-->
+<!--var curShowTimeSeconds = 0-->
 
-var balls = [];
-const colors = ["#33B5E5","#0099CC","#AA66CC","#9933CC","#99CC00","#669900","#FFBB33","#FF8800","#FF4444","#CC0000"]
+<!--var balls = [];-->
+<!--const colors = ["#33B5E5","#0099CC","#AA66CC","#9933CC","#99CC00","#669900","#FFBB33","#FF8800","#FF4444","#CC0000"]-->
 
-window.onload = function(){
-    WINDOW_WIDTH = document.getElementById("clock").clientWidth
-    WINDOW_HEIGHT = document.getElementById("clock").clientHeight
+<!--window.onload = function(){-->
+    <!--WINDOW_WIDTH = document.getElementById("clock").clientWidth-->
+    <!--WINDOW_HEIGHT = document.getElementById("clock").clientHeight-->
 
-    MARGIN_LEFT = Math.round(WINDOW_WIDTH /10);
-    RADIUS = Math.round(WINDOW_WIDTH * 4 / 5 / 108)-1
+    <!--MARGIN_LEFT = Math.round(WINDOW_WIDTH /10);-->
+    <!--RADIUS = Math.round(WINDOW_WIDTH * 4 / 5 / 108)-1-->
 
-    MARGIN_TOP = Math.round(WINDOW_HEIGHT /5);
+    <!--MARGIN_TOP = Math.round(WINDOW_HEIGHT /5);-->
 
-    var canvas = document.getElementById("canvas")
-    var context = canvas.getContext("2d")
+    <!--var canvas = document.getElementById("canvas")-->
+    <!--var context = canvas.getContext("2d")-->
 
-    canvas.width = WINDOW_WIDTH
-    canvas.height = WINDOW_HEIGHT
+    <!--canvas.width = WINDOW_WIDTH-->
+    <!--canvas.height = WINDOW_HEIGHT-->
 
-    curShowTimeSeconds = getCurrentShowTimeSeconds()
-    setInterval(function(){
-        render(context)
-        update()
-        // console.log(balls.length)
-    },50)
-}
+    <!--curShowTimeSeconds = getCurrentShowTimeSeconds()-->
+    <!--setInterval(function(){-->
+        <!--render(context)-->
+        <!--update()-->
+        <!--// console.log(balls.length)-->
+    <!--},50)-->
+<!--}-->
 
-//调整数据
-function update(){
-    var nextShowTimeSeconds = getCurrentShowTimeSeconds();
+<!--//调整数据-->
+<!--function update(){-->
+    <!--var nextShowTimeSeconds = getCurrentShowTimeSeconds();-->
 
-    var nextHours = parseInt( nextShowTimeSeconds / 3600);
-    var nextMinutes = parseInt( (nextShowTimeSeconds - nextHours * 3600)/60 )
-    var nextSeconds = nextShowTimeSeconds % 60
+    <!--var nextHours = parseInt( nextShowTimeSeconds / 3600);-->
+    <!--var nextMinutes = parseInt( (nextShowTimeSeconds - nextHours * 3600)/60 )-->
+    <!--var nextSeconds = nextShowTimeSeconds % 60-->
 
-    var curHours = parseInt( curShowTimeSeconds / 3600);
-    var curMinutes = parseInt( (curShowTimeSeconds - curHours * 3600)/60 )
-    var curSeconds = curShowTimeSeconds % 60
+    <!--var curHours = parseInt( curShowTimeSeconds / 3600);-->
+    <!--var curMinutes = parseInt( (curShowTimeSeconds - curHours * 3600)/60 )-->
+    <!--var curSeconds = curShowTimeSeconds % 60-->
 
-    if( nextSeconds != curSeconds ){
-        if( parseInt(curHours/10) != parseInt(nextHours/10) ){
-            addBalls( MARGIN_LEFT + 0 , MARGIN_TOP , parseInt(curHours/10) );
-        }
-        if( parseInt(curHours%10) != parseInt(nextHours%10) ){
-            addBalls( MARGIN_LEFT + 15*(RADIUS+1) , MARGIN_TOP , parseInt(curHours/10) );
-        }
+    <!--if( nextSeconds != curSeconds ){-->
+        <!--if( parseInt(curHours/10) != parseInt(nextHours/10) ){-->
+            <!--addBalls( MARGIN_LEFT + 0 , MARGIN_TOP , parseInt(curHours/10) );-->
+        <!--}-->
+        <!--if( parseInt(curHours%10) != parseInt(nextHours%10) ){-->
+            <!--addBalls( MARGIN_LEFT + 15*(RADIUS+1) , MARGIN_TOP , parseInt(curHours/10) );-->
+        <!--}-->
 
-        if( parseInt(curMinutes/10) != parseInt(nextMinutes/10) ){
-            addBalls( MARGIN_LEFT + 39*(RADIUS+1) , MARGIN_TOP , parseInt(curMinutes/10) );
-        }
-        if( parseInt(curMinutes%10) != parseInt(nextMinutes%10) ){
-            addBalls( MARGIN_LEFT + 54*(RADIUS+1) , MARGIN_TOP , parseInt(curMinutes%10) );
-        }
+        <!--if( parseInt(curMinutes/10) != parseInt(nextMinutes/10) ){-->
+            <!--addBalls( MARGIN_LEFT + 39*(RADIUS+1) , MARGIN_TOP , parseInt(curMinutes/10) );-->
+        <!--}-->
+        <!--if( parseInt(curMinutes%10) != parseInt(nextMinutes%10) ){-->
+            <!--addBalls( MARGIN_LEFT + 54*(RADIUS+1) , MARGIN_TOP , parseInt(curMinutes%10) );-->
+        <!--}-->
 
-        if( parseInt(curSeconds/10) != parseInt(nextSeconds/10) ){
-            addBalls( MARGIN_LEFT + 78*(RADIUS+1) , MARGIN_TOP , parseInt(curSeconds/10) );
-        }
-        if( parseInt(curSeconds%10) != parseInt(nextSeconds%10) ){
-            addBalls( MARGIN_LEFT + 93*(RADIUS+1) , MARGIN_TOP , parseInt(nextSeconds%10) );
-        }
+        <!--if( parseInt(curSeconds/10) != parseInt(nextSeconds/10) ){-->
+            <!--addBalls( MARGIN_LEFT + 78*(RADIUS+1) , MARGIN_TOP , parseInt(curSeconds/10) );-->
+        <!--}-->
+        <!--if( parseInt(curSeconds%10) != parseInt(nextSeconds%10) ){-->
+            <!--addBalls( MARGIN_LEFT + 93*(RADIUS+1) , MARGIN_TOP , parseInt(nextSeconds%10) );-->
+        <!--}-->
 
-        curShowTimeSeconds = nextShowTimeSeconds;
-    }
+        <!--curShowTimeSeconds = nextShowTimeSeconds;-->
+    <!--}-->
 
-    updateBalls();
+    <!--updateBalls();-->
 
-}
+<!--}-->
 
-function addBalls(x, y, num){
-    for( var i = 0  ; i < digit[num].length ; i ++ )
-        for( var j = 0  ; j < digit[num][i].length ; j ++ )
-            if( digit[num][i][j] == 1 ){
-                var aBall = {
-                    x:x+j*2*(RADIUS+1)+(RADIUS+1),
-                    y:y+i*2*(RADIUS+1)+(RADIUS+1),
-                    g:1.5+Math.random(),
-                    //-4 或 4
-                    vx:Math.pow( -1 , Math.ceil( Math.random()*1000 ) ) * 4,
-                    vy:-5,
-                    color: colors[ Math.floor( Math.random()*colors.length ) ]
-                }
+<!--function addBalls(x, y, num){-->
+    <!--for( var i = 0  ; i < digit[num].length ; i ++ )-->
+        <!--for( var j = 0  ; j < digit[num][i].length ; j ++ )-->
+            <!--if( digit[num][i][j] == 1 ){-->
+                <!--var aBall = {-->
+                    <!--x:x+j*2*(RADIUS+1)+(RADIUS+1),-->
+                    <!--y:y+i*2*(RADIUS+1)+(RADIUS+1),-->
+                    <!--g:1.5+Math.random(),-->
+                    <!--//-4 或 4-->
+                    <!--vx:Math.pow( -1 , Math.ceil( Math.random()*1000 ) ) * 4,-->
+                    <!--vy:-5,-->
+                    <!--color: colors[ Math.floor( Math.random()*colors.length ) ]-->
+                <!--}-->
 
-                balls.push( aBall )
-            }
-}
+                <!--balls.push( aBall )-->
+            <!--}-->
+<!--}-->
 
-function updateBalls(){
-    for( var i = 0 ; i < balls.length ; i ++ ){
+<!--function updateBalls(){-->
+    <!--for( var i = 0 ; i < balls.length ; i ++ ){-->
 
-        balls[i].x += balls[i].vx;
-        balls[i].y += balls[i].vy;
-        balls[i].vy += balls[i].g;
+        <!--balls[i].x += balls[i].vx;-->
+        <!--balls[i].y += balls[i].vy;-->
+        <!--balls[i].vy += balls[i].g;-->
 
-        if( balls[i].y >= WINDOW_HEIGHT-RADIUS ){
-            balls[i].y = WINDOW_HEIGHT-RADIUS;
-            balls[i].vy = - balls[i].vy*0.75;
-        }
-    }
+        <!--if( balls[i].y >= WINDOW_HEIGHT-RADIUS ){-->
+            <!--balls[i].y = WINDOW_HEIGHT-RADIUS;-->
+            <!--balls[i].vy = - balls[i].vy*0.75;-->
+        <!--}-->
+    <!--}-->
 
-    var cnt = 0
-    for(var i = 0;i < balls.length;i++){
-        if(balls[i].x + RADIUS > 0 && balls[i].x - RADIUS < WINDOW_WIDTH){
-            balls[cnt++] = balls[i]
-        }
-    }
+    <!--var cnt = 0-->
+    <!--for(var i = 0;i < balls.length;i++){-->
+        <!--if(balls[i].x + RADIUS > 0 && balls[i].x - RADIUS < WINDOW_WIDTH){-->
+            <!--balls[cnt++] = balls[i]-->
+        <!--}-->
+    <!--}-->
 
-    while (balls.length > Math.min(200,cnt)){
-        balls.pop()
-    }
-}
+    <!--while (balls.length > Math.min(200,cnt)){-->
+        <!--balls.pop()-->
+    <!--}-->
+<!--}-->
 
 
-//获取秒
-function getCurrentShowTimeSeconds(){
-    var curtime = new Date();
-    var ret = curtime.getSeconds() + curtime.getMinutes()*60 + curtime.getHours()*3600
-    // ret = Math.round(ret)
+<!--//获取秒-->
+<!--function getCurrentShowTimeSeconds(){-->
+    <!--var curtime = new Date();-->
+    <!--var ret = curtime.getSeconds() + curtime.getMinutes()*60 + curtime.getHours()*3600-->
+    <!--// ret = Math.round(ret)-->
 
-    return ret >=0 ? ret : 0;
-}
+    <!--return ret >=0 ? ret : 0;-->
+<!--}-->
 
-function render(cxt){
+<!--function render(cxt){-->
 
-    cxt.clearRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT)
+    <!--cxt.clearRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT)-->
 
-    var hours = parseInt (curShowTimeSeconds / 3600)
-    var minutes = parseInt((curShowTimeSeconds - hours*3600)/60)
-    var seconds = curShowTimeSeconds % 60
+    <!--var hours = parseInt (curShowTimeSeconds / 3600)-->
+    <!--var minutes = parseInt((curShowTimeSeconds - hours*3600)/60)-->
+    <!--var seconds = curShowTimeSeconds % 60-->
 
-    renderDigit( MARGIN_LEFT , MARGIN_TOP , parseInt(hours/10) , cxt )
-    renderDigit( MARGIN_LEFT + 15*(RADIUS+1) , MARGIN_TOP , parseInt(hours%10) , cxt )
-    renderDigit( MARGIN_LEFT + 30*(RADIUS + 1) , MARGIN_TOP , 10 , cxt )
-    renderDigit( MARGIN_LEFT + 39*(RADIUS+1) , MARGIN_TOP , parseInt(minutes/10) , cxt);
-    renderDigit( MARGIN_LEFT + 54*(RADIUS+1) , MARGIN_TOP , parseInt(minutes%10) , cxt);
-    renderDigit( MARGIN_LEFT + 69*(RADIUS+1) , MARGIN_TOP , 10 , cxt);
-    renderDigit( MARGIN_LEFT + 78*(RADIUS+1) , MARGIN_TOP , parseInt(seconds/10) , cxt);
-    renderDigit( MARGIN_LEFT + 93*(RADIUS+1) , MARGIN_TOP , parseInt(seconds%10) , cxt);
+    <!--renderDigit( MARGIN_LEFT , MARGIN_TOP , parseInt(hours/10) , cxt )-->
+    <!--renderDigit( MARGIN_LEFT + 15*(RADIUS+1) , MARGIN_TOP , parseInt(hours%10) , cxt )-->
+    <!--renderDigit( MARGIN_LEFT + 30*(RADIUS + 1) , MARGIN_TOP , 10 , cxt )-->
+    <!--renderDigit( MARGIN_LEFT + 39*(RADIUS+1) , MARGIN_TOP , parseInt(minutes/10) , cxt);-->
+    <!--renderDigit( MARGIN_LEFT + 54*(RADIUS+1) , MARGIN_TOP , parseInt(minutes%10) , cxt);-->
+    <!--renderDigit( MARGIN_LEFT + 69*(RADIUS+1) , MARGIN_TOP , 10 , cxt);-->
+    <!--renderDigit( MARGIN_LEFT + 78*(RADIUS+1) , MARGIN_TOP , parseInt(seconds/10) , cxt);-->
+    <!--renderDigit( MARGIN_LEFT + 93*(RADIUS+1) , MARGIN_TOP , parseInt(seconds%10) , cxt);-->
 
-    for( var i = 0 ; i < balls.length ; i ++ ){
-        cxt.fillStyle=balls[i].color;
+    <!--for( var i = 0 ; i < balls.length ; i ++ ){-->
+        <!--cxt.fillStyle=balls[i].color;-->
 
-        cxt.beginPath();
-        cxt.arc( balls[i].x , balls[i].y , RADIUS , 0 , 2*Math.PI , true );
-        cxt.closePath();
+        <!--cxt.beginPath();-->
+        <!--cxt.arc( balls[i].x , balls[i].y , RADIUS , 0 , 2*Math.PI , true );-->
+        <!--cxt.closePath();-->
 
-        cxt.fill();
-    }
-}
+        <!--cxt.fill();-->
+    <!--}-->
+<!--}-->
 
-function renderDigit(x,y,num,cxt){
-    cxt.fillStyle = "rgb(0,102,153)"
+<!--function renderDigit(x,y,num,cxt){-->
+    <!--cxt.fillStyle = "rgb(0,102,153)"-->
 
-    console.log(digit)
-    for(var i=0;i<digit[num].length;i++){
-        for(var j=0 ;j<digit[num][i].length;j++){
-            if(digit[num][i][j] == 1){
-                cxt.beginPath()
+    <!--console.log(digit)-->
+    <!--for(var i=0;i<digit[num].length;i++){-->
+        <!--for(var j=0 ;j<digit[num][i].length;j++){-->
+            <!--if(digit[num][i][j] == 1){-->
+                <!--cxt.beginPath()-->
 
-                // ctx.arc(-1,0,1,Math.PI,0,false);
-                // ctx.arc(1,0,1,Math.PI,0,false);
-                // //貝塞尔曲线画心
-                // ctx.bezierCurveTo(1.9, 1.2, 0.6, 1.6, 0, 3.0);
-                // ctx.bezierCurveTo( -0.6, 1.6,-1.9, 1.2,-2,0);
+                <!--// ctx.arc(-1,0,1,Math.PI,0,false);-->
+                <!--// ctx.arc(1,0,1,Math.PI,0,false);-->
+                <!--// //貝塞尔曲线画心-->
+                <!--// ctx.bezierCurveTo(1.9, 1.2, 0.6, 1.6, 0, 3.0);-->
+                <!--// ctx.bezierCurveTo( -0.6, 1.6,-1.9, 1.2,-2,0);-->
 
-                cxt.arc(x+j*2*(RADIUS+1)+(RADIUS+1),y+i*2*(RADIUS+1)+(RADIUS+1),RADIUS,0,2*Math.PI)
-                cxt.closePath()
+                <!--cxt.arc(x+j*2*(RADIUS+1)+(RADIUS+1),y+i*2*(RADIUS+1)+(RADIUS+1),RADIUS,0,2*Math.PI)-->
+                <!--cxt.closePath()-->
 
-                cxt.fill()
-            }
-        }
-    }
-}
-   
-</script>
+                <!--cxt.fill()-->
+            <!--}-->
+        <!--}-->
+    <!--}-->
+<!--}-->
+   <!---->
+<!--</script>-->
 <style>
     *{margin: 0;padding: 0;}
     body,canvas,clock {width: 100%; height:100%;}
 </style>
 
+</html>
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/Gintama.jpg"
+               alt="Saint Yun" />
+          <p class="site-author-name" itemprop="name">Saint Yun</p>
+           
+              <p class="site-description motion-element" itemprop="description">Talk is Cheap</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/GodIsMadao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/home?id=3055161" target="_blank" title="YunMusic">
+                  
+                    <i class="fa fa-fw fa-music"></i>
+                  
+                  YunMusic
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+    <div id="music163player">
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=542223380&auto=1&height=66"></iframe>
+    </div>
+
+    
+    <div id="clock" style="height:200px;width: 100%;" >
+        <canvas id="canvas" style="height:200px;width:85%;margin-left:10%;">
+            当前浏览器暂不支持canvas，请更换浏览器之后再试一试
+        </canvas>
+    </div>
+  </aside>
+
+
+        
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Saint Yun</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "ffe62070bdf44693b4ce628afac84fd6",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+  <script>
+    $.ajax({
+        url: "https://bird.ioliu.cn/v1?url=http://120.79.39.95:8080/addVisitor",
+        type: "post",
+         data: {
+             "ip": returnCitySN.cip,
+             "visittime": new Date(),
+             "cname":returnCitySN.cname, 
+             //encodeURI(,"UTF-8"),
+             "cid": returnCitySN.cid
+         },
+         success: function (data) {
+             console.log(data)
+         }
+     });
+    
+    </script>
+   
+   
+  
+   
+         <script src="http://120.79.39.95/mycount.js"></script>
+        <script src="http://120.79.39.95/digit.js"></script>
+   
+  
+</body>
 </html>
